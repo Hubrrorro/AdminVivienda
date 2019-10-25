@@ -9,6 +9,6 @@ namespace AdminVivienda.Models
     {
         public int id_Condominio { get; set; }
         public string Condominio { get; set; }
-        public bool Activo { get; set; }
+        public int Activo { get; set; }
     }
 }

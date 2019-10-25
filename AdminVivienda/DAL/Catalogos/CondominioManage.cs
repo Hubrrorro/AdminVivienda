@@ -53,5 +53,18 @@ namespace AdminVivienda.DAL.Catalogos
             else
                 return true;
         }
+        public bool Existe(CAT_CONDOMINIO model)
+        {
+            int cantidad = 0;
+            using (var conex = new AdminEntities1())
+            {
+                cantidad = conex.CAT_CONDOMINIO.Where(x => x.Condominio.Trim().ToUpper().Equals(model.Condominio.Trim().ToUpper()) 
+                && x.Id_Condominio != model.Id_Condominio).Count();
+            }
+            if (cantidad == 0)
+                return false;
+            else
+                return true;
+        }
     }
 }

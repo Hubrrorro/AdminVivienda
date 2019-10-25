@@ -1,0 +1,17 @@
+﻿@model List<AdminVivienda.DAL.CAT_CONDOMINIO>
+@{
+    WebGrid grid = new WebGrid(Model);
+}
+@grid.GetHtml(
+            tableStyle: "table table-hover table-responsive",
+            alternatingRowStyle: "table-dark",
+            mode: WebGridPagerModes.All,
+            firstText: "<< Primero",
+            previousText: "< Anterior",
+            nextText: "Siguiente >",
+            lastText: "Último >>", //add next or prev link in webgrid
+            columns: grid.Columns(
+                grid.Column("Condominio")
+                //grid.Column(header: "Action",format:@<text>@Html.ActionLink("Modify","") | @Html.ActionLink("Detail", "")| @Html.ActionLink("Remove", "")</text>)    @*format: @<text>$@item.Salary</text>*@ @*Format of currency*@
+                            )
+                        )  
