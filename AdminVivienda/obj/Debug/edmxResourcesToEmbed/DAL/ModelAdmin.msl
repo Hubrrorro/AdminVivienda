@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdminModelStoreContainer" CdmEntityContainer="AdminEntities">
+    <EntitySetMapping Name="CAT_CONDOMINIO">
+      <EntityTypeMapping TypeName="AdminModel.CAT_CONDOMINIO">
+        <MappingFragment StoreEntitySet="CAT_CONDOMINIO">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Condominio" ColumnName="Condominio" />
+          <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

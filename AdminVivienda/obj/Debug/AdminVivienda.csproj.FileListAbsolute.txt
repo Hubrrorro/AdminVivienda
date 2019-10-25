@@ -1,0 +1,2 @@
+C:\Users\RroRroLap\source\repos\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csprojAssemblyReference.cache
+C:\Users\RroRroLap\source\repos\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csproj.CoreCompileInputs.cache

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AdminEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CAT_CONDOMINIO" EntityType="AdminModel.CAT_CONDOMINIO" />
+  </EntityContainer>
+  <EntityType Name="CAT_CONDOMINIO">
+    <Key>
+      <PropertyRef Name="Id_Condominio" />
+    </Key>
+    <Property Name="Id_Condominio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Condominio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+  </EntityType>
+</Schema>
