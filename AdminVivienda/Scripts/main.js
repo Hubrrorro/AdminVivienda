@@ -36,3 +36,6 @@ function MsnSwal(tipo, mensaje, titulo) {
         text: mensaje
     });
 }
+function Tabla() {
+    $('.table').DataTable();
+}

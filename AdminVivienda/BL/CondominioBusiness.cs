@@ -26,6 +26,7 @@ namespace AdminVivienda.BL
         }
         private void RevisarCamposObligatorios(CAT_CONDOMINIO model)
         {
+            _respuesta.ejecucion = true;
             if (String.IsNullOrEmpty(model.Condominio))
             {
                 _respuesta.ejecucion = false;

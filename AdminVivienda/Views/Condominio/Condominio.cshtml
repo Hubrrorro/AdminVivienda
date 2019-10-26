@@ -1,13 +1,79 @@
-﻿<div class="row">
+﻿@model AdminVivienda.DAL.CAT_CONDOMINIO
+<div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6">
         <div class="form-group">
-            <label for="txtcondominio">Condominio :</label>
-            <input type="text" class="form-control" id="txtcondominio">
+            <label for="txtcondominio">Condominio *:</label>
+            <input type="text" class="form-control" id="txtcondominio" value="@Model.Condominio">
         </div>
     </div>
-    <div class="col-sm-6 col-md-6 col-lg-6">
-        <div class="form-group">
-            <button type="button" class="btn btn-info">Guardar</button>
+    @if (ViewBag.Accion == "Actualizar")
+    {
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    @if (Model.Activo)
+                    {
+                        <input type="checkbox" class="custom-control-input" id="chkActivo" checked="">
+                    }
+                    else
+                    {
+                        <input type="checkbox" class="custom-control-input" id="chkActivo" >
+                    }
+                    <label class="custom-control-label" for="chkActivo">Estatus</label>
+                </div>
+            </div>
         </div>
-    </div>
+    }
 </div>
+<hr />
+<div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <div class="form-group">
+            <small class="form-text text-muted">* Campos Obligatorios.</small>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <div class="form-group">
+            <a href="@Url.Action("Index")" class="btn btn-danger">Regresar</a>
+            @if (ViewBag.Accion == "Actualizar")
+            {
+                <button id="btnActualizar" type="button" class="btn btn-info right">Actualizar</button>
+            }
+            else
+            {
+
+                <button id="btnGuardar" type="button" class="btn btn-info right">Guardar</button>
+
+
+            }
+        </div>
+        </div>
+    </div>
+@section scripts{
+    <script>
+            var _accion = '@ViewBag.Accion'
+            $('#btnGuardar').click(function () {
+                var modelo = ObtenerModelo();
+                FncExeAjax('@Url.Action("Create")', modelo, "POST", false, FncLimpiar);
+        });
+        function FncLimpiar(respuesta) {
+            if (respuesta.ejecucion) {
+                $('#txtcondominio').val("");
+            }
+            MsnShow(respuesta);
+        }
+        $('#btnActualizar').click(function () {
+                var modelo = ObtenerModelo();
+                FncExeAjax('@Url.Action("Edit")', modelo, "POST", false, MsnShow);
+            });
+            function ObtenerModelo() {
+                var modelo = new Object();
+                if (_accion == 'Actualizar') {
+                    modelo.Activo = $('chkActivo').is(":checked") ? 1 : 0;
+                    modelo.Id_Condominio = Model.Id_Condominio;
+                }
+                modelo.Condominio = $('#txtcondominio').val();
+                return modelo;
+            }
+    </script>
+}
