@@ -7,7 +7,7 @@
     }
 
 <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6">
+    <div class="col-sm-5 col-md-5 col-lg-6">
         <div class="form-group">
             <label for="txtcondominio">Buscar condominio:</label>
             <input type="text" class="form-control" id="txtcondominio">
@@ -16,16 +16,18 @@
     <div class="col-sm-4 col-md-4 col-lg-4">
         <div class="form-group">
             <label for="ddlActivo">Estatus:</label>
-            <select id="ddlActivo" class="custom-select">
+            <select id="ddlActivo" class="form-control">
                 <option selected="" value="-1">Todos</option>
                 <option value="1">Activo</option>
                 <option value="0">Inactivo</option>
             </select>
         </div>
     </div>
-    <div class="col-sm-2 col-md-2 col-lg-2">
-        <button type="button" class="btn btn-info">Buscar</button>
-        <a href="@Url.Action("Create")" class="btn btn-success">Agregar</a>
+    <div class="col-sm-3 col-md-3 col-lg-2">
+        <p class="bs-component">
+            <button type="button" class="btn btn-info">Buscar</button>
+            <a href="@Url.Action("Create")" class="btn btn-success">Agregar</a>
+        </p>
     </div>
 </div>
 <hr />

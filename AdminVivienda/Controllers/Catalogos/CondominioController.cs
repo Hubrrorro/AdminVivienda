@@ -24,6 +24,7 @@ namespace AdminVivienda.Controllers.Catalogos
         // GET: Condominio/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.Accion = "Actualizar";
             var resul = _condominioBusiness.ObtenerPorID(id);
             return View("~/Views/Condominio/Condominio.cshtml",(AdminVivienda.DAL.CAT_CONDOMINIO)resul.datos);
         }
@@ -31,6 +32,7 @@ namespace AdminVivienda.Controllers.Catalogos
         // GET: Condominio/Create
         public ActionResult Create()
         {
+            ViewBag.Accion = "Agregar";
             AdminVivienda.DAL.CAT_CONDOMINIO condominio = new DAL.CAT_CONDOMINIO();
             return View("~/Views/Condominio/Condominio.cshtml", condominio);
         }

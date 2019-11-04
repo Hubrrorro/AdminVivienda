@@ -10,6 +10,7 @@ namespace AdminVivienda.DAL.Catalogos
         {
             using (var conex = new AdminEntities1())
             {
+                model.Activo = true;
                 conex.CAT_CONDOMINIO.Add(model);
                 conex.SaveChanges();
             }

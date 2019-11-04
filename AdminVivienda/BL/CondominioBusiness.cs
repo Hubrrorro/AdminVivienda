@@ -19,9 +19,9 @@ namespace AdminVivienda.BL
         }
         private CAT_CONDOMINIO Transformar(CondominioModel model) {
             CAT_CONDOMINIO condominio = new CAT_CONDOMINIO();
-            condominio.Condominio = model.Condominio;
+            condominio.Condominio = model.Condominio.Trim();
             condominio.Activo = model.Activo == 1 ? true : false;
-            model.id_Condominio = model.id_Condominio;
+            condominio.Id_Condominio = model.id_Condominio;
             return condominio;
         }
         private void RevisarCamposObligatorios(CAT_CONDOMINIO model)

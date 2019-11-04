@@ -1,9 +1,10 @@
 ﻿@model AdminVivienda.DAL.CAT_CONDOMINIO
 <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6">
-        <div class="form-group">
+        <div id="divCondominio" class="form-group">
             <label for="txtcondominio">Condominio *:</label>
-            <input type="text" class="form-control" id="txtcondominio" value="@Model.Condominio">
+            <input type="text" class="form-control" id="txtcondominio" maxlength="100" value="@Model.Condominio">
+            <div style="display:none" class="invalid-feedback">Campo Requerido</div>
         </div>
     </div>
     @if (ViewBag.Accion == "Actualizar")
@@ -52,7 +53,10 @@
 @section scripts{
     <script>
             var _accion = '@ViewBag.Accion'
-            $('#btnGuardar').click(function () {
+        $('#btnGuardar').click(function () {
+                 if (fncCamposRequeridos()) {
+                return;
+            }
                 var modelo = ObtenerModelo();
                 FncExeAjax('@Url.Action("Create")', modelo, "POST", false, FncLimpiar);
         });
@@ -62,15 +66,37 @@
             }
             MsnShow(respuesta);
         }
+        function fncCamposRequeridos() {
+            var campos = false;
+            if ($('#txtcondominio').val() == "") {
+                $('#divCondominio').addClass("has-danger");
+                var input = $('#divCondominio').find(".form-control");
+                $(input[0]).addClass("is-invalid");
+                var label = $('#divCondominio').find(".invalid-feedback");
+                $(label).show();
+                campos = true;
+            }
+            else {
+                $('#divCondominio').removeClass("has-danger");
+                var input = $('#divCondominio').find(".form-control");
+                $(input[0]).removeClass("is-invalid");
+                var label = $('#divCondominio').find(".invalid-feedback");
+                $(label).hide();
+            }
+            return campos;
+        }
         $('#btnActualizar').click(function () {
+            if (fncCamposRequeridos()) {
+                return;
+            }
                 var modelo = ObtenerModelo();
                 FncExeAjax('@Url.Action("Edit")', modelo, "POST", false, MsnShow);
             });
             function ObtenerModelo() {
                 var modelo = new Object();
                 if (_accion == 'Actualizar') {
-                    modelo.Activo = $('chkActivo').is(":checked") ? 1 : 0;
-                    modelo.Id_Condominio = Model.Id_Condominio;
+                    modelo.Activo = $('#chkActivo').is(":checked") ? 1 : 0;
+                    modelo.Id_Condominio = @Model.Id_Condominio;
                 }
                 modelo.Condominio = $('#txtcondominio').val();
                 return modelo;

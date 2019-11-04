@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+.bs-component {
+    position: relative;
+    margin-top: 1rem;
+    display:inline-flex;
+}

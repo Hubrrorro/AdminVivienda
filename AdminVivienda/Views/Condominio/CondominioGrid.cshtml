@@ -11,8 +11,10 @@
             nextText: "Siguiente >",
             lastText: "Último >>", //add next or prev link in webgrid
             columns: grid.Columns(
-                grid.Column("Condominio")
-
-                //grid.Column(header: "Action",format:@<text>@Html.ActionLink("Modify","") | @Html.ActionLink("Detail", "")| @Html.ActionLink("Remove", "")</text>)    @*format: @<text>$@item.Salary</text>*@ @*Format of currency*@
+                grid.Column("Condominio"),
+                 grid.Column(header: "Estatus", canSort: false, style: "", format: (item) => new HtmlString(
+                       "<span class='" + (item.Activo ? "glyphicon glyphicon-ok-circle" : "glyphicon glyphicon-ban-circle") + "'></span>")),
+                grid.Column(header: "Editar", canSort: false, style: "", format: (item) => new HtmlString(
+                       "<a href=" + @Url.Action("Details", new { id = item.Id_Condominio }) + "  title='Editar' class='btn' ><span class='glyphicon glyphicon-pencil'></span></a> "))
                             )
                         )  
