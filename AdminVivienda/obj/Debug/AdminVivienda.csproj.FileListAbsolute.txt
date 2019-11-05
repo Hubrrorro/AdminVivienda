@@ -196,3 +196,11 @@ C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\ob
 C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csproj.CopyComplete
 C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.dll
 C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.pdb
+C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\System.IdentityModel.Tokens.Jwt.xml
