@@ -189,7 +189,6 @@ C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bi
 C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\es\System.Net.Http.Formatting.resources.dll
 C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\es\System.Web.Http.resources.dll
 C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\es\System.Web.Http.WebHost.resources.dll
-C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csprojAssemblyReference.cache
 C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.Mensajes.resources
 C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csproj.GenerateResource.cache
 C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csproj.CoreCompileInputs.cache
@@ -204,3 +203,12 @@ C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivien
 C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Logging.xml
 C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Tokens.xml
 C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\AdminVivienda\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\RroRroLap\Documents\codigo\Github\Cuerna\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csprojAssemblyReference.cache

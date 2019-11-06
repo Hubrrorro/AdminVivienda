@@ -10,5 +10,64 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CAT_ESTADOS">
+      <EntityTypeMapping TypeName="AdminModel.CAT_ESTADOS">
+        <MappingFragment StoreEntitySet="CAT_ESTADOS">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_PERIL">
+      <EntityTypeMapping TypeName="AdminModel.CAT_PERIL">
+        <MappingFragment StoreEntitySet="CAT_PERIL">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+          <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_PERSONAS">
+      <EntityTypeMapping TypeName="AdminModel.CAT_PERSONAS">
+        <MappingFragment StoreEntitySet="CAT_PERSONAS">
+          <ScalarProperty Name="Contacto2" ColumnName="Contacto2" />
+          <ScalarProperty Name="Contacto1" ColumnName="Contacto1" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="ApeMat" ColumnName="ApeMat" />
+          <ScalarProperty Name="ApePat" ColumnName="ApePat" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_TIPOVIVIENDA">
+      <EntityTypeMapping TypeName="AdminModel.CAT_TIPOVIVIENDA">
+        <MappingFragment StoreEntitySet="CAT_TIPOVIVIENDA">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="TipoVivienda" ColumnName="TipoVivienda" />
+          <ScalarProperty Name="Id_TipoVivienda" ColumnName="Id_TipoVivienda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_VIVIENDA">
+      <EntityTypeMapping TypeName="AdminModel.CAT_VIVIENDA">
+        <MappingFragment StoreEntitySet="CAT_VIVIENDA">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="id_Condominio" ColumnName="id_Condominio" />
+          <ScalarProperty Name="id_TipoVivienda" ColumnName="id_TipoVivienda" />
+          <ScalarProperty Name="id_Propietario" ColumnName="id_Propietario" />
+          <ScalarProperty Name="id_Estado" ColumnName="id_Estado" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="Lote" ColumnName="Lote" />
+          <ScalarProperty Name="NumInt" ColumnName="NumInt" />
+          <ScalarProperty Name="NumExt" ColumnName="NumExt" />
+          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+          <ScalarProperty Name="DemMun" ColumnName="DemMun" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="Id_Vivienda" ColumnName="Id_Vivienda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -157,17 +157,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\CondominioBusiness.cs" />
-    <Compile Include="BL\ViviendaBusiness.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
-    <Compile Include="Controllers\Catalogos\ViviendasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Seguridad\CustomersController.cs" />
     <Compile Include="Controllers\Seguridad\LoginController.cs" />
     <Compile Include="Controllers\Seguridad\TokenGenerator.cs" />
     <Compile Include="Controllers\Seguridad\TokenValidationHandler.cs" />
     <Compile Include="DAL\Catalogos\CondominioManage.cs" />
-    <Compile Include="DAL\Catalogos\PersonalManage.cs" />
-    <Compile Include="DAL\Catalogos\ViviendaManage.cs" />
     <Compile Include="DAL\CAT_CONDOMINIO.cs">
       <DependentUpon>ModelCondominio.tt</DependentUpon>
     </Compile>
@@ -211,9 +207,7 @@
     </Compile>
     <Compile Include="Models\CondominioModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
-    <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
-    <Compile Include="Models\ViviendaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
