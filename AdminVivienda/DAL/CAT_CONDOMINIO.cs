@@ -14,8 +14,17 @@ namespace AdminVivienda.DAL
     
     public partial class CAT_CONDOMINIO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CAT_CONDOMINIO()
+        {
+            this.CAT_VIVIENDA = new HashSet<CAT_VIVIENDA>();
+        }
+    
         public int Id_Condominio { get; set; }
         public string Condominio { get; set; }
         public bool Activo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CAT_VIVIENDA> CAT_VIVIENDA { get; set; }
     }
 }

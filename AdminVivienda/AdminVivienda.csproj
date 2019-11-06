@@ -157,14 +157,33 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\CondominioBusiness.cs" />
+    <Compile Include="BL\ViviendaBusiness.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
+    <Compile Include="Controllers\Catalogos\ViviendasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Seguridad\CustomersController.cs" />
     <Compile Include="Controllers\Seguridad\LoginController.cs" />
     <Compile Include="Controllers\Seguridad\TokenGenerator.cs" />
     <Compile Include="Controllers\Seguridad\TokenValidationHandler.cs" />
     <Compile Include="DAL\Catalogos\CondominioManage.cs" />
+    <Compile Include="DAL\Catalogos\PersonalManage.cs" />
+    <Compile Include="DAL\Catalogos\ViviendaManage.cs" />
     <Compile Include="DAL\CAT_CONDOMINIO.cs">
+      <DependentUpon>ModelCondominio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_ESTADOS.cs">
+      <DependentUpon>ModelCondominio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_PERIL.cs">
+      <DependentUpon>ModelCondominio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_PERSONAS.cs">
+      <DependentUpon>ModelCondominio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_TIPOVIVIENDA.cs">
+      <DependentUpon>ModelCondominio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_VIVIENDA.cs">
       <DependentUpon>ModelCondominio.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\ModelCondominio.Context.cs">
@@ -192,7 +211,9 @@
     </Compile>
     <Compile Include="Models\CondominioModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
+    <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
+    <Compile Include="Models\ViviendaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -283,7 +304,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Viviendas\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
