@@ -1,0 +1,72 @@
+﻿@model List<AdminVivienda.Models.CondominioModel>
+<h3 class="header">@ViewBag.Title</h3>
+<hr />
+<div class="row">
+    <div class="input-field col s6 m3 l3">
+        <select id="ddlCondominio">
+            <option disabled selected value="-1">Selecciona</option>
+            @foreach (var condominio in Model)
+            {
+                <option selected="" value="@condominio.id_Condominio">@condominio.Condominio</option>
+            }
+        </select>
+        <label>Condominio:</label>
+    </div>
+    <div class="input-field col s6 m3 l3">
+        <label>Tipo de vivienda:</label>
+        <p>
+            <label>
+                <input name="group1" type="radio" />
+                <span>Casa</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input name="group1" type="radio" />
+                <span>Departamento</span>
+            </label>
+        </p>
+    </div>
+    <div class="input-field col s6 m3 l3">
+        <select id="ddlColonia">
+            <option disabled selected value="-1">Selecciona</option>
+            @foreach (var condominio in Model)
+            {
+                <option selected="" value="@condominio.id_Condominio">@condominio.Condominio</option>
+            }
+        </select>
+        <label>Colonia:</label>
+    </div>
+    <div class="input-field col s6 m3 l3">
+        <label for="txtmun">Municipio:</label>
+        <input type="text" id="txtmun">
+    </div>
+    <div class="input-field col s6 m3 l3">
+        <label for="txtcalle">Colonia:</label>
+        <input type="text" id="txtcalle">
+    </div>
+    <div class="input-field col s6 m3 l3">
+        <label for="txtcalle">Calle:</label>
+        <input type="text" id="txtcalle">
+    </div>
+    <div class="input-field col s3 m3 l3">
+        <label for="txtcp">Código Postal:</label>
+        <input type="text" id="txtcp">
+    </div>
+    <div class="input-field col s3 m3 l3">
+        <label for="txtlote">Lote:</label>
+        <input type="text" id="txtlote">
+    </div>
+    <div class="col s6 m6 l6">
+        <div class="row">
+            <div class="input-field col s6 m6 l6">
+                <label for="txtext">No Ext:</label>
+                <input type="text" id="txtext">
+            </div>
+            <div class="input-field col s6 m6 l6">
+                <label for="txtint">No Int:</label>
+                <input type="text" id="txtint">
+            </div>
+        </div>
+    </div>
+</div>

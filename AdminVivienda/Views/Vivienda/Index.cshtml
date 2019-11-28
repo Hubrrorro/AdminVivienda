@@ -1,0 +1,38 @@
+﻿@model List<AdminVivienda.Models.CondominioModel>
+@section styles{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+}
+<h3 class="header">@ViewBag.Title</h3>
+<hr />
+<div class="row">
+    <div class="input-field col s3 m3 l3">
+        <select id="ddlCondominio">
+            <option selected="" value="-1">Todos</option>
+            @foreach (var condominio in Model)
+            {
+                <option selected="" value="@condominio.id_Condominio">@condominio.Condominio</option>
+            }
+        </select>
+        <label>Condominio:</label>
+    </div>
+    <div class="input-field col s3 m3 l3">
+        <label for="txtcondominio">Vivienda:</label>
+        <input type="text" id="txtvivienda">
+    </div>
+    <div class="input-field col s3 m3 l3">
+        <select id="ddlActivo">
+            <option selected="" value="-1">Todos</option>
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+        </select>
+        <label>Estatus:</label>
+    </div>
+    <div class="col s3 m3 l3">
+        <button type="button" class="waves-effect waves-light btn"><i class="material-icons left">search</i>Buscar</button>
+        <a href="@Url.Action("Create")" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agregar</a>
+    </div>
+</div>
+<hr />
+<div id="divTableVivienda">
+
+</div>

@@ -158,6 +158,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\CondominioBusiness.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
+    <Compile Include="Controllers\Catalogos\ViviendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Seguridad\CustomersController.cs" />
     <Compile Include="Controllers\Seguridad\LoginController.cs" />
@@ -275,6 +276,9 @@
     <Content Include="Views\Condominio\Index.cshtml" />
     <Content Include="Views\Condominio\CondominioGrid.cshtml" />
     <Content Include="Views\Condominio\Condominio.cshtml" />
+    <Content Include="Views\Vivienda\Index.cshtml" />
+    <Content Include="Views\Vivienda\ViviendaGrid.cshtml" />
+    <Content Include="Views\Vivienda\Vivienda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mensajes.resx">
@@ -298,9 +302,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Viviendas\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

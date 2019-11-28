@@ -1,33 +1,28 @@
 ﻿
-@{
-    ViewBag.Title = "Búsqueda de condominios";
-}
+
 @section styles{
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     }
-
+<h3 class="header">@ViewBag.Title</h3>
+<hr />
 <div class="row">
-    <div class="col-sm-5 col-md-5 col-lg-6">
-        <div class="form-group">
+    <div class="input-field col s4 m4 l4">
             <label for="txtcondominio">Buscar condominio:</label>
-            <input type="text" class="form-control" id="txtcondominio">
-        </div>
+            <input type="text"  id="txtcondominio">
     </div>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        <div class="form-group">
-            <label for="ddlActivo">Estatus:</label>
-            <select id="ddlActivo" class="form-control">
-                <option selected="" value="-1">Todos</option>
-                <option value="1">Activo</option>
-                <option value="0">Inactivo</option>
-            </select>
-        </div>
+    <div class="input-field col s4 md4 l4">
+
+
+        <select id="ddlActivo">
+            <option selected="" value="-1">Todos</option>
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+        </select>
+        <label>Estatus:</label>
     </div>
-    <div class="col-sm-3 col-md-3 col-lg-2">
-        <p class="bs-component">
-            <button type="button" class="btn btn-info">Buscar</button>
-            <a href="@Url.Action("Create")" class="btn btn-success">Agregar</a>
-        </p>
+    <div class="col s4 m4 l4">
+            <button type="button" class="waves-effect waves-light btn"><i class="material-icons left">search</i>Buscar</button>
+            <a href="@Url.Action("Create")" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agregar</a>
     </div>
 </div>
 <hr />
@@ -40,6 +35,7 @@
         var _urlGrid = '@Url.Action("Grid")';
         $(document).ready(function () {
             EjecutaAjaxBusqueda();
+            $('select').formSelect();
         });
         $(".btn-info").click(function () {
             EjecutaAjaxBusqueda();
@@ -52,7 +48,7 @@
         }
         function FncGrid(datos) {
             $('#divTableCondominio').html(datos);
-            Tabla();
+           
         }
     </script>
 }
