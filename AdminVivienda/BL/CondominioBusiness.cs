@@ -1,5 +1,6 @@
 ﻿using AdminVivienda.DAL;
 using AdminVivienda.DAL.Catalogos;
+using AdminVivienda.Interface;
 using AdminVivienda.Models;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,10 @@ using System.Web;
 
 namespace AdminVivienda.BL
 {
-    public class CondominioBusiness
+    public class CondominioBusiness : IGeneralBusiness<CondominioModel>
     {
         private RespuestaModel _respuesta;
-        private CondominioManage _manage;
+        private IGeneralManage<CAT_CONDOMINIO> _manage;
         public CondominioBusiness()
         {
             _respuesta = new RespuestaModel();
@@ -34,11 +35,11 @@ namespace AdminVivienda.BL
             }
 
         }
-        public RespuestaModel ObtenerPorID(int id)
+        public RespuestaModel ConsultarId(int id)
         {
             try
             {
-                var listTodo = _manage.ObtenerPorId(id);
+                var listTodo = _manage.ConsultarId(id);
                 _respuesta.ejecucion = true;
                 _respuesta.datos = listTodo;
             }
@@ -50,10 +51,10 @@ namespace AdminVivienda.BL
             }
             return _respuesta;
         }
-        public RespuestaModel Obtener(CondominioModel model) {
+        public RespuestaModel Consultar(CondominioModel model) {
             try
             {
-                var listTodo = _manage.ObtenerTodo();
+                var listTodo = _manage.Consultar();
                 if (!String.IsNullOrEmpty(model.Condominio))
                     listTodo = listTodo.Where(x => x.Condominio.Contains(model.Condominio)).ToList();
                 if (model.Activo == 1)
