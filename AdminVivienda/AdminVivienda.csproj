@@ -156,6 +156,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BL\Catalogos\GeneralNivel1Business.cs" />
     <Compile Include="BL\Catalogos\TipoViviendaBusiness.cs" />
     <Compile Include="BL\CondominioBusiness.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Controllers\Seguridad\TokenGenerator.cs" />
     <Compile Include="Controllers\Seguridad\TokenValidationHandler.cs" />
     <Compile Include="DAL\Catalogos\CondominioManage.cs" />
+    <Compile Include="DAL\Catalogos\GeneralManageNivel1.cs" />
     <Compile Include="DAL\Catalogos\TipoViviendaManage.cs" />
     <Compile Include="DAL\CAT_CONDOMINIO.cs">
       <DependentUpon>ModelCondominio.tt</DependentUpon>
@@ -211,6 +213,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Mensajes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Catalogos\General\Nivel1Model.cs" />
     <Compile Include="Models\Catalogos\TipoViviendaModel.cs" />
     <Compile Include="Models\CondominioModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
@@ -285,6 +288,9 @@
     <Content Include="Views\Vivienda\Index.cshtml" />
     <Content Include="Views\Vivienda\ViviendaGrid.cshtml" />
     <Content Include="Views\Vivienda\Vivienda.cshtml" />
+    <Content Include="Views\TipoVivienda\Index.cshtml" />
+    <Content Include="Views\TipoVivienda\TipoViviendaGrid.cshtml" />
+    <Content Include="Views\TipoVivienda\TipoVivienda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mensajes.resx">
@@ -308,9 +314,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\TipoVivienda\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
