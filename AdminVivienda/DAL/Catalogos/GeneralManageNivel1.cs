@@ -63,5 +63,16 @@ namespace AdminVivienda.DAL.Catalogos
                 conex.Database.ExecuteSqlCommand(_qry, parametros);
             }
         }
+        public void Editar(Nivel1Model model)
+        {
+            using (var conex = new AdminEntities1())
+            {
+                List<SqlParameter> parametros = new List<SqlParameter>() { new SqlParameter("@VALOR", model.descripcion), new SqlParameter("@ACTIVO",model.activo), new SqlParameter("@ID", model.id) };
+
+                _qry = "UPDATE " + _tabla + " SET " + _columnName + "=@VALOR, ACTIVO=@ACTIVO WHERE " + _idName + "=@ID";
+                conex.Database.ExecuteSqlCommand(_qry, parametros);
+            }
+        }
+
     }
 }
