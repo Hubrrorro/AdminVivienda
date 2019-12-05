@@ -18,6 +18,13 @@ namespace AdminVivienda.BL.Catalogos
         {
             return _manage.Consultar(modelo);
         }
-
+        public void Agregar(Nivel1Model modelo)
+        {
+            _manage.Agregar(modelo);
+        }
+        public void Actualizar(Nivel1Model modelo)
+        {
+            _manage.Editar(modelo);
+        }
     }
 }
