@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 namespace AdminVivienda.DAL.Catalogos
 {
-    public class CondominioManage
+    public class CondominioManage : Interface.IGeneralManage<CAT_CONDOMINIO>
     {
         public void Agregar(CAT_CONDOMINIO model)
         {
@@ -25,7 +25,7 @@ namespace AdminVivienda.DAL.Catalogos
                 conex.SaveChanges();
             }
         }
-        public List<CAT_CONDOMINIO> ObtenerTodo() {
+        public List<CAT_CONDOMINIO> Consultar() {
             List<CAT_CONDOMINIO> listado;
             using (var conex = new AdminEntities1())
             {
@@ -33,7 +33,7 @@ namespace AdminVivienda.DAL.Catalogos
             }
             return listado;
         }
-        public CAT_CONDOMINIO ObtenerPorId(int id)
+        public CAT_CONDOMINIO ConsultarId(int id)
         {
             CAT_CONDOMINIO condominio;
             using (var conex = new AdminEntities1())

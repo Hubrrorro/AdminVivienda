@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AdminVivienda</RootNamespace>
     <AssemblyName>AdminVivienda</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -28,6 +28,7 @@
     </NuGetPackageImportStamp>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerLaunchUrl>http://{ServiceIPAddress}</DockerLaunchUrl>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,6 +67,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.6.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
@@ -76,11 +78,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -125,6 +124,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -156,8 +156,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BL\Catalogos\GeneralNivel1Business.cs" />
+    <Compile Include="BL\Catalogos\TipoViviendaBusiness.cs" />
     <Compile Include="BL\CondominioBusiness.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
+    <Compile Include="Controllers\Catalogos\TipoViviendaController.cs" />
     <Compile Include="Controllers\Catalogos\ViviendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Seguridad\CustomersController.cs" />
@@ -165,6 +168,9 @@
     <Compile Include="Controllers\Seguridad\TokenGenerator.cs" />
     <Compile Include="Controllers\Seguridad\TokenValidationHandler.cs" />
     <Compile Include="DAL\Catalogos\CondominioManage.cs" />
+    <Compile Include="DAL\Catalogos\GeneralManageNivel1.cs" />
+    <Compile Include="DAL\Catalogos\PersonalManage.cs" />
+    <Compile Include="DAL\Catalogos\TipoViviendaManage.cs" />
     <Compile Include="DAL\CAT_CONDOMINIO.cs">
       <DependentUpon>ModelCondominio.tt</DependentUpon>
     </Compile>
@@ -201,18 +207,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IGeneralBusiness.cs" />
+    <Compile Include="Interface\IGeneralManage.cs" />
     <Compile Include="Mensajes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Mensajes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Catalogos\General\Nivel1Model.cs" />
+    <Compile Include="Models\Catalogos\TipoViviendaModel.cs" />
     <Compile Include="Models\CondominioModel.cs" />
     <Compile Include="Models\EstadoModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
+    <Compile Include="Models\Personas\PersonaModel.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
     <Compile Include="Models\TipoVivienda.cs" />
     <Compile Include="Models\Vivienda\ViviendaGridModel.cs" />
     <Compile Include="Models\Vivienda\ViviendaIndexModel.cs" />
+    <Compile Include="Models\Vivienda\ViviendaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -283,6 +295,9 @@
     <Content Include="Views\Vivienda\Index.cshtml" />
     <Content Include="Views\Vivienda\ViviendaGrid.cshtml" />
     <Content Include="Views\Vivienda\Vivienda.cshtml" />
+    <Content Include="Views\TipoVivienda\Index.cshtml" />
+    <Content Include="Views\TipoVivienda\TipoViviendaGrid.cshtml" />
+    <Content Include="Views\TipoVivienda\TipoVivienda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mensajes.resx">

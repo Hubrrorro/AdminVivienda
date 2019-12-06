@@ -27,7 +27,7 @@ namespace AdminVivienda.Controllers.Catalogos
         {
             ViewBag.Accion = "Actualizar";
             ViewBag.Title = "Editar condominio";
-            var resul = _condominioBusiness.ObtenerPorID(id);
+            var resul = _condominioBusiness.ConsultarId(id);
             return View("~/Views/Condominio/Condominio.cshtml",(AdminVivienda.DAL.CAT_CONDOMINIO)resul.datos);
         }
 
@@ -41,7 +41,7 @@ namespace AdminVivienda.Controllers.Catalogos
         }
         public PartialViewResult Grid(CondominioModel modelo)
         {
-            var resul = _condominioBusiness.Obtener(modelo);
+            var resul = _condominioBusiness.Consultar(modelo);
             return PartialView("~/Views/Condominio/CondominioGrid.cshtml", (List<AdminVivienda.DAL.CAT_CONDOMINIO>)resul.datos);
         }
         // POST: Condominio/Create
