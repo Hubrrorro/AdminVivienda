@@ -207,8 +207,12 @@
       <DependentUpon>Mensajes.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\CondominioModel.cs" />
+    <Compile Include="Models\EstadoModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
+    <Compile Include="Models\TipoVivienda.cs" />
+    <Compile Include="Models\Vivienda\ViviendaGridModel.cs" />
+    <Compile Include="Models\Vivienda\ViviendaIndexModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
