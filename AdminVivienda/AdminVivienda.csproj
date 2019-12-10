@@ -214,6 +214,7 @@
       <DependentUpon>Mensajes.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\Catalogos\General\Nivel1Model.cs" />
+    <Compile Include="Models\Catalogos\General\Nivel1RecursosModel.cs" />
     <Compile Include="Models\Catalogos\TipoViviendaModel.cs" />
     <Compile Include="Models\CondominioModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
@@ -291,6 +292,9 @@
     <Content Include="Views\TipoVivienda\Index.cshtml" />
     <Content Include="Views\TipoVivienda\TipoViviendaGrid.cshtml" />
     <Content Include="Views\TipoVivienda\TipoVivienda.cshtml" />
+    <Content Include="Views\CatalogosGenerico\Nivel1\Index.cshtml" />
+    <Content Include="Views\CatalogosGenerico\Nivel1\Grid.cshtml" />
+    <Content Include="Views\CatalogosGenerico\Nivel1\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mensajes.resx">

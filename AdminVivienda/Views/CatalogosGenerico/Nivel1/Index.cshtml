@@ -1,0 +1,21 @@
+﻿@model AdminVivienda.Models.Catalogos.General.Nivel1RecursosModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.tituloIndex</h2>
+<div class="row">
+    <div class="col s6 l6 m6">
+        <label>@Model.campo1</label>
+        <input id="txtfiltro" maxlength="@Model.maxValue" />
+    </div>
+    <div class="col s6 l6 m6">
+        <label>@Model.estatus</label>
+        <select id="slcfiltro">
+            <option value="-1">Todo</option>
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+        </select>
+    </div>
+</div>
