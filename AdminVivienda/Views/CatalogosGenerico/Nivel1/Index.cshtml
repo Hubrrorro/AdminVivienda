@@ -4,18 +4,58 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.tituloIndex</h2>
+
+
+
+@section styles{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+}
+<h3 class="header">@Model.tituloIndex</h3>
+<hr />
 <div class="row">
-    <div class="col s6 l6 m6">
-        <label>@Model.campo1</label>
-        <input id="txtfiltro" maxlength="@Model.maxValue" />
+    <div class="input-field col s4 m4 l4">
+        <label for="txtcampo">Buscar @Model.campo1:</label>
+        <input maxlength="@Model.maxValue" type="text" id="txtcampo">
     </div>
-    <div class="col s6 l6 m6">
-        <label>@Model.estatus</label>
-        <select id="slcfiltro">
-            <option value="-1">Todo</option>
+    <div class="input-field col s4 md4 l4">
+
+
+        <select id="ddlActivo">
+            <option selected="" value="-1">Todos</option>
             <option value="1">Activo</option>
             <option value="0">Inactivo</option>
         </select>
+        <label>@Model.estatus:</label>
+    </div>
+    <div class="col s4 m4 l4">
+        <button type="button" class="waves-effect waves-light btn"><i class="material-icons left">search</i>Buscar</button>
+        <a href="@Url.Action("Create")" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agregar</a>
     </div>
 </div>
+<hr />
+<div id="divTableNivel1">
+
+</div>
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        var _urlGrid = '@Url.Action("Grid")';
+        $(document).ready(function () {
+            EjecutaAjaxBusqueda();
+            $('select').formSelect();
+        });
+        $(".btn-info").click(function () {
+            EjecutaAjaxBusqueda();
+        });
+        function EjecutaAjaxBusqueda() {
+            var modelo = new Object();
+            modelo.campo = $('#txtcampo').val();
+            modelo.Activo = $('#ddlActivo').val();
+            FncExeAjax(_urlGrid, modelo, "POST", false, FncGrid);
+        }
+        function FncGrid(datos) {
+            $('#divTableNivel1').html(datos);
+
+        }
+    </script>
+}

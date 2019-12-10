@@ -26,7 +26,7 @@ namespace AdminVivienda.DAL.Catalogos
                 _qry = "select " + _idName + " AS ID," + _columnName + " AS DESCRIPCION,CAST(ACTIVO AS INT) AS ACTIVO from " + _tabla;
 
                 if (!String.IsNullOrEmpty(filtros.descripcion)) {
-                    parametros.Add(new SqlParameter("@DESCRIPCION", filtros.descripcion);
+                    parametros.Add(new SqlParameter("@DESCRIPCION", filtros.descripcion));
                     _qry += " WHERE " + _columnName + " LIKE %@DESCRIPCION%";
                 }
                 if (!filtros.id.Equals(0))
@@ -38,7 +38,7 @@ namespace AdminVivienda.DAL.Catalogos
                     _qry += _idName + "= @ID";
                     parametros.Add(new SqlParameter("@ID", filtros.id));
                 }
-                if (!filtros.Equals(-1))
+                if (!filtros.activo.Equals(-1))
                 {
                     if (parametros.Count.Equals(0))
                         _qry += " WHERE ";

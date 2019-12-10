@@ -41,7 +41,7 @@ namespace AdminVivienda.BL.Catalogos
                     _respuesta.mensaje.Add("Dato requerido");
                     return _respuesta;
                 }
-                var listado = _manage.Consultar(modelo);
+                var listado = _manage.Consultar(new Nivel1Model() { activo=-1, id= 0 });
                 int intExiste = listado.Where(x => x.descripcion.Trim().ToUpper().Equals(modelo.descripcion.Trim().ToUpper())).Count();
                 if (intExiste > 0)
                 {

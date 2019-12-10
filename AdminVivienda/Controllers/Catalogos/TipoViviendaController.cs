@@ -1,4 +1,5 @@
 ﻿using AdminVivienda.BL.Catalogos;
+using AdminVivienda.Models.Catalogos.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,32 +8,21 @@ using System.Web.Mvc;
 
 namespace AdminVivienda.Controllers.Catalogos
 {
-    public class TipoViviendaController : Controller
+    public class TipoViviendaController : CatalogoNivel1Controller
     {
         // GET: TipoVivienda
-        private GeneralNivel1Business _general = new GeneralNivel1Business("Id_Estado", "Estado", "CAT_ESTADOS");
-        public ActionResult Index()
+        private static Nivel1RecursosModel _nivel1 = new Nivel1RecursosModel()
+        {
+             campo1= "Tipo de vivienda",
+              maxValue= 50,
+               estatus = "Estatus",
+                tituloAgregar= "Agregar tipo de vivienda",
+                 tituloEditar= "Editar tipo de vivienda",
+                  tituloIndex = "Buscar tipo de vivienda"
+        };
+        public TipoViviendaController() : base(_nivel1)
         {
             
-            var listado = _general.Consultar(new Models.Catalogos.General.Nivel1Model()
-            {
-                activo = -1,
-                descripcion = "",
-                id = 0
-            });
-            ViewBag.Title = "Buscar tipo de vivienda";
-            return View();
-        }
-        public ActionResult Agregar()
-        {
-            ViewBag.Title = "Agregar tipo de vivienda";
-            return View();
-        }
-
-        public ActionResult Actualizar()
-        {
-            ViewBag.Title = "Editar tipo de vivienda";
-            return View();
         }
     }
 }

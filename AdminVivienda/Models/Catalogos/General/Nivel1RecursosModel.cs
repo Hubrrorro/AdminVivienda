@@ -16,6 +16,6 @@ namespace AdminVivienda.Models.Catalogos.General
         public string campo1 { get; set; }
         public int maxValue { get; set; }
         public string estatus { get; set; }
-        List<Nivel1Model> datos { get; set; }
+        public List<Nivel1Model> datos { get; set; }
     }
 }

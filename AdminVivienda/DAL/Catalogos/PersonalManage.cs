@@ -57,16 +57,16 @@ namespace AdminVivienda.DAL.Catalogos
         }
         public bool Existe(CAT_PERSONAS model)
         {
-            int cantidad = 0;
-            using (var conex = new AdminEntities1())
-            {
-                cantidad = conex.CAT_CONDOMINIO.Where(x => x.Condominio.Trim().ToUpper().Equals(model.Condominio.Trim().ToUpper())
-                && x.Id_Condominio != model.Id_Condominio).Count();
-            }
-            if (cantidad == 0)
-                return false;
-            else
-                return true;
+        //    int cantidad = 0;
+        //    using (var conex = new AdminEntities1())
+        //    {
+        //        cantidad = conex.CAT_PERSONAS.Where(x => x..Trim().ToUpper().Equals(model.Condominio.Trim().ToUpper())
+        //        && x.Id_Condominio != model.Id_Condominio).Count();
+        //    }
+        //    if (cantidad == 0)
+        //        return false;
+        //    else
+               return true;
         }
     }
 }
