@@ -169,6 +169,7 @@
     <Compile Include="Controllers\Seguridad\TokenValidationHandler.cs" />
     <Compile Include="DAL\Catalogos\CondominioManage.cs" />
     <Compile Include="DAL\Catalogos\GeneralManageNivel1.cs" />
+    <Compile Include="DAL\Catalogos\PersonalManage.cs" />
     <Compile Include="DAL\Catalogos\TipoViviendaManage.cs" />
     <Compile Include="DAL\CAT_CONDOMINIO.cs">
       <DependentUpon>ModelCondominio.tt</DependentUpon>
@@ -217,8 +218,14 @@
     <Compile Include="Models\Catalogos\General\Nivel1RecursosModel.cs" />
     <Compile Include="Models\Catalogos\TipoViviendaModel.cs" />
     <Compile Include="Models\CondominioModel.cs" />
+    <Compile Include="Models\EstadoModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
+    <Compile Include="Models\Personas\PersonaModel.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
+    <Compile Include="Models\TipoVivienda.cs" />
+    <Compile Include="Models\Vivienda\ViviendaGridModel.cs" />
+    <Compile Include="Models\Vivienda\ViviendaIndexModel.cs" />
+    <Compile Include="Models\Vivienda\ViviendaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

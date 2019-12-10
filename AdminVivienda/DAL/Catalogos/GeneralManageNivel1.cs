@@ -57,7 +57,7 @@ namespace AdminVivienda.DAL.Catalogos
         {
             using (var conex = new AdminEntities1())
             {
-                List<SqlParameter> parametros = new List<SqlParameter>() { new SqlParameter("@VALOR", model.descripcion) };
+                List<SqlParameter> parametros = new List<SqlParameter>() { new SqlParameter("@VALOR", model.descripcion.Trim()) };
 
                 _qry = "INSERT INTO " + _tabla + "(" + _columnName + ", ACTIVO) VALUES (@VALOR,1)"; 
                 conex.Database.ExecuteSqlCommand(_qry, parametros);
@@ -67,7 +67,10 @@ namespace AdminVivienda.DAL.Catalogos
         {
             using (var conex = new AdminEntities1())
             {
-                List<SqlParameter> parametros = new List<SqlParameter>() { new SqlParameter("@VALOR", model.descripcion), new SqlParameter("@ACTIVO",model.activo), new SqlParameter("@ID", model.id) };
+                List<SqlParameter> parametros = new List<SqlParameter>() { 
+                    new SqlParameter("@VALOR", model.descripcion.Trim()), 
+                    new SqlParameter("@ACTIVO",model.activo), 
+                    new SqlParameter("@ID", model.id) };
 
                 _qry = "UPDATE " + _tabla + " SET " + _columnName + "=@VALOR, ACTIVO=@ACTIVO WHERE " + _idName + "=@ID";
                 conex.Database.ExecuteSqlCommand(_qry, parametros);

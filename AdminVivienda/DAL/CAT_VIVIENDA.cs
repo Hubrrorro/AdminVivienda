@@ -27,6 +27,7 @@ namespace AdminVivienda.DAL
         public Nullable<int> id_TipoVivienda { get; set; }
         public Nullable<int> id_Condominio { get; set; }
         public Nullable<bool> Activo { get; set; }
+        public string Vivienda { get; set; }
     
         public virtual CAT_CONDOMINIO CAT_CONDOMINIO { get; set; }
         public virtual CAT_ESTADOS CAT_ESTADOS { get; set; }

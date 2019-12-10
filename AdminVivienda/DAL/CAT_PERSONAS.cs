@@ -27,6 +27,7 @@ namespace AdminVivienda.DAL
         public string Correo { get; set; }
         public string Contacto1 { get; set; }
         public string Contacto2 { get; set; }
+        public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CAT_VIVIENDA> CAT_VIVIENDA { get; set; }
