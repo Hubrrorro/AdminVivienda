@@ -1,11 +1,18 @@
 ﻿@model AdminVivienda.Models.Catalogos.General.Nivel1RecursosModel
-<h3 class="header">@ViewBag.Title</h3>
+@if (ViewBag.isActualizar)
+{
+    <h3 class="header">@Model.tituloEditar</h3>
+}
+else
+{
+    <h3 class="header">@Model.tituloAgregar</h3>
+}
 <hr />
 <div class="row">
     <div class="input-field col s6 m6 l6">
 
         <label for="txtcampo">@Model.campo1 *:</label>
-        @if (ViewBag.Accion == "Actualizar")
+        @if (ViewBag.isActualizar)
         {
             <input type="hidden" id="txtid" value="@Model.datos[0].id" />
             <input type="text" id="txtcampo" maxlength="@Model.maxValue" value="@Model.datos[0].descripcion">
@@ -17,15 +24,13 @@
         <div style="display:none" class="invalid-feedback">Campo Requerido</div>
 
     </div>
-    @if (ViewBag.Accion == "Actualizar")
+    @if (ViewBag.isActualizar)
     {
         <div class="col s6 m6 l6">
             <label>Estatus:</label>
             <div class="switch">
                 <label>
                     Inactivo
-                    <input type="checkbox">
-
                     @if (Model.datos[0].activo.Equals(1))
                     {
                         <input type="checkbox" id="chkActivo" checked="">
@@ -50,7 +55,7 @@
         <a href="@Url.Action("Index")" class="waves-effect waves-light btn red"><i class="material-icons left">keyboard_return</i>Regresar</a>
     </div>
     <div class="col s6 m6 l6" align="right">
-        @if (ViewBag.Accion == "Actualizar")
+        @if (ViewBag.isActualizar)
         {
             <button id="btnActualizar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">autorenew</i>Actualizar</button>
         }
@@ -65,7 +70,7 @@
 </div>
 @section scripts{
     <script>
-            var _accion = '@ViewBag.Accion'
+        var _accion = @ViewBag.isActualizar.ToString().ToLower();
         $('#btnGuardar').click(function () {
                  if (fncCamposRequeridos()) {
                 return;
@@ -107,7 +112,7 @@
             });
             function ObtenerModelo() {
                 var modelo = new Object();
-                if (_accion == 'Actualizar') {
+                if (_accion) {
                     modelo.activo = $('#chkActivo').is(":checked") ? 1 : 0;
                     modelo.id = $("#txtid").val();
                 }

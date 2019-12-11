@@ -23,12 +23,14 @@ namespace AdminVivienda.Controllers.Catalogos
         }
         public ActionResult Details(int id)
         {
+            ViewBag.isActualizar = true;
             var resul = _negocio.Consultar(new Nivel1Model() { id = id, activo= -1 });
             _nivel1.datos = resul.datos;
             return View("~/Views/CatalogosGenerico/Nivel1/Registro.cshtml", _nivel1);
         }
         public ActionResult Create()
         {
+            ViewBag.isActualizar = false;
             return View("~/Views/CatalogosGenerico/Nivel1/Registro.cshtml", _nivel1);
         }
         public PartialViewResult Grid(Nivel1Model modelo)
