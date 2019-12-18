@@ -172,6 +172,7 @@
     <Compile Include="Controllers\Seguridad\TokenValidationHandler.cs" />
     <Compile Include="DAL\Catalogos\CondominioManage.cs" />
     <Compile Include="DAL\Catalogos\GeneralManageNivel1.cs" />
+    <Compile Include="DAL\Catalogos\GeneralManageNivel1Campo2.cs" />
     <Compile Include="DAL\Catalogos\PersonalManage.cs" />
     <Compile Include="DAL\Catalogos\TipoViviendaManage.cs" />
     <Compile Include="DAL\CAT_CONDOMINIO.cs">
@@ -307,6 +308,9 @@
     <Content Include="Views\CatalogosGenerico\Nivel1\Index.cshtml" />
     <Content Include="Views\CatalogosGenerico\Nivel1\Grid.cshtml" />
     <Content Include="Views\CatalogosGenerico\Nivel1\Registro.cshtml" />
+    <Content Include="Views\CatalogosGenerico\Nivel1Campo2\Grid.cshtml" />
+    <Content Include="Views\CatalogosGenerico\Nivel1Campo2\Index.cshtml" />
+    <Content Include="Views\CatalogosGenerico\Nivel1Campo2\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mensajes.resx">
@@ -330,10 +334,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\CatalogoNivel1\" />
-    <Folder Include="Views\CatNivel1Campo2\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

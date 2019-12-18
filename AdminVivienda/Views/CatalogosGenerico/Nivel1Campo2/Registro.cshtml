@@ -1,0 +1,141 @@
+﻿@model AdminVivienda.Models.Catalogos.General.Nivel1Campo2RecursosModel
+@if (ViewBag.isActualizar)
+{
+    <h3 class="header">@Model.tituloEditar</h3>
+}
+else
+{
+    <h3 class="header">@Model.tituloAgregar</h3>
+}
+<hr />
+<div class="row">
+    <div class="input-field col s4 m4 l4">
+
+        <label for="txtcampo">@Model.campo1 *:</label>
+        @if (ViewBag.isActualizar)
+        {
+            <input type="hidden" id="txtid" value="@Model.datos[0].id" />
+            <input type="text" id="txtcampo" maxlength="@Model.maxValue" value="@Model.datos[0].descripcion">
+        }
+        else
+        {
+            <input type="text" id="txtcampo" maxlength="@Model.maxValue" value="">
+        }
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+
+    </div>
+    <div class="input-field col s4 m4 l4">
+
+        <label for="txtcampo2">@Model.campo2 *:</label>
+        @if (ViewBag.isActualizar)
+        {
+            <input type="text" id="txtcampo2" maxlength="@Model.maxValue2" value="@Model.datos[0].campo2">
+        }
+        else
+        {
+            <input type="text" id="txtcampo2" maxlength="@Model.maxValue2" value="">
+        }
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+
+    </div>
+    @if (ViewBag.isActualizar)
+    {
+        <div class="col s4 m4 l4">
+            <label>Estatus:</label>
+            <div class="switch">
+                <label>
+                    Inactivo
+                    @if (Model.datos[0].activo.Equals(1))
+                    {
+                        <input type="checkbox" id="chkActivo" checked="">
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="chkActivo">
+                    }
+                    <span class="lever"></span>
+                    Activo
+                </label>
+            </div>
+        </div>
+    }
+</div>
+<hr />
+
+<div class="row">
+    <p><small class="form-text text-muted">* Campos Obligatorios.</small></p>
+    <div class="col s6 m6 l6" align="left">
+
+        <a href="@Url.Action("Index")" class="waves-effect waves-light btn red"><i class="material-icons left">keyboard_return</i>Regresar</a>
+    </div>
+    <div class="col s6 m6 l6" align="right">
+        @if (ViewBag.isActualizar)
+        {
+            <button id="btnActualizar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">autorenew</i>Actualizar</button>
+        }
+        else
+        {
+
+            <button id="btnGuardar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">save</i>Guardar</button>
+
+
+        }
+    </div>
+</div>
+@section scripts{
+    <script>
+        var _accion = @ViewBag.isActualizar.ToString().ToLower();
+        $('#btnGuardar').click(function () {
+                 if (fncCamposRequeridos()) {
+                return;
+            }
+                var modelo = ObtenerModelo();
+                FncExeAjax('@Url.Action("Create")', modelo, "POST", false, FncLimpiar);
+        });
+        function FncLimpiar(respuesta) {
+            if (respuesta.ejecucion) {
+                $('#txtcampo').val("");
+            }
+            MsnShow(respuesta);
+        }
+        function fncCamposRequeridos() {
+            var campos = false;
+            if ($('#txtcampo').val() == "") {
+                $('#divCondominio').addClass("has-danger");
+                var input = $('#divCondominio').find(".form-control");
+                $(input[0]).addClass("is-invalid");
+                var label = $('#divCondominio').find(".invalid-feedback");
+                $(label).show();
+                campos = true;
+            }
+            else {
+                $('#divCondominio').removeClass("has-danger");
+                var input = $('#divCondominio').find(".form-control");
+                $(input[0]).removeClass("is-invalid");
+                var label = $('#divCondominio').find(".invalid-feedback");
+                $(label).hide();
+            }
+            return campos;
+        }
+        $('#btnActualizar').click(function () {
+            if (fncCamposRequeridos()) {
+                return;
+            }
+                var modelo = ObtenerModelo();
+                FncExeAjax('@Url.Action("Edit")', modelo, "POST", false, MsnShow);
+            });
+            function ObtenerModelo() {
+                var modelo = new Object();
+                if (_accion) {
+                    modelo.activo = $('#chkActivo').is(":checked") ? 1 : 0;
+                    modelo.id = $("#txtid").val();
+                }
+                modelo.descripcion = $('#txtcampo').val();
+                return modelo;
+        }
+        $(document).ready(function () {
+            $('select').formSelect();
+            M.updateTextFields();
+        });
+    </script>
+}

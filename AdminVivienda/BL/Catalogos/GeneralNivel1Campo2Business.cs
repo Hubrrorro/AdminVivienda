@@ -1,4 +1,6 @@
-﻿using AdminVivienda.Models;
+﻿using AdminVivienda.DAL.Catalogos;
+using AdminVivienda.Models;
+using AdminVivienda.Models.Catalogos.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +10,14 @@ namespace AdminVivienda.BL.Catalogos
 {
     public class GeneralNivel1Campo2Business
     {
-        private GeneralManageNivel1 _manage;
+        private GeneralManageNivel1Campo2 _manage;
         private RespuestaModel _respuesta;
-        public GeneralNivel1Business(string idName, string columnName, string tabla)
+        public GeneralNivel1Campo2Business(string idName, string columnName, string column2Name, string tabla)
         {
             _respuesta = new RespuestaModel();
-            _manage = new GeneralManageNivel1(idName, columnName, tabla);
+            _manage = new GeneralManageNivel1Campo2(idName, columnName,column2Name, tabla);
         }
-        public RespuestaModel Consultar(Nivel1Model modelo)
+        public RespuestaModel Consultar(Nivel1Campo2Model modelo)
         {
             try
             {
@@ -29,7 +31,7 @@ namespace AdminVivienda.BL.Catalogos
             }
             return _respuesta;
         }
-        public RespuestaModel Agregar(Nivel1Model modelo)
+        public RespuestaModel Agregar(Nivel1Campo2Model modelo)
         {
             try
             {
@@ -39,7 +41,7 @@ namespace AdminVivienda.BL.Catalogos
                     _respuesta.mensaje.Add("Dato requerido");
                     return _respuesta;
                 }
-                var listado = _manage.Consultar(new Nivel1Model() { activo = -1, id = 0 });
+                var listado = _manage.Consultar(new Nivel1Campo2Model() { activo = -1, id = 0 });
                 int intExiste = listado.Where(x => x.descripcion.Trim().ToUpper().Equals(modelo.descripcion.Trim().ToUpper())).Count();
                 if (intExiste > 0)
                 {
@@ -60,7 +62,7 @@ namespace AdminVivienda.BL.Catalogos
             }
 
         }
-        public RespuestaModel Actualizar(Nivel1Model modelo)
+        public RespuestaModel Actualizar(Nivel1Campo2Model modelo)
         {
             try
             {

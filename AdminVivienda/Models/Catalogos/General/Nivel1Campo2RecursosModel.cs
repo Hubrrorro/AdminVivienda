@@ -15,7 +15,9 @@ namespace AdminVivienda.Models.Catalogos.General
         public string tituloAgregar { get; set; }
         public string tituloEditar { get; set; }
         public string campo1 { get; set; }
+        public string campo2 { get; set; }
         public int maxValue { get; set; }
+        public int maxValue2 { get; set; }
         public string estatus { get; set; }
         public List<Nivel1Campo2Model> datos { get; set; }
     }
