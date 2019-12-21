@@ -24,7 +24,7 @@ namespace AdminVivienda.Controllers.Catalogos
         public ActionResult Details(int id)
         {
             ViewBag.isActualizar = true;
-            var resul = _negocio.Consultar(new Nivel1Model() { id = id, activo = -1 });
+            var resul = _negocio.Consultar(new Nivel1Campo2Model() { id = id, activo = -1 });
             _nivel1.datos = resul.datos;
             return View("~/Views/CatalogosGenerico/Nivel1/Registro.cshtml", _nivel1);
         }
@@ -33,20 +33,20 @@ namespace AdminVivienda.Controllers.Catalogos
             ViewBag.isActualizar = false;
             return View("~/Views/CatalogosGenerico/Nivel1/Registro.cshtml", _nivel1);
         }
-        public PartialViewResult Grid(Nivel1Model modelo)
+        public PartialViewResult Grid(Nivel1Campo2Model modelo)
         {
             var resul = _negocio.Consultar(modelo);
             _nivel1.datos = resul.datos;
             return PartialView("~/Views/CatalogosGenerico/Nivel1/Grid.cshtml", _nivel1);
         }
         [HttpPost]
-        public ActionResult Create(Nivel1Model modelo)
+        public ActionResult Create(Nivel1Campo2Model modelo)
         {
             var resul = _negocio.Agregar(modelo);
             return Json(resul);
         }
         [HttpPost]
-        public ActionResult Edit(Nivel1Model modelo)
+        public ActionResult Edit(Nivel1Campo2Model modelo)
         {
             var resul = _negocio.Actualizar(modelo);
             return Json(resul);
