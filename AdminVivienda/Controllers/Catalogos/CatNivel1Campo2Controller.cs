@@ -11,11 +11,11 @@ namespace AdminVivienda.Controllers.Catalogos
     public class CatNivel1Campo2Controller : Controller
     {
         private Nivel1Campo2RecursosModel _nivel1;
-        private GeneralNivel1Business _negocio;
+        private GeneralNivel1Campo2Business _negocio;
         public CatNivel1Campo2Controller(Nivel1Campo2RecursosModel nivel)
         {
             _nivel1 = nivel;
-            _negocio = new GeneralNivel1Business("Id_TipoVivienda", "TipoVivienda", "CAT_TIPOVIVIENDA");
+            _negocio = new GeneralNivel1Campo2Business("Id_TipoVivienda", "TipoVivienda", "CAT_TIPOVIVIENDA","");
         }
         public ActionResult Index()
         {
