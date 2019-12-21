@@ -13,27 +13,14 @@
         <label>Condominio:</label>
     </div>
     <div class="input-field col s6 m3 l3">
+        <select id="ddlTipoVivienda">
+            <option disabled selected value="-1">Selecciona</option>
+        </select>
         <label>Tipo de vivienda:</label>
-        <p>
-            <label>
-                <input name="group1" type="radio" />
-                <span>Casa</span>
-            </label>
-        </p>
-        <p>
-            <label>
-                <input name="group1" type="radio" />
-                <span>Departamento</span>
-            </label>
-        </p>
     </div>
     <div class="input-field col s6 m3 l3">
         <select id="ddlColonia">
             <option disabled selected value="-1">Selecciona</option>
-            @foreach (var condominio in Model)
-            {
-                <option selected="" value="@condominio.id_Condominio">@condominio.Condominio</option>
-            }
         </select>
         <label>Colonia:</label>
     </div>
@@ -68,5 +55,33 @@
                 <input type="text" id="txtint">
             </div>
         </div>
+    </div>
+    <div class="col s6 m3 l3">
+        <label for="txtnombrepro">Nombre del propietario:</label>
+        <input type="text" id="txtnombrepro">
+    </div>
+    <div class="col s6 m3 l3">
+        <label for="txtapepat">Apellido paterno:</label>
+        <input type="text" id="txtapepat">
+    </div>
+    <div class="col s6 m3 l3">
+        <label for="txtapemat">Apellido Materno:</label>
+        <input type="text" id="txtapemat">
+    </div>
+    <div class="col s6 m3 l3">
+        <label for="txtcorreo">Correo:</label>
+        <input type="text" id="txtcorreo">
+    </div>
+    <div class="col s6 m3 l3">
+        <label for="txtcorreo2">Correo Alternativo:</label>
+        <input type="text" id="txtcorreo2">
+    </div>
+    <div class="col s6 m3 l3">
+        <label for="txtcontacto">Teléfono:</label>
+        <input type="text" id="txtcontacto">
+    </div>
+    <div class="col s6 m3 l3">
+        <label for="txtcontacto2">Teléfono Alternativo:</label>
+        <input type="text" id="txtcontacto2">
     </div>
 </div>
