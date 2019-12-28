@@ -61,8 +61,13 @@ namespace AdminVivienda.BL
                     listTodo = listTodo.Where(x => x.Activo.Equals(true)).ToList();
                 if (model.Activo == 0)
                     listTodo = listTodo.Where(x => x.Activo.Equals(false)).ToList();
+                List<CondominioModel> listado = new List<CondominioModel>();
+                foreach (var condominio in listTodo)
+                {
+                    listado.Add(new CondominioModel() { Activo = condominio.Activo ? 1 : 0, Condominio = condominio.Condominio, id_Condominio = condominio.Id_Condominio });
+                }
                 _respuesta.ejecucion = true;
-                _respuesta.datos = listTodo;
+                _respuesta.datos = listado;
             }
             catch
             {

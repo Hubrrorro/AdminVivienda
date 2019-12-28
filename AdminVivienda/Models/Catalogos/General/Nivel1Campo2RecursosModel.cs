@@ -7,7 +7,7 @@ namespace AdminVivienda.Models.Catalogos.General
 {
     public class Nivel1Campo2RecursosModel
     {
-        public Nivel1Campo2RecursosModel()
+        public Nivel1Campo2RecursosModel() 
         {
             datos = new List<Nivel1Campo2Model>();
         }
@@ -20,5 +20,15 @@ namespace AdminVivienda.Models.Catalogos.General
         public int maxValue2 { get; set; }
         public string estatus { get; set; }
         public List<Nivel1Campo2Model> datos { get; set; }
+        public TablaNivel1Campo2 tabla { get; set; }
+    }
+    public class TablaNivel1Campo2
+    {
+        public string idNombre { get; set; }
+        public string descripcion { get; set; }
+        public string descripcion2 { get; set; }
+        public string estatus { get; set; }
+        public string nombreTabla { get; set; }
+
     }
 }
