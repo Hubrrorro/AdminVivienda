@@ -28,8 +28,15 @@
         <label>@Model.estatus:</label>
     </div>
     <div class="col s4 m4 l4">
-        <button type="button" class="btn-info waves-effect waves-light btn"><i class="material-icons left">search</i>Buscar</button>
-        <a href="@Url.Action("Create")" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agregar</a>
+        <div class="row">
+            <div class="col s9">
+                <button type="button" class="btn-info waves-effect waves-light btn tooltipped" data-position="top" data-tooltip="Buscar"  ><i class="material-icons left">search</i>Buscar</button>
+            </div>
+            <div class="col s3">
+                <a href="@Url.Action("Create")" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Agregar"><i class="material-icons left">add</i></a>
+            </div>
+        </div>
+        
     </div>
 </div>
 <hr />
@@ -43,6 +50,7 @@
         $(document).ready(function () {
             EjecutaAjaxBusqueda();
             $('select').formSelect();
+            $('.tooltipped').tooltip();
         });
         $(".btn-info").click(function () {
             EjecutaAjaxBusqueda();
