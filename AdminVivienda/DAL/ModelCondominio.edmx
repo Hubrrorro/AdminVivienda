@@ -12,6 +12,22 @@
           <Property Name="Id_Condominio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Condominio" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="DemMun" Type="nvarchar" MaxLength="50" />
+          <Property Name="Colonia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cp" Type="int" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="5" />
+          <Property Name="Id_Estado" Type="int" />
+        </EntityType>
+        <EntityType Name="CAT_CONTRATO">
+          <Key>
+            <PropertyRef Name="Id_Contrato" />
+          </Key>
+          <Property Name="Id_Contrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Condominio" Type="int" Nullable="false" />
+          <Property Name="Contrato" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaIni" Type="date" Nullable="false" />
+          <Property Name="FechaFin" Type="date" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="CAT_ESTADOS">
           <Key>
@@ -49,6 +65,7 @@
           <Property Name="Id_TipoVivienda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoVivienda" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="5" />
         </EntityType>
         <EntityType Name="CAT_VIVIENDA">
           <Key>
@@ -56,13 +73,9 @@
           </Key>
           <Property Name="Id_Vivienda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Calle" Type="nvarchar" MaxLength="150" />
-          <Property Name="DemMun" Type="nvarchar" MaxLength="150" />
-          <Property Name="Colonia" Type="nvarchar" MaxLength="150" />
           <Property Name="NumExt" Type="nvarchar" MaxLength="5" />
           <Property Name="NumInt" Type="nvarchar" MaxLength="5" />
           <Property Name="Lote" Type="nvarchar" MaxLength="5" />
-          <Property Name="CP" Type="nvarchar" MaxLength="5" />
-          <Property Name="id_Estado" Type="int" />
           <Property Name="id_Propietario" Type="int" />
           <Property Name="id_TipoVivienda" Type="int" />
           <Property Name="id_Condominio" Type="int" />
@@ -81,18 +94,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CAT_VIVIE__id_Es__45F365D3">
-          <End Role="CAT_ESTADOS" Type="Self.CAT_ESTADOS" Multiplicity="0..1" />
-          <End Role="CAT_VIVIENDA" Type="Self.CAT_VIVIENDA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CAT_ESTADOS">
-              <PropertyRef Name="Id_Estado" />
-            </Principal>
-            <Dependent Role="CAT_VIVIENDA">
-              <PropertyRef Name="id_Estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__CAT_VIVIE__id_Pr__46E78A0C">
           <End Role="CAT_PERSONAS" Type="Self.CAT_PERSONAS" Multiplicity="0..1" />
           <End Role="CAT_VIVIENDA" Type="Self.CAT_VIVIENDA" Multiplicity="*" />
@@ -107,6 +108,7 @@
         </Association>
         <EntityContainer Name="AdminModelStoreContainer">
           <EntitySet Name="CAT_CONDOMINIO" EntityType="Self.CAT_CONDOMINIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAT_CONTRATO" EntityType="Self.CAT_CONTRATO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAT_ESTADOS" EntityType="Self.CAT_ESTADOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAT_PERIL" EntityType="Self.CAT_PERIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAT_PERSONAS" EntityType="Self.CAT_PERSONAS" Schema="dbo" store:Type="Tables" />
@@ -114,10 +116,6 @@
           <EntitySet Name="CAT_VIVIENDA" EntityType="Self.CAT_VIVIENDA" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__CAT_VIVIE__id_Co__47DBAE45" Association="Self.FK__CAT_VIVIE__id_Co__47DBAE45">
             <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
-            <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CAT_VIVIE__id_Es__45F365D3" Association="Self.FK__CAT_VIVIE__id_Es__45F365D3">
-            <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
             <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
           </AssociationSet>
           <AssociationSet Name="FK__CAT_VIVIE__id_Pr__46E78A0C" Association="Self.FK__CAT_VIVIE__id_Pr__46E78A0C">
@@ -137,6 +135,11 @@
           <Property Name="Condominio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="CAT_VIVIENDA" Relationship="AdminModel.FK__CAT_VIVIE__id_Co__47DBAE45" FromRole="CAT_CONDOMINIO" ToRole="CAT_VIVIENDA" />
+          <Property Name="DemMun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cp" Type="Int32" />
+          <Property Name="Clave" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Estado" Type="Int32" />
         </EntityType>
         <EntityContainer Name="AdminEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CAT_CONDOMINIO" EntityType="Self.CAT_CONDOMINIO" />
@@ -149,14 +152,11 @@
             <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
             <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
           </AssociationSet>
-          <AssociationSet Name="FK__CAT_VIVIE__id_Es__45F365D3" Association="AdminModel.FK__CAT_VIVIE__id_Es__45F365D3">
-            <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
-            <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
-          </AssociationSet>
           <AssociationSet Name="FK__CAT_VIVIE__id_Pr__46E78A0C" Association="AdminModel.FK__CAT_VIVIE__id_Pr__46E78A0C">
             <End Role="CAT_PERSONAS" EntitySet="CAT_PERSONAS" />
             <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
           </AssociationSet>
+          <EntitySet Name="CAT_CONTRATO" EntityType="AdminModel.CAT_CONTRATO" />
         </EntityContainer>
         <EntityType Name="CAT_ESTADOS">
           <Key>
@@ -165,7 +165,6 @@
           <Property Name="Id_Estado" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" />
-          <NavigationProperty Name="CAT_VIVIENDA" Relationship="AdminModel.FK__CAT_VIVIE__id_Es__45F365D3" FromRole="CAT_ESTADOS" ToRole="CAT_VIVIENDA" />
         </EntityType>
         <EntityType Name="CAT_PERIL">
           <Key>
@@ -196,6 +195,7 @@
           <Property Name="Id_TipoVivienda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoVivienda" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CAT_VIVIENDA">
           <Key>
@@ -203,19 +203,14 @@
           </Key>
           <Property Name="Id_Vivienda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Calle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="DemMun" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Colonia" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="NumExt" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="NumInt" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Lote" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="id_Estado" Type="Int32" />
           <Property Name="id_Propietario" Type="Int32" />
           <Property Name="id_TipoVivienda" Type="Int32" />
           <Property Name="id_Condominio" Type="Int32" />
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="CAT_CONDOMINIO" Relationship="AdminModel.FK__CAT_VIVIE__id_Co__47DBAE45" FromRole="CAT_VIVIENDA" ToRole="CAT_CONDOMINIO" />
-          <NavigationProperty Name="CAT_ESTADOS" Relationship="AdminModel.FK__CAT_VIVIE__id_Es__45F365D3" FromRole="CAT_VIVIENDA" ToRole="CAT_ESTADOS" />
           <NavigationProperty Name="CAT_PERSONAS" Relationship="AdminModel.FK__CAT_VIVIE__id_Pr__46E78A0C" FromRole="CAT_VIVIENDA" ToRole="CAT_PERSONAS" />
           <Property Name="Vivienda" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -231,18 +226,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CAT_VIVIE__id_Es__45F365D3">
-          <End Type="AdminModel.CAT_ESTADOS" Role="CAT_ESTADOS" Multiplicity="0..1" />
-          <End Type="AdminModel.CAT_VIVIENDA" Role="CAT_VIVIENDA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CAT_ESTADOS">
-              <PropertyRef Name="Id_Estado" />
-            </Principal>
-            <Dependent Role="CAT_VIVIENDA">
-              <PropertyRef Name="id_Estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__CAT_VIVIE__id_Pr__46E78A0C">
           <End Type="AdminModel.CAT_PERSONAS" Role="CAT_PERSONAS" Multiplicity="0..1" />
           <End Type="AdminModel.CAT_VIVIENDA" Role="CAT_VIVIENDA" Multiplicity="*" />
@@ -255,6 +238,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CAT_CONTRATO">
+          <Key>
+            <PropertyRef Name="Id_Contrato" />
+          </Key>
+          <Property Name="Id_Contrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Condominio" Type="Int32" Nullable="false" />
+          <Property Name="Contrato" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaIni" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -264,6 +258,11 @@
           <EntitySetMapping Name="CAT_CONDOMINIO">
             <EntityTypeMapping TypeName="AdminModel.CAT_CONDOMINIO">
               <MappingFragment StoreEntitySet="CAT_CONDOMINIO">
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Cp" ColumnName="Cp" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="DemMun" ColumnName="DemMun" />
                 <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
                 <ScalarProperty Name="Condominio" ColumnName="Condominio" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -305,6 +304,7 @@
           <EntitySetMapping Name="CAT_TIPOVIVIENDA">
             <EntityTypeMapping TypeName="AdminModel.CAT_TIPOVIVIENDA">
               <MappingFragment StoreEntitySet="CAT_TIPOVIVIENDA">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="TipoVivienda" ColumnName="TipoVivienda" />
                 <ScalarProperty Name="Id_TipoVivienda" ColumnName="Id_TipoVivienda" />
@@ -319,15 +319,23 @@
                 <ScalarProperty Name="id_Condominio" ColumnName="id_Condominio" />
                 <ScalarProperty Name="id_TipoVivienda" ColumnName="id_TipoVivienda" />
                 <ScalarProperty Name="id_Propietario" ColumnName="id_Propietario" />
-                <ScalarProperty Name="id_Estado" ColumnName="id_Estado" />
-                <ScalarProperty Name="CP" ColumnName="CP" />
                 <ScalarProperty Name="Lote" ColumnName="Lote" />
                 <ScalarProperty Name="NumInt" ColumnName="NumInt" />
                 <ScalarProperty Name="NumExt" ColumnName="NumExt" />
-                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
-                <ScalarProperty Name="DemMun" ColumnName="DemMun" />
                 <ScalarProperty Name="Calle" ColumnName="Calle" />
                 <ScalarProperty Name="Id_Vivienda" ColumnName="Id_Vivienda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAT_CONTRATO">
+            <EntityTypeMapping TypeName="AdminModel.CAT_CONTRATO">
+              <MappingFragment StoreEntitySet="CAT_CONTRATO">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="FechaIni" ColumnName="FechaIni" />
+                <ScalarProperty Name="Contrato" ColumnName="Contrato" />
+                <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
+                <ScalarProperty Name="Id_Contrato" ColumnName="Id_Contrato" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

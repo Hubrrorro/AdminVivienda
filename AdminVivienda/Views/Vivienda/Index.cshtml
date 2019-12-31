@@ -2,39 +2,48 @@
 @section styles{
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 }
+
 <h3 class="header">@ViewBag.Title</h3>
 <hr />
-<div class="row">
-    <div class="input-field col s3 m3 l3">
-        <select id="ddlCondominio">
-            <option selected="" value="-1">Todos</option>
-            @foreach (var condominio in Model)
-            {
-                <option selected="" value="@condominio.id_Condominio">@condominio.Condominio</option>
-            }
-        </select>
-        <label>Condominio:</label>
+<div id="divShow" style="display:none">
+    <div class="row">
+        <div class="input-field col s3 m3 l3">
+            <select id="ddlCondominio">
+                <option selected="" value="-1">Todos</option>
+                @foreach (var condominio in Model)
+                {
+                    <option selected="" value="@condominio.id_Condominio">@condominio.Condominio</option>
+                }
+            </select>
+            <label>Condominio:</label>
+        </div>
+        <div class="input-field col s3 m3 l3">
+            <label for="txtvivienda">Vivienda:</label>
+            <input type="text" id="txtvivienda">
+        </div>
+        <div class="input-field col s3 m3 l3">
+            <select id="ddlActivo">
+                <option selected="" value="-1">Todos</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+            <label>Estatus:</label>
+        </div>
+        <div class="col s3 m3 l3">
+            <div class="row">
+                <div class="col s10 valign-wrapper">
+                    <button type="button" class="waves-effect waves-light btn"><i class="material-icons left">search</i>Buscar</button>
+                </div>
+                <div class="col s2 valign-wrapper">
+                    <a href="@Url.Action("Create")" class="btn-floating waves-effect waves-light"><i class="material-icons left">add</i></a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="input-field col s3 m3 l3">
-        <label for="txtvivienda">Vivienda:</label>
-        <input type="text" id="txtvivienda">
-    </div>
-    <div class="input-field col s3 m3 l3">
-        <select id="ddlActivo">
-            <option selected="" value="-1">Todos</option>
-            <option value="1">Activo</option>
-            <option value="0">Inactivo</option>
-        </select>
-        <label>Estatus:</label>
-    </div>
-    <div class="col s3 m3 l3">
-        <button type="button" class="waves-effect waves-light btn"><i class="material-icons left">search</i>Buscar</button>
-        <a href="@Url.Action("Create")" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agregar</a>
-    </div>
-</div>
-<hr />
-<div id="divTableVivienda">
+    <hr />
+    <div id="divTableVivienda">
 
+    </div>
 </div>
 @section scripts{
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -56,7 +65,7 @@
         }
         function FncGrid(datos) {
             $('#divTableVivienda').html(datos);
-
+            $('#divShow').fadeIn();
         }
     </script>
 }

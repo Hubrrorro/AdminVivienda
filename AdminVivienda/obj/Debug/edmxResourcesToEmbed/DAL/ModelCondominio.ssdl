@@ -7,6 +7,22 @@
     <Property Name="Id_Condominio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Condominio" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="DemMun" Type="nvarchar" MaxLength="50" />
+    <Property Name="Colonia" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cp" Type="int" />
+    <Property Name="Clave" Type="nvarchar" MaxLength="5" />
+    <Property Name="Id_Estado" Type="int" />
+  </EntityType>
+  <EntityType Name="CAT_CONTRATO">
+    <Key>
+      <PropertyRef Name="Id_Contrato" />
+    </Key>
+    <Property Name="Id_Contrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Condominio" Type="int" Nullable="false" />
+    <Property Name="Contrato" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaIni" Type="date" Nullable="false" />
+    <Property Name="FechaFin" Type="date" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="CAT_ESTADOS">
     <Key>
@@ -44,6 +60,7 @@
     <Property Name="Id_TipoVivienda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TipoVivienda" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="Clave" Type="nvarchar" MaxLength="5" />
   </EntityType>
   <EntityType Name="CAT_VIVIENDA">
     <Key>
@@ -51,13 +68,9 @@
     </Key>
     <Property Name="Id_Vivienda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Calle" Type="nvarchar" MaxLength="150" />
-    <Property Name="DemMun" Type="nvarchar" MaxLength="150" />
-    <Property Name="Colonia" Type="nvarchar" MaxLength="150" />
     <Property Name="NumExt" Type="nvarchar" MaxLength="5" />
     <Property Name="NumInt" Type="nvarchar" MaxLength="5" />
     <Property Name="Lote" Type="nvarchar" MaxLength="5" />
-    <Property Name="CP" Type="nvarchar" MaxLength="5" />
-    <Property Name="id_Estado" Type="int" />
     <Property Name="id_Propietario" Type="int" />
     <Property Name="id_TipoVivienda" Type="int" />
     <Property Name="id_Condominio" Type="int" />
@@ -76,18 +89,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CAT_VIVIE__id_Es__45F365D3">
-    <End Role="CAT_ESTADOS" Type="Self.CAT_ESTADOS" Multiplicity="0..1" />
-    <End Role="CAT_VIVIENDA" Type="Self.CAT_VIVIENDA" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CAT_ESTADOS">
-        <PropertyRef Name="Id_Estado" />
-      </Principal>
-      <Dependent Role="CAT_VIVIENDA">
-        <PropertyRef Name="id_Estado" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__CAT_VIVIE__id_Pr__46E78A0C">
     <End Role="CAT_PERSONAS" Type="Self.CAT_PERSONAS" Multiplicity="0..1" />
     <End Role="CAT_VIVIENDA" Type="Self.CAT_VIVIENDA" Multiplicity="*" />
@@ -102,6 +103,7 @@
   </Association>
   <EntityContainer Name="AdminModelStoreContainer">
     <EntitySet Name="CAT_CONDOMINIO" EntityType="Self.CAT_CONDOMINIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_CONTRATO" EntityType="Self.CAT_CONTRATO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_ESTADOS" EntityType="Self.CAT_ESTADOS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_PERIL" EntityType="Self.CAT_PERIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_PERSONAS" EntityType="Self.CAT_PERSONAS" Schema="dbo" store:Type="Tables" />
@@ -109,10 +111,6 @@
     <EntitySet Name="CAT_VIVIENDA" EntityType="Self.CAT_VIVIENDA" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__CAT_VIVIE__id_Co__47DBAE45" Association="Self.FK__CAT_VIVIE__id_Co__47DBAE45">
       <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
-      <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
-    </AssociationSet>
-    <AssociationSet Name="FK__CAT_VIVIE__id_Es__45F365D3" Association="Self.FK__CAT_VIVIE__id_Es__45F365D3">
-      <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
       <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
     </AssociationSet>
     <AssociationSet Name="FK__CAT_VIVIE__id_Pr__46E78A0C" Association="Self.FK__CAT_VIVIE__id_Pr__46E78A0C">

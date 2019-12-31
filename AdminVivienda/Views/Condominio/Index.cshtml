@@ -1,33 +1,40 @@
 ﻿
 
 @section styles{
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@*<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">*@
     }
 <h3 class="header">@ViewBag.Title</h3>
 <hr />
-<div class="row">
-    <div class="input-field col s4 m4 l4">
+<div class="divControl">
+    @*style="display:none"*@
+    <div class="row">
+        <div class="input-field col s4 m4 l4">
             <label for="txtcondominio">Buscar condominio:</label>
-            <input type="text"  id="txtcondominio">
+            <input type="text" id="txtcondominio">
+        </div>
+        <div class="input-field col s4 m4 l4">
+            <select id="ddlActivo">
+                <option selected="" value="-1">Todos</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+            <label>Estatus:</label>
+        </div>
+        <div class="col s4 m4 l4">
+            <div class="row valign-wrapper">
+                <div class="col s10">
+                    <button type="button" class="waves-effect waves-light btn btnComponent"><i class="material-icons left">search</i>Buscar</button>
+                </div>
+                <div class="col s2">
+                    <a href="@Url.Action("Create")" class="waves-effect waves-light btn-floating btnComponent"><i class="material-icons left">add</i></a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="input-field col s4 md4 l4">
+    <hr />
+    <div id="divTableCondominio">
 
-
-        <select id="ddlActivo">
-            <option selected="" value="-1">Todos</option>
-            <option value="1">Activo</option>
-            <option value="0">Inactivo</option>
-        </select>
-        <label>Estatus:</label>
     </div>
-    <div class="col s4 m4 l4">
-            <button type="button" class="waves-effect waves-light btn"><i class="material-icons left">search</i>Buscar</button>
-            <a href="@Url.Action("Create")" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agregar</a>
-    </div>
-</div>
-<hr />
-<div id="divTableCondominio">
-
 </div>
 @section scripts{
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -48,7 +55,7 @@
         }
         function FncGrid(datos) {
             $('#divTableCondominio').html(datos);
-           
+            $('#divControl').fadeIn();
         }
     </script>
 }

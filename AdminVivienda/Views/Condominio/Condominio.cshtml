@@ -1,13 +1,38 @@
-﻿@model AdminVivienda.DAL.CAT_CONDOMINIO
+﻿@model AdminVivienda.Models.CondominioModel
 <h3 class="header">@ViewBag.Title</h3>
 <hr />
 <div class="row">
-    <div class="input-field col s6 m6 l6">
-
+    <div class="input-field col s6 m4 l4">
         <label for="txtcondominio">Condominio *:</label>
         <input type="text" id="txtcondominio" maxlength="100" value="@Model.Condominio">
         <div style="display:none" class="invalid-feedback">Campo Requerido</div>
-
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtclave">Clave *:</label>
+        <input type="text" id="txtclave" maxlength="5" value="@Model.Clave">
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <select id="ddlEstado">
+            <option selected="" value="-1">Seleccionar</option>
+        </select>
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+        <label>Estado*:</label>
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtdemmun">Municipio / Demarcación *:</label>
+        <input type="text" id="txtdemmun" maxlength="50" value="@Model.DemMun">
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtcolonia">Colonia *:</label>
+        <input type="text" id="txtcolonia" maxlength="50" value="@Model.Colonia">
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtcp">CP *:</label>
+        <input type="number" id="txtcp" maxlength="5" value="@Model.CP">
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
     </div>
     @if (ViewBag.Accion == "Actualizar")
     {
@@ -18,7 +43,7 @@
                     Inactivo
                     <input type="checkbox">
 
-                    @if (Model.Activo)
+                    @if (Model.Activo==1)
                     {
                         <input type="checkbox" id="chkActivo" checked="">
                     }
@@ -101,7 +126,7 @@
                 var modelo = new Object();
                 if (_accion == 'Actualizar') {
                     modelo.Activo = $('#chkActivo').is(":checked") ? 1 : 0;
-                    modelo.Id_Condominio = @Model.Id_Condominio;
+                    modelo.Id_Condominio = @Model.id_Condominio;
                 }
                 modelo.Condominio = $('#txtcondominio').val();
                 return modelo;
