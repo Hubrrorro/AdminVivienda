@@ -1,4 +1,4 @@
-﻿@model List<AdminVivienda.Models.CondominioModel>
+﻿@model List<AdminVivienda.DAL.CAT_CONDOMINIO>
 @{
     WebGrid grid = new WebGrid(Model);
 }
@@ -16,7 +16,7 @@
                  //grid.Column("DemMun",canSort:true),
                  //grid.Column("Colonia",canSort:true),
                  grid.Column(header: "Estatus", canSort: false, style: "", format: (item) => new HtmlString(
-                       "<i class='material-icons'>" + (item.Activo==1 ? "check_box" : "check_box_outline_blank") + "</i>")),
+                       "<i class='material-icons'>" + (item.Activo ? "check_box" : "check_box_outline_blank") + "</i>")),
                 grid.Column(header: "Editar", canSort: false, style: "", format: (item) => new HtmlString(
                        "<a href=" + @Url.Action("Details", new { id = item.Id_Condominio }) + "   class='btn-floating waves-effect waves-light btnComponent' ><i class='material-icons left'>brush</i></a> "))
                             )

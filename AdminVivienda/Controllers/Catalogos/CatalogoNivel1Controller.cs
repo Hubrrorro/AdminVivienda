@@ -52,5 +52,11 @@ namespace AdminVivienda.Controllers.Catalogos
             var resul = _negocio.Actualizar(modelo);
             return Json(resul);
         }
+        [HttpPost]
+        public ActionResult Select()
+        {
+            var resul = _negocio.Consultar(new Nivel1Model() { activo = 1 });
+            return Json(resul);
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace AdminVivienda.Controllers.Catalogos
         public PartialViewResult Grid(CondominioModel modelo)
         {
             var resul = _condominioBusiness.Consultar(modelo);
-            return PartialView("~/Views/Condominio/CondominioGrid.cshtml", (List<AdminVivienda.Models.CondominioModel>)resul.datos);
+            return PartialView("~/Views/Condominio/CondominioGrid.cshtml", (List<AdminVivienda.DAL.CAT_CONDOMINIO>)resul.datos);
         }
         // POST: Condominio/Create
         //[HttpPost]

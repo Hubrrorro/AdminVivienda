@@ -1,4 +1,4 @@
-﻿@model AdminVivienda.Models.CondominioModel
+﻿@model AdminVivienda.DAL.CAT_CONDOMINIO
 <h3 class="header">@ViewBag.Title</h3>
 <hr />
 <div class="row">
@@ -16,8 +16,8 @@
         <select id="ddlEstado">
             <option selected="" value="-1">Seleccionar</option>
         </select>
-        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
         <label>Estado*:</label>
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
     </div>
     <div class="input-field col s6 m4 l4">
         <label for="txtdemmun">Municipio / Demarcación *:</label>
@@ -31,7 +31,7 @@
     </div>
     <div class="input-field col s6 m4 l4">
         <label for="txtcp">CP *:</label>
-        <input type="number" id="txtcp" maxlength="5" value="@Model.CP">
+        <input type="number" id="txtcp" maxlength="5" value="@Model.Cp">
         <div style="display:none" class="invalid-feedback">Campo Requerido</div>
     </div>
     @if (ViewBag.Accion == "Actualizar")
@@ -43,7 +43,7 @@
                     Inactivo
                     <input type="checkbox">
 
-                    @if (Model.Activo==1)
+                    @if (Model.Activo)
                     {
                         <input type="checkbox" id="chkActivo" checked="">
                     }
@@ -126,7 +126,7 @@
                 var modelo = new Object();
                 if (_accion == 'Actualizar') {
                     modelo.Activo = $('#chkActivo').is(":checked") ? 1 : 0;
-                    modelo.Id_Condominio = @Model.id_Condominio;
+                    modelo.Id_Condominio = @Model.Id_Condominio;
                 }
                 modelo.Condominio = $('#txtcondominio').val();
                 return modelo;
@@ -134,6 +134,17 @@
         $(document).ready(function () {
             $('select').formSelect();
             M.updateTextFields();
+            FncExeAjaxSinModelo('@Url.Action("Select","Estados")', "POST", false, FncSelect);
         });
+        function FncSelect(data) {
+            $('#ddlEstado').html('');
+            $('#ddlEstado').append('<option value="-1">Seleccionar</option>');
+            data.datos.forEach(myFunction);
+            $('select').formSelect();
+        }
+        function myFunction(item, index) {
+            $('#ddlEstado').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
+        
+        }
     </script>
 }
