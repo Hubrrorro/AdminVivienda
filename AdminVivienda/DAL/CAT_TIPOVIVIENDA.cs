@@ -17,5 +17,6 @@ namespace AdminVivienda.DAL
         public int Id_TipoVivienda { get; set; }
         public string TipoVivienda { get; set; }
         public bool Activo { get; set; }
+        public string Clave { get; set; }
     }
 }

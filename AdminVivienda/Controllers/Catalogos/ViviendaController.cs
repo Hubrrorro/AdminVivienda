@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AdminVivienda.BL;
+using AdminVivienda.BL.Catalogos;
+using AdminVivienda.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,9 +14,15 @@ namespace AdminVivienda.Controllers.Catalogos
         // GET: Vivienda
         public ActionResult Index()
         {
-            return View();
+            CondominioBusiness condominioBusiness = new CondominioBusiness();
+            List<CondominioModel> condominios = condominioBusiness.Consultar(new CondominioModel() { Activo = -1 }).datos;
+            return View(condominios);
         }
-
+        //public PartialViewResult Grid(ViviendaGridModel model)
+        //{
+        //    ViviendaBusiness viviendaB = new ViviendaBusiness();
+        //    viviendaB.Consultar(new )
+        //}
         // GET: Vivienda/Details/5
         public ActionResult Details(int id)
         {

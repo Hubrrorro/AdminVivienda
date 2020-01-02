@@ -159,10 +159,12 @@
     <Compile Include="BL\Catalogos\GeneralNivel1Business.cs" />
     <Compile Include="BL\Catalogos\GeneralNivel1Campo2Business.cs" />
     <Compile Include="BL\Catalogos\TipoViviendaBusiness.cs" />
+    <Compile Include="BL\Catalogos\ViviendaBusiness.cs" />
     <Compile Include="BL\CondominioBusiness.cs" />
     <Compile Include="Controllers\Catalogos\CatalogoNivel1Controller.cs" />
     <Compile Include="Controllers\Catalogos\CatNivel1Campo2Controller.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
+    <Compile Include="Controllers\Catalogos\EstadosController.cs" />
     <Compile Include="Controllers\Catalogos\TipoViviendaController.cs" />
     <Compile Include="Controllers\Catalogos\ViviendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -175,7 +177,11 @@
     <Compile Include="DAL\Catalogos\GeneralManageNivel1Campo2.cs" />
     <Compile Include="DAL\Catalogos\PersonalManage.cs" />
     <Compile Include="DAL\Catalogos\TipoViviendaManage.cs" />
+    <Compile Include="DAL\Catalogos\ViviendaManage.cs" />
     <Compile Include="DAL\CAT_CONDOMINIO.cs">
+      <DependentUpon>ModelCondominio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_CONTRATO.cs">
       <DependentUpon>ModelCondominio.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CAT_ESTADOS.cs">
@@ -1654,7 +1660,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Estados\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

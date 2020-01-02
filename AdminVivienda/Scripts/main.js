@@ -13,6 +13,19 @@ function FncExeAjax(url, model, tipo, async, fncCorrecto) {
         }
     });
 }
+function FncExeAjaxSinModelo(url, tipo, async, fncCorrecto) {
+    $.ajax({
+        url: url,
+        type: tipo,
+        async: async,
+        success: function (respuesta) {
+            fncCorrecto(respuesta);
+        },
+        error: function () {
+            MsnSwal("error", "Error en el servidor, favor de contactar a su proveedor", _titulo);
+        }
+    });
+}
 function MsnShow(respuesta) {
     
     var mensaje = "";

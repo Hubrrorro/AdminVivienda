@@ -6,14 +6,14 @@
     <edmx:Diagrams>
       <Diagram DiagramId="f7c8d4894dea4b8bb86bb6069f5303b8" Name="Diagram1">
         <EntityTypeShape EntityType="AdminModel.CAT_CONDOMINIO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdminModel.CAT_ESTADOS" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="AdminModel.CAT_ESTADOS" Width="1.5" PointX="0.5" PointY="4.375" />
         <EntityTypeShape EntityType="AdminModel.CAT_PERIL" Width="1.5" PointX="3.375" PointY="5.875" />
         <EntityTypeShape EntityType="AdminModel.CAT_PERSONAS" Width="1.5" PointX="0.75" PointY="7.875" />
         <EntityTypeShape EntityType="AdminModel.CAT_TIPOVIVIENDA" Width="1.5" PointX="5.375" PointY="1.875" />
         <EntityTypeShape EntityType="AdminModel.CAT_VIVIENDA" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="AdminModel.FK__CAT_VIVIE__id_Co__47DBAE45" />
-        <AssociationConnector Association="AdminModel.FK__CAT_VIVIE__id_Es__45F365D3" />
         <AssociationConnector Association="AdminModel.FK__CAT_VIVIE__id_Pr__46E78A0C" />
+        <EntityTypeShape EntityType="AdminModel.CAT_CONTRATO" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

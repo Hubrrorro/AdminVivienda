@@ -23,6 +23,11 @@ namespace AdminVivienda.DAL
         public int Id_Condominio { get; set; }
         public string Condominio { get; set; }
         public bool Activo { get; set; }
+        public string DemMun { get; set; }
+        public string Colonia { get; set; }
+        public Nullable<int> Cp { get; set; }
+        public string Clave { get; set; }
+        public Nullable<int> Id_Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CAT_VIVIENDA> CAT_VIVIENDA { get; set; }

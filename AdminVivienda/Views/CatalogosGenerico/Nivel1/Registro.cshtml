@@ -52,17 +52,17 @@ else
     <p><small class="form-text text-muted">* Campos Obligatorios.</small></p>
     <div class="col s6 m6 l6" align="left">
 
-        <a href="@Url.Action("Index")" class="waves-effect waves-light btn red"><i class="material-icons left">keyboard_return</i>Regresar</a>
+        <a href="@Url.Action("Index")" class="waves-effect btn red tooltipped" data-position="top" data-tooltip="Regresar" ><i class="material-icons left">keyboard_return</i>Regresar</a>
     </div>
     <div class="col s6 m6 l6" align="right">
         @if (ViewBag.isActualizar)
         {
-            <button id="btnActualizar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">autorenew</i>Actualizar</button>
+            <button id="btnActualizar" type="button" class="waves-effect btn tooltipped" data-position="top" data-tooltip="Actualizar"><i class="material-icons left">autorenew</i>Actualizar</button>
         }
         else
         {
 
-            <button id="btnGuardar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">save</i>Guardar</button>
+            <button id="btnGuardar" type="button" class="waves-effect  btn tooltipped" data-position="top" data-tooltip="Guardar" ><i class="material-icons left">save</i>Guardar</button>
 
 
         }

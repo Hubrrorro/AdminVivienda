@@ -8,6 +8,11 @@
     <Property Name="Condominio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="CAT_VIVIENDA" Relationship="AdminModel.FK__CAT_VIVIE__id_Co__47DBAE45" FromRole="CAT_CONDOMINIO" ToRole="CAT_VIVIENDA" />
+    <Property Name="DemMun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cp" Type="Int32" />
+    <Property Name="Clave" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Estado" Type="Int32" />
   </EntityType>
   <EntityContainer Name="AdminEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CAT_CONDOMINIO" EntityType="Self.CAT_CONDOMINIO" />
@@ -20,14 +25,11 @@
       <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
       <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
     </AssociationSet>
-    <AssociationSet Name="FK__CAT_VIVIE__id_Es__45F365D3" Association="AdminModel.FK__CAT_VIVIE__id_Es__45F365D3">
-      <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
-      <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
-    </AssociationSet>
     <AssociationSet Name="FK__CAT_VIVIE__id_Pr__46E78A0C" Association="AdminModel.FK__CAT_VIVIE__id_Pr__46E78A0C">
       <End Role="CAT_PERSONAS" EntitySet="CAT_PERSONAS" />
       <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
     </AssociationSet>
+    <EntitySet Name="CAT_CONTRATO" EntityType="AdminModel.CAT_CONTRATO" />
   </EntityContainer>
   <EntityType Name="CAT_ESTADOS">
     <Key>
@@ -36,7 +38,6 @@
     <Property Name="Id_Estado" Type="Int32" Nullable="false" />
     <Property Name="Estado" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="CAT_VIVIENDA" Relationship="AdminModel.FK__CAT_VIVIE__id_Es__45F365D3" FromRole="CAT_ESTADOS" ToRole="CAT_VIVIENDA" />
   </EntityType>
   <EntityType Name="CAT_PERIL">
     <Key>
@@ -67,6 +68,7 @@
     <Property Name="Id_TipoVivienda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TipoVivienda" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="Clave" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="CAT_VIVIENDA">
     <Key>
@@ -74,19 +76,14 @@
     </Key>
     <Property Name="Id_Vivienda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Calle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="DemMun" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Colonia" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="NumExt" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
     <Property Name="NumInt" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
     <Property Name="Lote" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-    <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-    <Property Name="id_Estado" Type="Int32" />
     <Property Name="id_Propietario" Type="Int32" />
     <Property Name="id_TipoVivienda" Type="Int32" />
     <Property Name="id_Condominio" Type="Int32" />
     <Property Name="Activo" Type="Boolean" />
     <NavigationProperty Name="CAT_CONDOMINIO" Relationship="AdminModel.FK__CAT_VIVIE__id_Co__47DBAE45" FromRole="CAT_VIVIENDA" ToRole="CAT_CONDOMINIO" />
-    <NavigationProperty Name="CAT_ESTADOS" Relationship="AdminModel.FK__CAT_VIVIE__id_Es__45F365D3" FromRole="CAT_VIVIENDA" ToRole="CAT_ESTADOS" />
     <NavigationProperty Name="CAT_PERSONAS" Relationship="AdminModel.FK__CAT_VIVIE__id_Pr__46E78A0C" FromRole="CAT_VIVIENDA" ToRole="CAT_PERSONAS" />
     <Property Name="Vivienda" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
@@ -102,18 +99,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CAT_VIVIE__id_Es__45F365D3">
-    <End Type="AdminModel.CAT_ESTADOS" Role="CAT_ESTADOS" Multiplicity="0..1" />
-    <End Type="AdminModel.CAT_VIVIENDA" Role="CAT_VIVIENDA" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CAT_ESTADOS">
-        <PropertyRef Name="Id_Estado" />
-      </Principal>
-      <Dependent Role="CAT_VIVIENDA">
-        <PropertyRef Name="id_Estado" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__CAT_VIVIE__id_Pr__46E78A0C">
     <End Type="AdminModel.CAT_PERSONAS" Role="CAT_PERSONAS" Multiplicity="0..1" />
     <End Type="AdminModel.CAT_VIVIENDA" Role="CAT_VIVIENDA" Multiplicity="*" />
@@ -126,4 +111,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="CAT_CONTRATO">
+    <Key>
+      <PropertyRef Name="Id_Contrato" />
+    </Key>
+    <Property Name="Id_Contrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Condominio" Type="Int32" Nullable="false" />
+    <Property Name="Contrato" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaIni" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+  </EntityType>
 </Schema>

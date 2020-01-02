@@ -2,12 +2,37 @@
 <h3 class="header">@ViewBag.Title</h3>
 <hr />
 <div class="row">
-    <div class="input-field col s6 m6 l6">
-
+    <div class="input-field col s6 m4 l4">
         <label for="txtcondominio">Condominio *:</label>
         <input type="text" id="txtcondominio" maxlength="100" value="@Model.Condominio">
         <div style="display:none" class="invalid-feedback">Campo Requerido</div>
-
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtclave">Clave *:</label>
+        <input type="text" id="txtclave" maxlength="5" value="@Model.Clave">
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <select id="ddlEstado">
+            <option selected="" value="-1">Seleccionar</option>
+        </select>
+        <label>Estado*:</label>
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtdemmun">Municipio / Demarcación *:</label>
+        <input type="text" id="txtdemmun" maxlength="50" value="@Model.DemMun">
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtcolonia">Colonia *:</label>
+        <input type="text" id="txtcolonia" maxlength="50" value="@Model.Colonia">
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtcp">CP *:</label>
+        <input type="number" id="txtcp" maxlength="5" value="@Model.Cp">
+        <div style="display:none" class="invalid-feedback">Campo Requerido</div>
     </div>
     @if (ViewBag.Accion == "Actualizar")
     {
@@ -104,11 +129,31 @@
                     modelo.Id_Condominio = @Model.Id_Condominio;
                 }
                 modelo.Condominio = $('#txtcondominio').val();
+                modelo.Clave = $('#txtclave').val();
+                modelo.id_Estado = $('#ddlEstado').val();
+                modelo.DemMun = $('#txtdemmun').val();
+                modelo.Colonia = $('#txtcolonia').val();
+                modelo.Cp = $('#txtcp').val();
                 return modelo;
         }
         $(document).ready(function () {
             $('select').formSelect();
             M.updateTextFields();
+            FncExeAjaxSinModelo('@Url.Action("Select","Estados")', "POST", false, FncSelect);
         });
+        function FncSelect(data) {
+            $('#ddlEstado').html('');
+            $('#ddlEstado').append('<option value="-1">Seleccionar</option>');
+            data.datos.forEach(myFunction);
+            $('select').formSelect();
+        }
+        function myFunction(item, index) {
+            if ("@Model.Id_Estado" == item.id) {
+                $('#ddlEstado').append('<option selected value="' + item.id + '">' + item.descripcion + '</option>');
+            }
+            else {
+                $('#ddlEstado').append('<option value="' + item.id + '">' + item.descripcion + '</option>');
+            }
+        }
     </script>
 }

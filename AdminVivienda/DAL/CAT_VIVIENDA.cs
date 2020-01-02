@@ -16,13 +16,9 @@ namespace AdminVivienda.DAL
     {
         public int Id_Vivienda { get; set; }
         public string Calle { get; set; }
-        public string DemMun { get; set; }
-        public string Colonia { get; set; }
         public string NumExt { get; set; }
         public string NumInt { get; set; }
         public string Lote { get; set; }
-        public string CP { get; set; }
-        public Nullable<int> id_Estado { get; set; }
         public Nullable<int> id_Propietario { get; set; }
         public Nullable<int> id_TipoVivienda { get; set; }
         public Nullable<int> id_Condominio { get; set; }
@@ -30,7 +26,6 @@ namespace AdminVivienda.DAL
         public string Vivienda { get; set; }
     
         public virtual CAT_CONDOMINIO CAT_CONDOMINIO { get; set; }
-        public virtual CAT_ESTADOS CAT_ESTADOS { get; set; }
         public virtual CAT_PERSONAS CAT_PERSONAS { get; set; }
     }
 }

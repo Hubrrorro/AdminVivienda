@@ -23,6 +23,11 @@ namespace AdminVivienda.BL
             condominio.Condominio = model.Condominio.Trim();
             condominio.Activo = model.Activo == 1 ? true : false;
             condominio.Id_Condominio = model.id_Condominio;
+            condominio.Clave = model.Clave;
+            condominio.Colonia = model.Colonia;
+            condominio.Cp = model.CP;
+            condominio.DemMun = model.DemMun;
+            condominio.Id_Estado = model.id_Estado;
             return condominio;
         }
         private void RevisarCamposObligatorios(CAT_CONDOMINIO model)
@@ -61,6 +66,14 @@ namespace AdminVivienda.BL
                     listTodo = listTodo.Where(x => x.Activo.Equals(true)).ToList();
                 if (model.Activo == 0)
                     listTodo = listTodo.Where(x => x.Activo.Equals(false)).ToList();
+                //List<CondominioModel> listado = new List<CondominioModel>();
+                //foreach (var condominio in listTodo)
+                //{
+                //    listado.Add(new CondominioModel() { Activo = condominio.Activo ? 1 : 0, Condominio = condominio.Condominio,
+                //        id_Condominio = condominio.Id_Condominio, Clave = condominio.Clave, Colonia = condominio.Colonia, DemMun = condominio.DemMun,
+                //     CP = condominio.Cp.Value
+                //    });
+                //}
                 _respuesta.ejecucion = true;
                 _respuesta.datos = listTodo;
             }

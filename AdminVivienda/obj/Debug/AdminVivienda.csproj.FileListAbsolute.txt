@@ -318,7 +318,6 @@ C:\Users\rrorroMini\Documents\Proyectos personal\GitHub\Cuerna\AdminVivienda\Adm
 C:\Users\rrorroMini\Documents\Proyectos personal\GitHub\Cuerna\AdminVivienda\AdminVivienda\bin\es\System.Web.Http.resources.dll
 C:\Users\rrorroMini\Documents\Proyectos personal\GitHub\Cuerna\AdminVivienda\AdminVivienda\bin\es\System.Web.Http.WebHost.resources.dll
 C:\Users\rrorroMini\Documents\Proyectos personal\GitHub\Cuerna\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csproj.CopyComplete
-C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csprojAssemblyReference.cache
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.Mensajes.resources
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csproj.GenerateResource.cache
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.dll
@@ -423,3 +422,4 @@ C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\AdminVivienda\bin\es\Sys
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\AdminVivienda\bin\es\System.Web.Http.resources.dll
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\AdminVivienda\bin\es\System.Web.Http.WebHost.resources.dll
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csproj.CopyComplete
+C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\AdminVivienda\obj\Debug\AdminVivienda.csprojAssemblyReference.cache

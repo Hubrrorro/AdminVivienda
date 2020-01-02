@@ -4,6 +4,11 @@
     <EntitySetMapping Name="CAT_CONDOMINIO">
       <EntityTypeMapping TypeName="AdminModel.CAT_CONDOMINIO">
         <MappingFragment StoreEntitySet="CAT_CONDOMINIO">
+          <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Cp" ColumnName="Cp" />
+          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+          <ScalarProperty Name="DemMun" ColumnName="DemMun" />
           <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
           <ScalarProperty Name="Condominio" ColumnName="Condominio" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -45,6 +50,7 @@
     <EntitySetMapping Name="CAT_TIPOVIVIENDA">
       <EntityTypeMapping TypeName="AdminModel.CAT_TIPOVIVIENDA">
         <MappingFragment StoreEntitySet="CAT_TIPOVIVIENDA">
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="TipoVivienda" ColumnName="TipoVivienda" />
           <ScalarProperty Name="Id_TipoVivienda" ColumnName="Id_TipoVivienda" />
@@ -59,15 +65,23 @@
           <ScalarProperty Name="id_Condominio" ColumnName="id_Condominio" />
           <ScalarProperty Name="id_TipoVivienda" ColumnName="id_TipoVivienda" />
           <ScalarProperty Name="id_Propietario" ColumnName="id_Propietario" />
-          <ScalarProperty Name="id_Estado" ColumnName="id_Estado" />
-          <ScalarProperty Name="CP" ColumnName="CP" />
           <ScalarProperty Name="Lote" ColumnName="Lote" />
           <ScalarProperty Name="NumInt" ColumnName="NumInt" />
           <ScalarProperty Name="NumExt" ColumnName="NumExt" />
-          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
-          <ScalarProperty Name="DemMun" ColumnName="DemMun" />
           <ScalarProperty Name="Calle" ColumnName="Calle" />
           <ScalarProperty Name="Id_Vivienda" ColumnName="Id_Vivienda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_CONTRATO">
+      <EntityTypeMapping TypeName="AdminModel.CAT_CONTRATO">
+        <MappingFragment StoreEntitySet="CAT_CONTRATO">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="FechaIni" ColumnName="FechaIni" />
+          <ScalarProperty Name="Contrato" ColumnName="Contrato" />
+          <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
+          <ScalarProperty Name="Id_Contrato" ColumnName="Id_Contrato" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

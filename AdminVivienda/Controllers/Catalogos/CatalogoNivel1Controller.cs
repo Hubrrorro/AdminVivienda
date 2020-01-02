@@ -15,7 +15,8 @@ namespace AdminVivienda.Controllers.Catalogos
         public CatalogoNivel1Controller(Nivel1RecursosModel nivel)
         {
             _nivel1 = nivel;
-            _negocio = new GeneralNivel1Business("Id_TipoVivienda","TipoVivienda", "CAT_TIPOVIVIENDA");
+            _negocio = new GeneralNivel1Business(nivel.tabla.idNombre,nivel.tabla.descripcion,nivel.tabla.nombreTabla);
+            
         }
         public ActionResult Index()
         {
@@ -49,6 +50,12 @@ namespace AdminVivienda.Controllers.Catalogos
         public ActionResult Edit(Nivel1Model modelo)
         {
             var resul = _negocio.Actualizar(modelo);
+            return Json(resul);
+        }
+        [HttpPost]
+        public ActionResult Select()
+        {
+            var resul = _negocio.Consultar(new Nivel1Model() { activo = 1 });
             return Json(resul);
         }
     }
