@@ -20,8 +20,14 @@ namespace AdminVivienda.DAL.Catalogos
             using (var conex = new AdminEntities1())
             {
                 var condominio = conex.CAT_CONDOMINIO.Where(x => x.Id_Condominio.Equals(model.Id_Condominio)).FirstOrDefault();
+                //condominio = model;
                 condominio.Activo = model.Activo;
+                condominio.Clave = model.Clave;
+                condominio.Colonia = model.Colonia;
                 condominio.Condominio = model.Condominio;
+                condominio.Cp = model.Cp;
+                condominio.DemMun = model.DemMun;
+                condominio.Id_Estado = model.Id_Estado;
                 conex.SaveChanges();
             }
         }
