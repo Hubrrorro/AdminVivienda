@@ -2,10 +2,13 @@
     color: #ee6e73;
     font-weight: 300;
 }
+.textRed {
+    color :red;
+}
 .bs-component {
     position: relative;
     margin-top: 1rem;
-    display:inline-flex;
+    display: inline-flex;
 }
 .btnComponent {
     background: #006064;

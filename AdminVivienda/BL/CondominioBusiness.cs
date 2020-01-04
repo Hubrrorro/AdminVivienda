@@ -1,4 +1,5 @@
-﻿using AdminVivienda.DAL;
+﻿using AdminVivienda.Controllers.Catalogos;
+using AdminVivienda.DAL;
 using AdminVivienda.DAL.Catalogos;
 using AdminVivienda.Interface;
 using AdminVivienda.Models;
@@ -47,6 +48,31 @@ namespace AdminVivienda.BL
                 var listTodo = _manage.ConsultarId(id);
                 _respuesta.ejecucion = true;
                 _respuesta.datos = listTodo;
+            }
+            catch
+            {
+                _respuesta.ejecucion = false;
+                _respuesta.mensaje.Add(Mensajes.Falla);
+
+            }
+            return _respuesta;
+        }
+        public RespuestaModel Select() {
+            try
+            {
+                var listTodo = _manage.Consultar();
+                listTodo = listTodo.Where(x => x.Activo.Equals(true)).ToList();
+                List<SelectModel> listSelect = new List<SelectModel>();
+                foreach (var registro in listTodo)
+                {
+                    listSelect.Add(new SelectModel()
+                    {
+                        descripcion = registro.Condominio,
+                        id = registro.Id_Condominio
+                    }) ;
+                }
+                _respuesta.datos = listSelect;
+                _respuesta.ejecucion = true;
             }
             catch
             {
@@ -139,5 +165,6 @@ namespace AdminVivienda.BL
             }
             return _respuesta;
         }
+    
     }
 }

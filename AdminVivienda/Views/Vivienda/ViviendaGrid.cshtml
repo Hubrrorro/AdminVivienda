@@ -11,9 +11,9 @@
             nextText: "Siguiente >",
             lastText: "Último >>", //add next or prev link in webgrid
             columns: grid.Columns(
-                grid.Column("Vivienda", canSort: true),
-                grid.Column("Condominio", canSort: true),
-                grid.Column("TipoVivienda", canSort: true),
+                grid.Column("Vivienda","Vivienda", canSort: true),
+                grid.Column("CAT_CONDOMINIO.Condominio","Condominio", canSort: true),
+                //grid.Column("TipoVivienda", canSort: true),
                  grid.Column(header: "Estatus", canSort: false, style: "", format: (item) => new HtmlString(
                        "<i class='material-icons'>" + (item.Activo ? "check_box" : "check_box_outline_blank") + "</i>")),
                 grid.Column(header: "Editar", canSort: false, style: "", format: (item) => new HtmlString(

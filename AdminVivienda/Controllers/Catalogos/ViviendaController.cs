@@ -1,6 +1,7 @@
 ﻿using AdminVivienda.BL;
 using AdminVivienda.BL.Catalogos;
 using AdminVivienda.Models;
+using AdminVivienda.Models.Vivienda;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,28 +12,39 @@ namespace AdminVivienda.Controllers.Catalogos
 {
     public class ViviendaController : Controller
     {
+        ViviendaBusiness _viviendaB;
         // GET: Vivienda
+        public ViviendaController()
+        {
+            _viviendaB = new ViviendaBusiness();
+        }
         public ActionResult Index()
         {
             CondominioBusiness condominioBusiness = new CondominioBusiness();
-            List<CondominioModel> condominios = condominioBusiness.Consultar(new CondominioModel() { Activo = -1 }).datos;
+            List<DAL.CAT_CONDOMINIO> condominios = condominioBusiness.Consultar(new CondominioModel() { Activo = 1 }).datos;
             return View(condominios);
         }
-        //public PartialViewResult Grid(ViviendaGridModel model)
-        //{
-        //    ViviendaBusiness viviendaB = new ViviendaBusiness();
-        //    viviendaB.Consultar(new )
-        //}
+        public PartialViewResult Grid(ViviendaModel model)
+        {
+            
+            var listVivienda= _viviendaB.Consultar(model);
+            return PartialView("~/Views/Vivienda/ViviendaGrid.cshtml", listVivienda.datos);
+        }
         // GET: Vivienda/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ViewBag.Title = "Modificar Vivienda";
+            var vivienda = _viviendaB.ConsultarId(id);
+            return View("~/Views/Vivienda/Vivienda.cshtml", vivienda.datos);
         }
 
         // GET: Vivienda/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.Title = "Agregar Vivienda";
+            AdminVivienda.DAL.CAT_PERSONAS persona = new DAL.CAT_PERSONAS() {  ApeMat="", ApePat= "", Contacto1= "", Contacto2= "", Correo="", Nombre=""};
+            AdminVivienda.DAL.CAT_VIVIENDA vivienda = new DAL.CAT_VIVIENDA() { Calle = "",  Lote= "", NumExt= "", NumInt= "", Vivienda= "", CAT_PERSONAS=persona};
+            return View("~/Views/Vivienda/Vivienda.cshtml", vivienda);
         }
 
         // POST: Vivienda/Create

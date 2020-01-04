@@ -1,87 +1,179 @@
-﻿@model List<AdminVivienda.Models.CondominioModel>
+﻿@model AdminVivienda.DAL.CAT_VIVIENDA
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h3 class="header">@ViewBag.Title</h3>
 <hr />
+
 <div class="row">
-    <div class="input-field col s6 m3 l3">
+    <div class="input-field col s6 m4 l4">
+        <label for="txtvivienda">Vivienda:</label>
+        <input type="text" disabled id="txtvivienda" value="@Model.Vivienda">
+    </div>
+    <div class="input-field col s6 m4 l4">
         <select id="ddlCondominio">
             <option disabled selected value="-1">Selecciona</option>
-            @foreach (var condominio in Model)
-            {
-                <option selected="" value="@condominio.id_Condominio">@condominio.Condominio</option>
-            }
+
         </select>
         <label>Condominio:</label>
     </div>
-    <div class="input-field col s6 m3 l3">
+    <div class="input-field col s6 m4 l4">
         <select id="ddlTipoVivienda">
             <option disabled selected value="-1">Selecciona</option>
         </select>
         <label>Tipo de vivienda:</label>
     </div>
-    <div class="input-field col s6 m3 l3">
-        <select id="ddlColonia">
-            <option disabled selected value="-1">Selecciona</option>
-        </select>
-        <label>Colonia:</label>
-    </div>
-    <div class="input-field col s6 m3 l3">
-        <label for="txtmun">Municipio:</label>
-        <input type="text" id="txtmun">
-    </div>
-    <div class="input-field col s6 m3 l3">
-        <label for="txtcalle">Colonia:</label>
-        <input type="text" id="txtcalle">
-    </div>
-    <div class="input-field col s6 m3 l3">
+    <div class="input-field col s6 m6 l6">
         <label for="txtcalle">Calle:</label>
-        <input type="text" id="txtcalle">
+        <input type="text" id="txtcalle" value="@Model.Calle">
     </div>
-    <div class="input-field col s3 m3 l3">
-        <label for="txtcp">Código Postal:</label>
-        <input type="text" id="txtcp">
+    <div class="input-field col s2 m2 l2">
+        <label for="txtlote">Lote / Edificio:</label>
+        <input type="text" id="txtlote" value="@Model.Lote">
     </div>
-    <div class="input-field col s3 m3 l3">
-        <label for="txtlote">Lote:</label>
-        <input type="text" id="txtlote">
+    <div class="input-field col s2 m2 l2">
+        <label for="txtext">No Ext:</label>
+        <input type="text" id="txtext" value="@Model.NumExt">
     </div>
-    <div class="col s6 m6 l6">
-        <div class="row">
-            <div class="input-field col s6 m6 l6">
-                <label for="txtext">No Ext:</label>
-                <input type="text" id="txtext">
+    <div class="input-field col s2 m2 l2">
+        <label for="txtint">No Int:</label>
+        <input type="text" id="txtint" value="@Model.NumInt">
+    </div>
+    @*<div class="col s6 m3 l3">
+            <div class="row">
+                <div class="input-field col s6 m6 l6">
+                    <label for="txtext">No Ext:</label>
+                    <input type="text" id="txtext" value="@Model.NumExt">
+                </div>
+                <div class="input-field col s6 m6 l6">
+                    <label for="txtint">No Int:</label>
+                    <input type="text" id="txtint" value="@Model.NumInt">
+                </div>
             </div>
-            <div class="input-field col s6 m6 l6">
-                <label for="txtint">No Int:</label>
-                <input type="text" id="txtint">
+        </div>*@
+    <div class="input-field col s6 m4 l4">
+        <label for="txtnombrepro">Nombre<span>*</span>:</label>
+        <input type="text" class="valida" id="txtnombrepro" value="@Model.CAT_PERSONAS.Nombre">
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtapepat">Apellido paterno:</label>
+        <input type="text" id="txtapepat" value="@Model.CAT_PERSONAS.ApePat">
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtapemat">Apellido Materno:</label>
+        <input type="text" id="txtapemat" value="@Model.CAT_PERSONAS.ApeMat">
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtcorreo">Correo:</label>
+        <input type="text" id="txtcorreo" value="@Model.CAT_PERSONAS.Correo">
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtcontacto">Teléfono:</label>
+        <input type="text" id="txtcontacto" value="@Model.CAT_PERSONAS.Contacto1">
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtcontacto2">Teléfono Alternativo:</label>
+        <input type="text" id="txtcontacto2" value="@Model.CAT_PERSONAS.Contacto2">
+    </div>
+    @if (ViewBag.Accion == "Actualizar")
+    {
+        <div class="col s6 m6 l6">
+            <label>Estatus:</label>
+            <div class="switch">
+                <label>
+                    Inactivo
+                    @if (Model.Activo.Value)
+                    {
+                        <input type="checkbox" id="chkActivo" checked="">
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="chkActivo">
+                    }
+                    <span class="lever"></span>
+                    Activo
+                </label>
             </div>
         </div>
+    }
+</div>
+<hr />
+
+<div class="row">
+    <p><small class="form-text text-muted">* Campos Obligatorios.</small></p>
+    <div class="col s6 m6 l6" align="left">
+
+        <a href="@Url.Action("Index")" class="waves-effect waves-light btn red"><i class="material-icons left">keyboard_return</i>Regresar</a>
     </div>
-    <div class="col s6 m3 l3">
-        <label for="txtnombrepro">Nombre del propietario:</label>
-        <input type="text" id="txtnombrepro">
-    </div>
-    <div class="col s6 m3 l3">
-        <label for="txtapepat">Apellido paterno:</label>
-        <input type="text" id="txtapepat">
-    </div>
-    <div class="col s6 m3 l3">
-        <label for="txtapemat">Apellido Materno:</label>
-        <input type="text" id="txtapemat">
-    </div>
-    <div class="col s6 m3 l3">
-        <label for="txtcorreo">Correo:</label>
-        <input type="text" id="txtcorreo">
-    </div>
-    <div class="col s6 m3 l3">
-        <label for="txtcorreo2">Correo Alternativo:</label>
-        <input type="text" id="txtcorreo2">
-    </div>
-    <div class="col s6 m3 l3">
-        <label for="txtcontacto">Teléfono:</label>
-        <input type="text" id="txtcontacto">
-    </div>
-    <div class="col s6 m3 l3">
-        <label for="txtcontacto2">Teléfono Alternativo:</label>
-        <input type="text" id="txtcontacto2">
+    <div class="col s6 m6 l6" align="right">
+        @if (ViewBag.Accion == "Actualizar")
+        {
+            <button id="btnActualizar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">autorenew</i>Actualizar</button>
+        }
+        else
+        {
+
+            <button id="btnGuardar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">save</i>Guardar</button>
+
+
+        }
     </div>
 </div>
+@section scripts{
+    <script>
+         var _accion = '@ViewBag.Accion'
+        $(document).ready(function () {
+
+            LlenaSelect('@Url.Action("Select","Condominio")', 'ddlCondominio');
+            LlenaSelect('@Url.Action("Select","Tipovivienda")', 'ddlTipoVivienda');
+            if (_accion == 'Actualizar') {
+                $('#ddlCondominio').val('@Model.id_Condominio');
+                $('#ddlTipoVivienda').val('@Model.id_TipoVivienda');
+            }
+              $('select').formSelect();
+                M.updateTextFields();
+        });
+        $('#btnGuardar').on("click", function () {
+            RevisaInputValida();
+                @*if (fncCamposRequeridos()) {
+                return;
+            }
+                var modelo = ObtenerModelo();
+                FncExeAjax('@Url.Action("Create")', modelo, "POST", false, FncLimpiar);*@
+        });
+        
+        function ObtenerModelo() {
+            var modelo = new Object();
+            var persona = new Object();
+        //modelo.id_Vivienda=
+            modelo.Vivienda = "";
+            modelo.Calle = $('txtcalle').val();
+            modelo.NumExt = $('#txtnumExt').val();
+            modelo.NumInt = $('#txtnumInt').val();
+                modelo.Lote = $('#txtlote').val();
+            modelo.Cp = $('#txtcp').val();
+        //modelo.Id_Propietario=
+            modelo.Id_TipoVivienda = $('#ddlTipoVivienda').val();
+            modelo.Id_Condominio = $('#ddlCondominio').val();
+            persona.Nombre = $('#txtnombrepro').val();
+        persona.ApePaterno = $('#txtapepat').val();
+        persona.ApeMaterno = $('#txtapemat').val();
+        persona.Correo = $('#txtcorreo').val();
+        persona.Contacto1 = $('#txtcontacto').val();
+        persona.Contacto2 = $('#txtcontacto2').val();
+            if (_accion == 'Actualizar') {
+                modelo.id_Vivienda = "@Model.Id_Vivienda";
+                modelo.Id_Propietario = "@Model.id_Propietario";
+                modelo.Activo = $('#chkActivo').is(":checked") ? 1 : 0;
+                persona.Id_Persona = "@Model.id_Propietario";
+            }
+            modelo.persona = persona;
+                //modelo.Activo { get; set; }
+            }
+        function FncLimpiar()
+        {
+            $("input[type=text]").val("");
+        }
+    </script>
+}

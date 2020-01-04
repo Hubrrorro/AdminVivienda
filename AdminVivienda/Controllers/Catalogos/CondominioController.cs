@@ -74,7 +74,12 @@ namespace AdminVivienda.Controllers.Catalogos
             var resul = _condominioBusiness.Actualizar(modelo);
             return Json(resul);
         }
-
+        [HttpPost]
+        public ActionResult Select()
+        {
+            var resul = _condominioBusiness.Select();
+            return Json(resul);
+        }
         // GET: Condominio/Delete/5
         //public ActionResult Delete(int id)
         //{
