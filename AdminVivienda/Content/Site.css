@@ -3,7 +3,13 @@
     font-weight: 300;
 }
 .textRed {
-    color :red;
+    color :red !important;
+}
+.errorSelect {
+    border-bottom: 1px solid red !important;
+}
+.input-field {
+    max-height: 53px;
 }
 .bs-component {
     position: relative;

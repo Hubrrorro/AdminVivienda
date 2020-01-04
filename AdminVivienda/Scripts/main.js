@@ -80,6 +80,7 @@ function RevisaInputValida() {
             if ($(this).val() == "") {
                 $(this).addClass("invalid");
                 $(this).parent().find("span").addClass("textRed");
+                $(this).parent().find(".helper-text").remove();
                 $(this).parent().append("<span class=\"helper-text\" data-error=\"Dato requerido\" data-success=\"right\">Dato requerido</span>");
                 respuesta = true;
             }
@@ -87,6 +88,25 @@ function RevisaInputValida() {
                 $(this).removeClass("invalid");
                 $(this).parent().find(".helper-text").remove();
                 $(this).parent().find("span").removeClass("textRed");
+                if (!respuesta) {
+                    respuesta = false;
+                }
+            }
+        }
+        if (this.type == "select-one") {
+            if ($(this).val() == "-1") {
+                //$(this).addClass("invalid");
+                $(this).parent().parent().find("span").addClass("textRed");
+                $(this).parent().find(".helper-text").remove();
+                $(this).parent().find(".select-dropdown.dropdown-trigger").addClass("errorSelect");
+                $(this).parent().append("<span class=\"helper-text textRed\" data-error=\"Dato requerido\" data-success=\"right\">Dato requerido</span>");
+                respuesta = true;
+            }
+            else {
+                //$(this).removeClass("invalid");
+                $(this).parent().find(".helper-text").remove();
+                $(this).parent().find("span").removeClass("textRed");
+                $(this).parent().find(".select-dropdown.dropdown-trigger").removeClass("errorSelect");
                 if (!respuesta) {
                     respuesta = false;
                 }

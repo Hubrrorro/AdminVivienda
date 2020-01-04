@@ -12,29 +12,29 @@
         <input type="text" disabled id="txtvivienda" value="@Model.Vivienda">
     </div>
     <div class="input-field col s6 m4 l4">
-        <select id="ddlCondominio">
+        <select id="ddlCondominio" class="valida">
             <option disabled selected value="-1">Selecciona</option>
 
         </select>
-        <label>Condominio:</label>
+        <label>Condominio<span>*</span>:</label>
     </div>
     <div class="input-field col s6 m4 l4">
-        <select id="ddlTipoVivienda">
+        <select id="ddlTipoVivienda" class="valida">
             <option disabled selected value="-1">Selecciona</option>
         </select>
-        <label>Tipo de vivienda:</label>
+        <label>Tipo de vivienda<span>*</span>:</label>
     </div>
     <div class="input-field col s6 m6 l6">
-        <label for="txtcalle">Calle:</label>
-        <input type="text" id="txtcalle" value="@Model.Calle">
+        <label for="txtcalle">Calle<span>*</span>:</label>
+        <input type="text" id="txtcalle" class="valida" value="@Model.Calle">
     </div>
     <div class="input-field col s2 m2 l2">
         <label for="txtlote">Lote / Edificio:</label>
         <input type="text" id="txtlote" value="@Model.Lote">
     </div>
     <div class="input-field col s2 m2 l2">
-        <label for="txtext">No Ext:</label>
-        <input type="text" id="txtext" value="@Model.NumExt">
+        <label for="txtext">No Ext<span>*</span>:</label>
+        <input type="text" id="txtext" class="valida" value="@Model.NumExt">
     </div>
     <div class="input-field col s2 m2 l2">
         <label for="txtint">No Int:</label>
@@ -57,20 +57,20 @@
         <input type="text" class="valida" id="txtnombrepro" value="@Model.CAT_PERSONAS.Nombre">
     </div>
     <div class="input-field col s6 m4 l4">
-        <label for="txtapepat">Apellido paterno:</label>
-        <input type="text" id="txtapepat" value="@Model.CAT_PERSONAS.ApePat">
+        <label for="txtapepat">Apellido paterno<span>*</span>:</label>
+        <input type="text" id="txtapepat" class="valida" value="@Model.CAT_PERSONAS.ApePat">
     </div>
     <div class="input-field col s6 m4 l4">
         <label for="txtapemat">Apellido Materno:</label>
         <input type="text" id="txtapemat" value="@Model.CAT_PERSONAS.ApeMat">
     </div>
     <div class="input-field col s6 m4 l4">
-        <label for="txtcorreo">Correo:</label>
-        <input type="text" id="txtcorreo" value="@Model.CAT_PERSONAS.Correo">
+        <label for="txtcorreo">Correo<span>*</span>:</label>
+        <input type="text" id="txtcorreo" class="valida" value="@Model.CAT_PERSONAS.Correo">
     </div>
     <div class="input-field col s6 m4 l4">
         <label for="txtcontacto">Teléfono:</label>
-        <input type="text" id="txtcontacto" value="@Model.CAT_PERSONAS.Contacto1">
+        <input type="text" id="txtcontacto"  value="@Model.CAT_PERSONAS.Contacto1">
     </div>
     <div class="input-field col s6 m4 l4">
         <label for="txtcontacto2">Teléfono Alternativo:</label>
