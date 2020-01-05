@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using AdminVivienda.Models.Catalogos;
 namespace AdminVivienda.BL
 {
     public class CondominioBusiness : IGeneralBusiness<CondominioModel>

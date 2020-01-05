@@ -60,6 +60,18 @@ namespace AdminVivienda.BL.Catalogos
                     _respuesta.mensaje.Add(Mensajes.SIExiste);
                     return _respuesta;
                 }
+                PersonalManage personalManage = new PersonalManage();
+                personalManage.Actualizar(new CAT_PERSONAS()
+                {
+                    Activo = true,
+                    ApeMat = modelo.persona.ApeMaterno,
+                    ApePat = modelo.persona.ApePaterno,
+                    Contacto1 = modelo.persona.Contacto1,
+                    Contacto2 = modelo.persona.Contacto2,
+                    Correo = modelo.persona.Correo,
+                    Nombre = modelo.persona.Nombre,
+                     Id_Persona = modelo.Id_Propietario
+                });
                 _manage.Actualizar(vivienda);
                 _respuesta.ejecucion = true;
                 _respuesta.mensaje.Add(Mensajes.OkActualizar);
@@ -88,6 +100,19 @@ namespace AdminVivienda.BL.Catalogos
                     _respuesta.mensaje.Add(Mensajes.SIExiste);
                     return _respuesta;
                 }
+                PersonalManage personalManage = new PersonalManage();
+                personalManage.Agregar(new CAT_PERSONAS()
+                {
+                    Activo = true,
+                    ApeMat = modelo.persona.ApeMaterno,
+                    ApePat = modelo.persona.ApePaterno,
+                    Contacto1 = modelo.persona.Contacto1,
+                    Contacto2 = modelo.persona.Contacto2,
+                    Correo = modelo.persona.Correo,
+                    Nombre = modelo.persona.Nombre
+                });
+                var personaid =  personalManage.Consultar().Where(x => x.Correo.Equals(modelo.persona.Correo)).FirstOrDefault().Id_Persona;
+                vivienda.id_Propietario = personaid;
                 _manage.Agregar(vivienda);
                 _respuesta.ejecucion = true;
                 _respuesta.mensaje.Add(Mensajes.OkGuardar);
@@ -131,8 +156,35 @@ namespace AdminVivienda.BL.Catalogos
             try
             {
                 var listTodo = _manage.ConsultarId(id);
+                
                 _respuesta.ejecucion = true;
                 _respuesta.datos = listTodo;
+            }
+            catch
+            {
+                _respuesta.ejecucion = false;
+                _respuesta.mensaje.Add(Mensajes.Falla);
+
+            }
+            return _respuesta;
+        }
+        public RespuestaModel Select()
+        {
+            try
+            {
+                var listTodo = _manage.Consultar();
+                listTodo = listTodo.Where(x => x.Activo.Equals(true)).ToList();
+                List<SelectModel> listSelect = new List<SelectModel>();
+                foreach (var registro in listTodo)
+                {
+                    listSelect.Add(new SelectModel()
+                    {
+                        descripcion = registro.Vivienda,
+                        id = registro.Id_Vivienda
+                    });
+                }
+                _respuesta.datos = listSelect;
+                _respuesta.ejecucion = true;
             }
             catch
             {

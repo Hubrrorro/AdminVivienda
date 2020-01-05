@@ -12,7 +12,15 @@ namespace AdminVivienda.DAL.Catalogos
             using (var conex = new AdminEntities1())
             {
                 var registro = conex.CAT_VIVIENDA.Where(x => x.Id_Vivienda.Equals(modelo.Id_Vivienda)).FirstOrDefault();
-                registro = modelo;
+                registro.Activo = modelo.Activo;
+                registro.Calle = modelo.Calle;
+                registro.id_Condominio = modelo.id_Condominio;
+                registro.id_Propietario = modelo.id_Propietario;
+                registro.id_TipoVivienda = modelo.id_TipoVivienda;
+                registro.Lote = modelo.Lote;
+                registro.NumExt = modelo.NumExt;
+                registro.NumInt = modelo.NumInt;
+                registro.Vivienda = modelo.Vivienda;
                 conex.SaveChanges();
             }
         }
@@ -21,6 +29,7 @@ namespace AdminVivienda.DAL.Catalogos
         {
             using (var conex = new AdminEntities1())
             {
+                modelo.Activo = true;
                 conex.CAT_VIVIENDA.Add(modelo);
                 conex.SaveChanges();
             }

@@ -158,6 +158,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\Catalogos\GeneralNivel1Business.cs" />
     <Compile Include="BL\Catalogos\GeneralNivel1Campo2Business.cs" />
+    <Compile Include="BL\Catalogos\PersonalBusiness.cs" />
     <Compile Include="BL\Catalogos\TipoViviendaBusiness.cs" />
     <Compile Include="BL\Catalogos\ViviendaBusiness.cs" />
     <Compile Include="BL\CondominioBusiness.cs" />
@@ -165,7 +166,6 @@
     <Compile Include="Controllers\Catalogos\CatNivel1Campo2Controller.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
     <Compile Include="Controllers\Catalogos\EstadosController.cs" />
-    <Compile Include="Controllers\Catalogos\SelectModel.cs" />
     <Compile Include="Controllers\Catalogos\TipoViviendaController.cs" />
     <Compile Include="Controllers\Catalogos\ViviendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -229,6 +229,7 @@
     <Compile Include="Models\Catalogos\General\Nivel1Campo2RecursosModel.cs" />
     <Compile Include="Models\Catalogos\General\Nivel1Model.cs" />
     <Compile Include="Models\Catalogos\General\Nivel1RecursosModel.cs" />
+    <Compile Include="Models\Catalogos\SelectModel.cs" />
     <Compile Include="Models\Catalogos\TipoViviendaModel.cs" />
     <Compile Include="Models\CondominioModel.cs" />
     <Compile Include="Models\EstadoModel.cs" />

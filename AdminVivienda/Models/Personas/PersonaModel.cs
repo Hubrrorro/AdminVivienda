@@ -14,5 +14,6 @@ namespace AdminVivienda.Models.Personas
         public string Correo { get; set; }
         public string Contacto1 { get; set; }
         public string Contacto2 { get; set; }
+        public int Activo { get; set; }
     }
 }
