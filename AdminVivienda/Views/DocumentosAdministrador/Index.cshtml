@@ -1,0 +1,81 @@
+﻿@model List<AdminVivienda.DAL.CAT_CONDOMINIO>
+@section styles{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+}
+
+<h3 class="header">@ViewBag.Title</h3>
+<hr />
+<div id="divShow">
+    <div class="row">
+        <div class="input-field col s6 m6 l6">
+            <select id="ddlCondominio">
+                <option selected value="-1">Todos</option>
+                @foreach (var condominio in Model)
+                {
+                    <option value="@condominio.Id_Condominio">@condominio.Condominio</option>
+                }
+            </select>
+            <label>Condominio:</label>
+        </div>
+        <div class="input-field col s6 m6 l6">
+            <label for="txtDocumentos">Documento:</label>
+            <input type="text" id="txtvivienda">
+        </div>
+        <div class="input-field col s4 m4 l4">
+            <select id="ddltipoDocumento">
+                <option selected="" value="-1">Todos</option>
+            </select>
+            <label>Tipo Documento:</label>
+        </div>
+        <div class="input-field col s4 m4 l4">
+            <select id="ddlActivo">
+                <option selected="" value="-1">Todos</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+            <label>Estatus:</label>
+        </div>
+        <div class="col s4 m4 l4">
+            <div class="row">
+                <div class="col s10">
+                    <button type="button" class="waves-effect waves-light btn"><i class="material-icons left">search</i>Buscar</button>
+                </div>
+                <div class="col s2">
+                    <a href="@Url.Action("Create")" class="btn-floating waves-effect waves-light"><i class="material-icons left">add</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div id="divTableDocumentos">
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        var _urlGrid = '@Url.Action("Grid")';
+        $(document).ready(function () {
+            EjecutaAjaxBusqueda();
+            FncObtenerTipoDocumentos();
+            $('select').formSelect();
+        });
+        function FncObtenerTipoDocumentos() {
+            LlenaSelect('@Url.Action("select","TipoDocumento")', 'ddltipoDocumento');
+        }
+        $(".btn-info").click(function () {
+            EjecutaAjaxBusqueda();
+        });
+        function EjecutaAjaxBusqueda() {
+            var modelo = new Object();
+            modelo.Documento = $('#txtDocumentos').val();
+            modelo.Id_TipoDocumento = $('#ddltipoDocumento').val();
+            modelo.Id_Condominio = $('#ddlCondominio').val();
+            modelo.Activo = $('#ddlActivo').val();
+            FncExeAjax(_urlGrid, modelo, "POST", false, FncGrid);
+        }
+        function FncGrid(datos) {
+            $('#divTableDocumentos').html(datos);
+            $('#divShow').fadeIn();
+        }
+    </script>
+}

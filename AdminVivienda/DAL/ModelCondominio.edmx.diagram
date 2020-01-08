@@ -14,6 +14,10 @@
         <AssociationConnector Association="AdminModel.FK__CAT_VIVIE__id_Co__47DBAE45" />
         <AssociationConnector Association="AdminModel.FK__CAT_VIVIE__id_Pr__46E78A0C" />
         <EntityTypeShape EntityType="AdminModel.CAT_CONTRATO" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="AdminModel.CAT_TIPODOCUMENTO" Width="1.5" PointX="5.5" PointY="11.25" />
+        <EntityTypeShape EntityType="AdminModel.Tbl_DocumentosCondominio" Width="1.5" PointX="7.75" PointY="0.5" />
+        <AssociationConnector Association="AdminModel.FK__Tbl_Docum__Id_Co__1AD3FDA4" />
+        <AssociationConnector Association="AdminModel.FK__Tbl_Docum__Id_Ti__1BC821DD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

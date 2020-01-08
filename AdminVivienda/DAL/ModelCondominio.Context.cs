@@ -32,5 +32,7 @@ namespace AdminVivienda.DAL
         public virtual DbSet<CAT_TIPOVIVIENDA> CAT_TIPOVIVIENDA { get; set; }
         public virtual DbSet<CAT_VIVIENDA> CAT_VIVIENDA { get; set; }
         public virtual DbSet<CAT_CONTRATO> CAT_CONTRATO { get; set; }
+        public virtual DbSet<CAT_TIPODOCUMENTO> CAT_TIPODOCUMENTO { get; set; }
+        public virtual DbSet<Tbl_DocumentosCondominio> Tbl_DocumentosCondominio { get; set; }
     }
 }

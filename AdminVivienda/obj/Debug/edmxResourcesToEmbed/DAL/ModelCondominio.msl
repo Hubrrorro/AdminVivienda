@@ -85,5 +85,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CAT_TIPODOCUMENTO">
+      <EntityTypeMapping TypeName="AdminModel.CAT_TIPODOCUMENTO">
+        <MappingFragment StoreEntitySet="CAT_TIPODOCUMENTO">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="Id_TipoDocumento" ColumnName="Id_TipoDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_DocumentosCondominio">
+      <EntityTypeMapping TypeName="AdminModel.Tbl_DocumentosCondominio">
+        <MappingFragment StoreEntitySet="Tbl_DocumentosCondominio">
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="Id_PersonaUpload" ColumnName="Id_PersonaUpload" />
+          <ScalarProperty Name="FechaSubida" ColumnName="FechaSubida" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Id_TipoDocumento" ColumnName="Id_TipoDocumento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="DocumentoCondominio" ColumnName="DocumentoCondominio" />
+          <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
+          <ScalarProperty Name="Id_DocumentoCondominio" ColumnName="Id_DocumentoCondominio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

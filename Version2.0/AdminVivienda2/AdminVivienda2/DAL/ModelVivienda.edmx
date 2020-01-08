@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseViviendaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAT_CONDOMINIOS">
+          <Key>
+            <PropertyRef Name="Id_Condominio" />
+          </Key>
+          <Property Name="Id_Condominio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Condominio" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DemMun" Type="nvarchar" MaxLength="50" />
+          <Property Name="Colonia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cp" Type="int" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="5" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAT_ESTADOS">
+          <Key>
+            <PropertyRef Name="Id_Estado" />
+          </Key>
+          <Property Name="Id_Estado" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="150" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <Association Name="FK__CAT_CONDO__Id_Es__276EDEB3">
+          <End Role="CAT_ESTADOS" Type="Self.CAT_ESTADOS" Multiplicity="0..1" />
+          <End Role="CAT_CONDOMINIOS" Type="Self.CAT_CONDOMINIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAT_ESTADOS">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="CAT_CONDOMINIOS">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseViviendaModelStoreContainer">
+          <EntitySet Name="CAT_CONDOMINIOS" EntityType="Self.CAT_CONDOMINIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAT_ESTADOS" EntityType="Self.CAT_ESTADOS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CAT_CONDO__Id_Es__276EDEB3" Association="Self.FK__CAT_CONDO__Id_Es__276EDEB3">
+            <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
+            <End Role="CAT_CONDOMINIOS" EntitySet="CAT_CONDOMINIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseViviendaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAT_CONDOMINIOS">
+          <Key>
+            <PropertyRef Name="Id_Condominio" />
+          </Key>
+          <Property Name="Id_Condominio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Condominio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DemMun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cp" Type="Int32" />
+          <Property Name="Clave" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CAT_ESTADOS" Relationship="Self.FK__CAT_CONDO__Id_Es__276EDEB3" FromRole="CAT_CONDOMINIOS" ToRole="CAT_ESTADOS" />
+        </EntityType>
+        <EntityType Name="CAT_ESTADOS">
+          <Key>
+            <PropertyRef Name="Id_Estado" />
+          </Key>
+          <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="CAT_CONDOMINIOS" Relationship="Self.FK__CAT_CONDO__Id_Es__276EDEB3" FromRole="CAT_ESTADOS" ToRole="CAT_CONDOMINIOS" />
+        </EntityType>
+        <Association Name="FK__CAT_CONDO__Id_Es__276EDEB3">
+          <End Role="CAT_ESTADOS" Type="Self.CAT_ESTADOS" Multiplicity="0..1" />
+          <End Role="CAT_CONDOMINIOS" Type="Self.CAT_CONDOMINIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAT_ESTADOS">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="CAT_CONDOMINIOS">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseViviendaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAT_CONDOMINIOS" EntityType="Self.CAT_CONDOMINIOS" />
+          <EntitySet Name="CAT_ESTADOS" EntityType="Self.CAT_ESTADOS" />
+          <AssociationSet Name="FK__CAT_CONDO__Id_Es__276EDEB3" Association="Self.FK__CAT_CONDO__Id_Es__276EDEB3">
+            <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
+            <End Role="CAT_CONDOMINIOS" EntitySet="CAT_CONDOMINIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseViviendaModelStoreContainer" CdmEntityContainer="DatabaseViviendaEntities">
+          <EntitySetMapping Name="CAT_CONDOMINIOS">
+            <EntityTypeMapping TypeName="DatabaseViviendaModel.CAT_CONDOMINIOS">
+              <MappingFragment StoreEntitySet="CAT_CONDOMINIOS">
+                <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
+                <ScalarProperty Name="Condominio" ColumnName="Condominio" />
+                <ScalarProperty Name="DemMun" ColumnName="DemMun" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="Cp" ColumnName="Cp" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAT_ESTADOS">
+            <EntityTypeMapping TypeName="DatabaseViviendaModel.CAT_ESTADOS">
+              <MappingFragment StoreEntitySet="CAT_ESTADOS">
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

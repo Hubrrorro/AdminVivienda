@@ -13,6 +13,7 @@
     <Property Name="Cp" Type="Int32" />
     <Property Name="Clave" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
     <Property Name="Id_Estado" Type="Int32" />
+    <NavigationProperty Name="Tbl_DocumentosCondominio" Relationship="AdminModel.FK__Tbl_Docum__Id_Co__1AD3FDA4" FromRole="CAT_CONDOMINIO" ToRole="Tbl_DocumentosCondominio" />
   </EntityType>
   <EntityContainer Name="AdminEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CAT_CONDOMINIO" EntityType="Self.CAT_CONDOMINIO" />
@@ -30,6 +31,16 @@
       <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
     </AssociationSet>
     <EntitySet Name="CAT_CONTRATO" EntityType="AdminModel.CAT_CONTRATO" />
+    <EntitySet Name="CAT_TIPODOCUMENTO" EntityType="AdminModel.CAT_TIPODOCUMENTO" />
+    <EntitySet Name="Tbl_DocumentosCondominio" EntityType="AdminModel.Tbl_DocumentosCondominio" />
+    <AssociationSet Name="FK__Tbl_Docum__Id_Co__1AD3FDA4" Association="AdminModel.FK__Tbl_Docum__Id_Co__1AD3FDA4">
+      <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
+      <End Role="Tbl_DocumentosCondominio" EntitySet="Tbl_DocumentosCondominio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Docum__Id_Ti__1BC821DD" Association="AdminModel.FK__Tbl_Docum__Id_Ti__1BC821DD">
+      <End Role="CAT_TIPODOCUMENTO" EntitySet="CAT_TIPODOCUMENTO" />
+      <End Role="Tbl_DocumentosCondominio" EntitySet="Tbl_DocumentosCondominio" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="CAT_ESTADOS">
     <Key>
@@ -122,4 +133,53 @@
     <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
   </EntityType>
+  <EntityType Name="CAT_TIPODOCUMENTO">
+    <Key>
+      <PropertyRef Name="Id_TipoDocumento" />
+    </Key>
+    <Property Name="Id_TipoDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoDocumento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Tbl_DocumentosCondominio" Relationship="AdminModel.FK__Tbl_Docum__Id_Ti__1BC821DD" FromRole="CAT_TIPODOCUMENTO" ToRole="Tbl_DocumentosCondominio" />
+  </EntityType>
+  <EntityType Name="Tbl_DocumentosCondominio">
+    <Key>
+      <PropertyRef Name="Id_DocumentoCondominio" />
+    </Key>
+    <Property Name="Id_DocumentoCondominio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Condominio" Type="Int32" Nullable="false" />
+    <Property Name="DocumentoCondominio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Id_TipoDocumento" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="FechaSubida" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_PersonaUpload" Type="Int32" Nullable="false" />
+    <Property Name="Ruta" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CAT_CONDOMINIO" Relationship="AdminModel.FK__Tbl_Docum__Id_Co__1AD3FDA4" FromRole="Tbl_DocumentosCondominio" ToRole="CAT_CONDOMINIO" />
+    <NavigationProperty Name="CAT_TIPODOCUMENTO" Relationship="AdminModel.FK__Tbl_Docum__Id_Ti__1BC821DD" FromRole="Tbl_DocumentosCondominio" ToRole="CAT_TIPODOCUMENTO" />
+  </EntityType>
+  <Association Name="FK__Tbl_Docum__Id_Co__1AD3FDA4">
+    <End Type="AdminModel.CAT_CONDOMINIO" Role="CAT_CONDOMINIO" Multiplicity="1" />
+    <End Type="AdminModel.Tbl_DocumentosCondominio" Role="Tbl_DocumentosCondominio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_CONDOMINIO">
+        <PropertyRef Name="Id_Condominio" />
+      </Principal>
+      <Dependent Role="Tbl_DocumentosCondominio">
+        <PropertyRef Name="Id_Condominio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tbl_Docum__Id_Ti__1BC821DD">
+    <End Type="AdminModel.CAT_TIPODOCUMENTO" Role="CAT_TIPODOCUMENTO" Multiplicity="1" />
+    <End Type="AdminModel.Tbl_DocumentosCondominio" Role="Tbl_DocumentosCondominio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPODOCUMENTO">
+        <PropertyRef Name="Id_TipoDocumento" />
+      </Principal>
+      <Dependent Role="Tbl_DocumentosCondominio">
+        <PropertyRef Name="Id_TipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -18,6 +18,7 @@ namespace AdminVivienda.DAL
         public CAT_CONDOMINIO()
         {
             this.CAT_VIVIENDA = new HashSet<CAT_VIVIENDA>();
+            this.Tbl_DocumentosCondominio = new HashSet<Tbl_DocumentosCondominio>();
         }
     
         public int Id_Condominio { get; set; }
@@ -31,5 +32,7 @@ namespace AdminVivienda.DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CAT_VIVIENDA> CAT_VIVIENDA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_DocumentosCondominio> Tbl_DocumentosCondominio { get; set; }
     }
 }

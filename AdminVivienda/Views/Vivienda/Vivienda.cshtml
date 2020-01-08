@@ -70,7 +70,7 @@
     </div>
     <div class="input-field col s6 m4 l4">
         <label for="txtcontacto">Teléfono:</label>
-        <input type="text" id="txtcontacto"  value="@Model.CAT_PERSONAS.Contacto1">
+        <input type="text" id="txtcontacto" value="@Model.CAT_PERSONAS.Contacto1">
     </div>
     <div class="input-field col s6 m4 l4">
         <label for="txtcontacto2">Teléfono Alternativo:</label>
@@ -153,22 +153,20 @@
         function ObtenerModelo() {
             var modelo = new Object();
             var persona = new Object();
-        //modelo.id_Vivienda=
-            modelo.Vivienda = "";
             modelo.Calle = $('#txtcalle').val();
             modelo.NumExt = $('#txtext').val();
             modelo.NumInt = $('#txtint').val();
-                modelo.Lote = $('#txtlote').val();
+            modelo.Lote = $('#txtlote').val();
             modelo.Cp = $('#txtcp').val();
         //modelo.Id_Propietario=
             modelo.Id_TipoVivienda = $('#ddlTipoVivienda').val();
             modelo.Id_Condominio = $('#ddlCondominio').val();
             persona.Nombre = $('#txtnombrepro').val();
-        persona.ApePaterno = $('#txtapepat').val();
-        persona.ApeMaterno = $('#txtapemat').val();
-        persona.Correo = $('#txtcorreo').val();
-        persona.Contacto1 = $('#txtcontacto').val();
-        persona.Contacto2 = $('#txtcontacto2').val();
+            persona.ApePaterno = $('#txtapepat').val();
+            persona.ApeMaterno = $('#txtapemat').val();
+            persona.Correo = $('#txtcorreo').val();
+            persona.Contacto1 = $('#txtcontacto').val();
+            persona.Contacto2 = $('#txtcontacto2').val();
             if (_accion == 'Actualizar') {
                 modelo.id_Vivienda = "@Model.Id_Vivienda";
                 modelo.Id_Propietario = "@Model.id_Propietario";

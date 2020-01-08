@@ -10,7 +10,6 @@ namespace AdminVivienda.Controllers.Catalogos
 {
     public class TipoViviendaController : CatalogoNivel1Controller
     {
-        // GET: TipoVivienda
         private static TablaNivel1 _tablaNivel1 = new TablaNivel1()
         {
             descripcion = "TipoVivienda",
@@ -27,6 +26,8 @@ namespace AdminVivienda.Controllers.Catalogos
             tituloIndex = "Buscar tipo de vivienda",
             tabla = _tablaNivel1
         };
+        // GET: TipoVivienda
+        
         public TipoViviendaController() : base(_nivel1)
         {
         }

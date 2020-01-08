@@ -162,10 +162,14 @@
     <Compile Include="BL\Catalogos\TipoViviendaBusiness.cs" />
     <Compile Include="BL\Catalogos\ViviendaBusiness.cs" />
     <Compile Include="BL\CondominioBusiness.cs" />
+    <Compile Include="BL\DocumentosAdministradorBusiness.cs" />
+    <Compile Include="Controllers\Administrador\Avisos\AvisosAdministradorController.cs" />
+    <Compile Include="Controllers\Administrador\Documentos\DocumentosAdministradorController.cs" />
     <Compile Include="Controllers\Catalogos\CatalogoNivel1Controller.cs" />
     <Compile Include="Controllers\Catalogos\CatNivel1Campo2Controller.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
     <Compile Include="Controllers\Catalogos\EstadosController.cs" />
+    <Compile Include="Controllers\Catalogos\TipoDocumentoController.cs" />
     <Compile Include="Controllers\Catalogos\TipoViviendaController.cs" />
     <Compile Include="Controllers\Catalogos\ViviendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -173,6 +177,7 @@
     <Compile Include="Controllers\Seguridad\LoginController.cs" />
     <Compile Include="Controllers\Seguridad\TokenGenerator.cs" />
     <Compile Include="Controllers\Seguridad\TokenValidationHandler.cs" />
+    <Compile Include="DAL\Administrador\DocuementosAdministradorManage.cs" />
     <Compile Include="DAL\Catalogos\CondominioManage.cs" />
     <Compile Include="DAL\Catalogos\GeneralManageNivel1.cs" />
     <Compile Include="DAL\Catalogos\GeneralManageNivel1Campo2.cs" />
@@ -192,6 +197,9 @@
       <DependentUpon>ModelCondominio.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CAT_PERSONAS.cs">
+      <DependentUpon>ModelCondominio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_TIPODOCUMENTO.cs">
       <DependentUpon>ModelCondominio.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CAT_TIPOVIVIENDA.cs">
@@ -215,6 +223,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelCondominio.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Tbl_DocumentosCondominio.cs">
+      <DependentUpon>ModelCondominio.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,6 +243,7 @@
     <Compile Include="Models\Catalogos\SelectModel.cs" />
     <Compile Include="Models\Catalogos\TipoViviendaModel.cs" />
     <Compile Include="Models\CondominioModel.cs" />
+    <Compile Include="Models\DocumentosAdministradorModel.cs" />
     <Compile Include="Models\EstadoModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Personas\PersonaModel.cs" />
@@ -1639,6 +1651,7 @@
     <Content Include="Views\CatalogosGenerico\Nivel1Campo2\Index.cshtml" />
     <Content Include="Views\CatalogosGenerico\Nivel1Campo2\Registro.cshtml" />
     <Content Include="Views\Vivienda\Vivienda.cshtml" />
+    <Content Include="Views\DocumentosAdministrador\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mensajes.resx">
@@ -1663,7 +1676,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\AvisosAdministrador\" />
     <Folder Include="Views\Estados\" />
+    <Folder Include="Views\TipoDocumento\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

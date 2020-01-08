@@ -58,6 +58,14 @@
           <Property Name="Contacto2" Type="nvarchar" MaxLength="10" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="CAT_TIPODOCUMENTO">
+          <Key>
+            <PropertyRef Name="Id_TipoDocumento" />
+          </Key>
+          <Property Name="Id_TipoDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoDocumento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="CAT_TIPOVIVIENDA">
           <Key>
             <PropertyRef Name="Id_TipoVivienda" />
@@ -81,6 +89,20 @@
           <Property Name="id_Condominio" Type="int" />
           <Property Name="Activo" Type="bit" />
           <Property Name="Vivienda" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_DocumentosCondominio">
+          <Key>
+            <PropertyRef Name="Id_DocumentoCondominio" />
+          </Key>
+          <Property Name="Id_DocumentoCondominio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Condominio" Type="int" Nullable="false" />
+          <Property Name="DocumentoCondominio" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Id_TipoDocumento" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaSubida" Type="date" Nullable="false" />
+          <Property Name="Id_PersonaUpload" Type="int" Nullable="false" />
+          <Property Name="Ruta" Type="nvarchar" MaxLength="300" Nullable="false" />
         </EntityType>
         <Association Name="FK__CAT_VIVIE__id_Co__47DBAE45">
           <End Role="CAT_CONDOMINIO" Type="Self.CAT_CONDOMINIO" Multiplicity="0..1" />
@@ -106,14 +128,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Tbl_Docum__Id_Co__1AD3FDA4">
+          <End Role="CAT_CONDOMINIO" Type="Self.CAT_CONDOMINIO" Multiplicity="1" />
+          <End Role="Tbl_DocumentosCondominio" Type="Self.Tbl_DocumentosCondominio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAT_CONDOMINIO">
+              <PropertyRef Name="Id_Condominio" />
+            </Principal>
+            <Dependent Role="Tbl_DocumentosCondominio">
+              <PropertyRef Name="Id_Condominio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Docum__Id_Ti__1BC821DD">
+          <End Role="CAT_TIPODOCUMENTO" Type="Self.CAT_TIPODOCUMENTO" Multiplicity="1" />
+          <End Role="Tbl_DocumentosCondominio" Type="Self.Tbl_DocumentosCondominio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAT_TIPODOCUMENTO">
+              <PropertyRef Name="Id_TipoDocumento" />
+            </Principal>
+            <Dependent Role="Tbl_DocumentosCondominio">
+              <PropertyRef Name="Id_TipoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AdminModelStoreContainer">
           <EntitySet Name="CAT_CONDOMINIO" EntityType="Self.CAT_CONDOMINIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAT_CONTRATO" EntityType="Self.CAT_CONTRATO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAT_ESTADOS" EntityType="Self.CAT_ESTADOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAT_PERIL" EntityType="Self.CAT_PERIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAT_PERSONAS" EntityType="Self.CAT_PERSONAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAT_TIPODOCUMENTO" EntityType="Self.CAT_TIPODOCUMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAT_TIPOVIVIENDA" EntityType="Self.CAT_TIPOVIVIENDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAT_VIVIENDA" EntityType="Self.CAT_VIVIENDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_DocumentosCondominio" EntityType="Self.Tbl_DocumentosCondominio" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__CAT_VIVIE__id_Co__47DBAE45" Association="Self.FK__CAT_VIVIE__id_Co__47DBAE45">
             <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
             <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
@@ -121,6 +169,14 @@
           <AssociationSet Name="FK__CAT_VIVIE__id_Pr__46E78A0C" Association="Self.FK__CAT_VIVIE__id_Pr__46E78A0C">
             <End Role="CAT_PERSONAS" EntitySet="CAT_PERSONAS" />
             <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Docum__Id_Co__1AD3FDA4" Association="Self.FK__Tbl_Docum__Id_Co__1AD3FDA4">
+            <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
+            <End Role="Tbl_DocumentosCondominio" EntitySet="Tbl_DocumentosCondominio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Docum__Id_Ti__1BC821DD" Association="Self.FK__Tbl_Docum__Id_Ti__1BC821DD">
+            <End Role="CAT_TIPODOCUMENTO" EntitySet="CAT_TIPODOCUMENTO" />
+            <End Role="Tbl_DocumentosCondominio" EntitySet="Tbl_DocumentosCondominio" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -140,6 +196,7 @@
           <Property Name="Cp" Type="Int32" />
           <Property Name="Clave" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Id_Estado" Type="Int32" />
+          <NavigationProperty Name="Tbl_DocumentosCondominio" Relationship="AdminModel.FK__Tbl_Docum__Id_Co__1AD3FDA4" FromRole="CAT_CONDOMINIO" ToRole="Tbl_DocumentosCondominio" />
         </EntityType>
         <EntityContainer Name="AdminEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CAT_CONDOMINIO" EntityType="Self.CAT_CONDOMINIO" />
@@ -157,6 +214,16 @@
             <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
           </AssociationSet>
           <EntitySet Name="CAT_CONTRATO" EntityType="AdminModel.CAT_CONTRATO" />
+          <EntitySet Name="CAT_TIPODOCUMENTO" EntityType="AdminModel.CAT_TIPODOCUMENTO" />
+          <EntitySet Name="Tbl_DocumentosCondominio" EntityType="AdminModel.Tbl_DocumentosCondominio" />
+          <AssociationSet Name="FK__Tbl_Docum__Id_Co__1AD3FDA4" Association="AdminModel.FK__Tbl_Docum__Id_Co__1AD3FDA4">
+            <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
+            <End Role="Tbl_DocumentosCondominio" EntitySet="Tbl_DocumentosCondominio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Docum__Id_Ti__1BC821DD" Association="AdminModel.FK__Tbl_Docum__Id_Ti__1BC821DD">
+            <End Role="CAT_TIPODOCUMENTO" EntitySet="CAT_TIPODOCUMENTO" />
+            <End Role="Tbl_DocumentosCondominio" EntitySet="Tbl_DocumentosCondominio" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CAT_ESTADOS">
           <Key>
@@ -249,6 +316,55 @@
           <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="CAT_TIPODOCUMENTO">
+          <Key>
+            <PropertyRef Name="Id_TipoDocumento" />
+          </Key>
+          <Property Name="Id_TipoDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoDocumento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_DocumentosCondominio" Relationship="AdminModel.FK__Tbl_Docum__Id_Ti__1BC821DD" FromRole="CAT_TIPODOCUMENTO" ToRole="Tbl_DocumentosCondominio" />
+        </EntityType>
+        <EntityType Name="Tbl_DocumentosCondominio">
+          <Key>
+            <PropertyRef Name="Id_DocumentoCondominio" />
+          </Key>
+          <Property Name="Id_DocumentoCondominio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Condominio" Type="Int32" Nullable="false" />
+          <Property Name="DocumentoCondominio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Id_TipoDocumento" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaSubida" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id_PersonaUpload" Type="Int32" Nullable="false" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CAT_CONDOMINIO" Relationship="AdminModel.FK__Tbl_Docum__Id_Co__1AD3FDA4" FromRole="Tbl_DocumentosCondominio" ToRole="CAT_CONDOMINIO" />
+          <NavigationProperty Name="CAT_TIPODOCUMENTO" Relationship="AdminModel.FK__Tbl_Docum__Id_Ti__1BC821DD" FromRole="Tbl_DocumentosCondominio" ToRole="CAT_TIPODOCUMENTO" />
+        </EntityType>
+        <Association Name="FK__Tbl_Docum__Id_Co__1AD3FDA4">
+          <End Type="AdminModel.CAT_CONDOMINIO" Role="CAT_CONDOMINIO" Multiplicity="1" />
+          <End Type="AdminModel.Tbl_DocumentosCondominio" Role="Tbl_DocumentosCondominio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAT_CONDOMINIO">
+              <PropertyRef Name="Id_Condominio" />
+            </Principal>
+            <Dependent Role="Tbl_DocumentosCondominio">
+              <PropertyRef Name="Id_Condominio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Docum__Id_Ti__1BC821DD">
+          <End Type="AdminModel.CAT_TIPODOCUMENTO" Role="CAT_TIPODOCUMENTO" Multiplicity="1" />
+          <End Type="AdminModel.Tbl_DocumentosCondominio" Role="Tbl_DocumentosCondominio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAT_TIPODOCUMENTO">
+              <PropertyRef Name="Id_TipoDocumento" />
+            </Principal>
+            <Dependent Role="Tbl_DocumentosCondominio">
+              <PropertyRef Name="Id_TipoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -336,6 +452,30 @@
                 <ScalarProperty Name="Contrato" ColumnName="Contrato" />
                 <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
                 <ScalarProperty Name="Id_Contrato" ColumnName="Id_Contrato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAT_TIPODOCUMENTO">
+            <EntityTypeMapping TypeName="AdminModel.CAT_TIPODOCUMENTO">
+              <MappingFragment StoreEntitySet="CAT_TIPODOCUMENTO">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Id_TipoDocumento" ColumnName="Id_TipoDocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_DocumentosCondominio">
+            <EntityTypeMapping TypeName="AdminModel.Tbl_DocumentosCondominio">
+              <MappingFragment StoreEntitySet="Tbl_DocumentosCondominio">
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="Id_PersonaUpload" ColumnName="Id_PersonaUpload" />
+                <ScalarProperty Name="FechaSubida" ColumnName="FechaSubida" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Id_TipoDocumento" ColumnName="Id_TipoDocumento" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="DocumentoCondominio" ColumnName="DocumentoCondominio" />
+                <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
+                <ScalarProperty Name="Id_DocumentoCondominio" ColumnName="Id_DocumentoCondominio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

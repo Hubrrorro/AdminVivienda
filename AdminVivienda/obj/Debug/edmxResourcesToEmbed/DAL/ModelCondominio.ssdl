@@ -53,6 +53,14 @@
     <Property Name="Contacto2" Type="nvarchar" MaxLength="10" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="CAT_TIPODOCUMENTO">
+    <Key>
+      <PropertyRef Name="Id_TipoDocumento" />
+    </Key>
+    <Property Name="Id_TipoDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoDocumento" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="CAT_TIPOVIVIENDA">
     <Key>
       <PropertyRef Name="Id_TipoVivienda" />
@@ -76,6 +84,20 @@
     <Property Name="id_Condominio" Type="int" />
     <Property Name="Activo" Type="bit" />
     <Property Name="Vivienda" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_DocumentosCondominio">
+    <Key>
+      <PropertyRef Name="Id_DocumentoCondominio" />
+    </Key>
+    <Property Name="Id_DocumentoCondominio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Condominio" Type="int" Nullable="false" />
+    <Property Name="DocumentoCondominio" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Id_TipoDocumento" Type="int" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="FechaSubida" Type="date" Nullable="false" />
+    <Property Name="Id_PersonaUpload" Type="int" Nullable="false" />
+    <Property Name="Ruta" Type="nvarchar" MaxLength="300" Nullable="false" />
   </EntityType>
   <Association Name="FK__CAT_VIVIE__id_Co__47DBAE45">
     <End Role="CAT_CONDOMINIO" Type="Self.CAT_CONDOMINIO" Multiplicity="0..1" />
@@ -101,14 +123,40 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Tbl_Docum__Id_Co__1AD3FDA4">
+    <End Role="CAT_CONDOMINIO" Type="Self.CAT_CONDOMINIO" Multiplicity="1" />
+    <End Role="Tbl_DocumentosCondominio" Type="Self.Tbl_DocumentosCondominio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_CONDOMINIO">
+        <PropertyRef Name="Id_Condominio" />
+      </Principal>
+      <Dependent Role="Tbl_DocumentosCondominio">
+        <PropertyRef Name="Id_Condominio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tbl_Docum__Id_Ti__1BC821DD">
+    <End Role="CAT_TIPODOCUMENTO" Type="Self.CAT_TIPODOCUMENTO" Multiplicity="1" />
+    <End Role="Tbl_DocumentosCondominio" Type="Self.Tbl_DocumentosCondominio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_TIPODOCUMENTO">
+        <PropertyRef Name="Id_TipoDocumento" />
+      </Principal>
+      <Dependent Role="Tbl_DocumentosCondominio">
+        <PropertyRef Name="Id_TipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="AdminModelStoreContainer">
     <EntitySet Name="CAT_CONDOMINIO" EntityType="Self.CAT_CONDOMINIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_CONTRATO" EntityType="Self.CAT_CONTRATO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_ESTADOS" EntityType="Self.CAT_ESTADOS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_PERIL" EntityType="Self.CAT_PERIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_PERSONAS" EntityType="Self.CAT_PERSONAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_TIPODOCUMENTO" EntityType="Self.CAT_TIPODOCUMENTO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_TIPOVIVIENDA" EntityType="Self.CAT_TIPOVIVIENDA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_VIVIENDA" EntityType="Self.CAT_VIVIENDA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_DocumentosCondominio" EntityType="Self.Tbl_DocumentosCondominio" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__CAT_VIVIE__id_Co__47DBAE45" Association="Self.FK__CAT_VIVIE__id_Co__47DBAE45">
       <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
       <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
@@ -116,6 +164,14 @@
     <AssociationSet Name="FK__CAT_VIVIE__id_Pr__46E78A0C" Association="Self.FK__CAT_VIVIE__id_Pr__46E78A0C">
       <End Role="CAT_PERSONAS" EntitySet="CAT_PERSONAS" />
       <End Role="CAT_VIVIENDA" EntitySet="CAT_VIVIENDA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Docum__Id_Co__1AD3FDA4" Association="Self.FK__Tbl_Docum__Id_Co__1AD3FDA4">
+      <End Role="CAT_CONDOMINIO" EntitySet="CAT_CONDOMINIO" />
+      <End Role="Tbl_DocumentosCondominio" EntitySet="Tbl_DocumentosCondominio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Docum__Id_Ti__1BC821DD" Association="Self.FK__Tbl_Docum__Id_Ti__1BC821DD">
+      <End Role="CAT_TIPODOCUMENTO" EntitySet="CAT_TIPODOCUMENTO" />
+      <End Role="Tbl_DocumentosCondominio" EntitySet="Tbl_DocumentosCondominio" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
