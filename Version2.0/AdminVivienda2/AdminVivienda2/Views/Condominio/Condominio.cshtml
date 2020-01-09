@@ -131,7 +131,12 @@
                 return modelo;
         }
         $(document).ready(function () {
-            LlenaSelect('@Url.Action("Select","Estados")', 'ddlEstado');
+            if (_accion == 'Actualizar') {
+                LlenaSelect('@Url.Action("Select","Estados")', 'ddlEstado',@Model.Id_Estado);
+            }
+            else {
+                LlenaSelect('@Url.Action("Select","Estados")', 'ddlEstado');
+            }
              $('select').formSelect();
             M.updateTextFields();
         });

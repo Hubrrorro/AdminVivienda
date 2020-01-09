@@ -14,7 +14,7 @@ function FncExeAjax(url, model, tipo, async, fncCorrecto) {
     });
 }
 var _control;
-function FncExeAjaxSelect(url, tipo, async, control) {
+function FncExeAjaxSelect(url, tipo, async, control,id) {
     $.ajax({
         url: url,
         type: tipo,
@@ -23,7 +23,12 @@ function FncExeAjaxSelect(url, tipo, async, control) {
             $('#' + control).html("");
             $('#' + control).append('<option value="-1">Seleccionar</option>');
             $.each(respuesta.datos, function (index, value) {
-                $('#' + control).append('<option value="' + value.id + '">' + value.descripcion + '</option>');
+                if (id === value.id) {
+                    $('#' + control).append('<option selected value="' + value.id + '">' + value.descripcion + '</option>');
+                }
+                else {
+                    $('#' + control).append('<option value="' + value.id + '">' + value.descripcion + '</option>');
+                }
             });
         },
         error: function () {
@@ -70,8 +75,8 @@ function MsnSwal(tipo, mensaje, titulo) {
 function Tabla() {
     $('.table').DataTable();
 }
-function LlenaSelect(url, control) {
-    FncExeAjaxSelect(url, "POST", false, control);
+function LlenaSelect(url, control, id) {
+    FncExeAjaxSelect(url, "POST", false, control, id);
 }
 function RevisaInputValida() {
     var respuesta = false;

@@ -63,7 +63,7 @@ namespace AdminVivienda2.Controllers.Catalogos
                 if (ExisteDB(model.Condominio))
                 {
                     _respuesta.ejecucion = false;
-                    _respuesta.mensaje.Add("Ya existe este registro");
+                    _respuesta.mensaje.Add(Resources.Mensajes.MensajeDuplicado);
                     return _respuesta;
                 }
                 using (var conex = new DatabaseViviendaEntities())
@@ -73,12 +73,12 @@ namespace AdminVivienda2.Controllers.Catalogos
                     conex.SaveChanges();
                 }
                 _respuesta.ejecucion = true;
-                _respuesta.mensaje.Add("");
+                _respuesta.mensaje.Add(Resources.Mensajes.MensajeCorrecto);
             }
             catch
             {
                 _respuesta.ejecucion = false;
-                _respuesta.mensaje.Add("");
+                _respuesta.mensaje.Add(Resources.Mensajes.MensajeError);
 
             }
             return _respuesta;
@@ -88,6 +88,12 @@ namespace AdminVivienda2.Controllers.Catalogos
             try
             {
                 _respuesta = new RespuestaModel();
+                if (ExisteDB(model))
+                {
+                    _respuesta.ejecucion = false;
+                    _respuesta.mensaje.Add(Resources.Mensajes.MensajeDuplicado);
+                    return _respuesta;
+                }
                 using (var conex = new DatabaseViviendaEntities())
                 {
                     var condominio = conex.CAT_CONDOMINIOS.Where(x => x.Id_Condominio.Equals(model.Id_Condominio)).FirstOrDefault();
@@ -100,12 +106,14 @@ namespace AdminVivienda2.Controllers.Catalogos
                     condominio.DemMun = model.DemMun;
                     condominio.Id_Estado = model.Id_Estado;
                     conex.SaveChanges();
+                    _respuesta.ejecucion = true;
+                    _respuesta.mensaje.Add(Resources.Mensajes.MensajeEditar);
                 }
             }
             catch
             {
                 _respuesta.ejecucion = false;
-                _respuesta.mensaje.Add("");
+                _respuesta.mensaje.Add(Resources.Mensajes.MensajeError);
 
             }
             return _respuesta;
@@ -114,6 +122,7 @@ namespace AdminVivienda2.Controllers.Catalogos
         {
             try
             {
+
                 List<CAT_CONDOMINIOS> listado;
                 _respuesta = new RespuestaModel();
                 using (var conex = new DatabaseViviendaEntities())
@@ -132,7 +141,7 @@ namespace AdminVivienda2.Controllers.Catalogos
             catch
             {
                 _respuesta.ejecucion = false;
-                _respuesta.mensaje.Add("");
+                _respuesta.mensaje.Add(Resources.Mensajes.MensajeError);
 
             }
             return _respuesta;
@@ -153,7 +162,7 @@ namespace AdminVivienda2.Controllers.Catalogos
             catch
             {
                 _respuesta.ejecucion = false;
-                _respuesta.mensaje.Add("");
+                _respuesta.mensaje.Add(Resources.Mensajes.MensajeError);
 
             }
             return _respuesta;
