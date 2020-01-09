@@ -76,8 +76,8 @@ function LlenaSelect(url, control) {
 function RevisaInputValida() {
     var respuesta = false;
     $(".valida").each(function () {
-        if (this.type == "text") {
-            if ($(this).val() == "") {
+        if ((this.type === "text") || (this.type === "number")) {
+            if ($(this).val() === "") {
                 $(this).addClass("invalid");
                 $(this).parent().find("span").addClass("textRed");
                 $(this).parent().find(".helper-text").remove();
@@ -93,8 +93,8 @@ function RevisaInputValida() {
                 }
             }
         }
-        if (this.type == "select-one") {
-            if ($(this).val() == "-1") {
+        if (this.type === "select-one") {
+            if ($(this).val() === "-1") {
                 //$(this).addClass("invalid");
                 $(this).parent().parent().find("span").addClass("textRed");
                 $(this).parent().find(".helper-text").remove();

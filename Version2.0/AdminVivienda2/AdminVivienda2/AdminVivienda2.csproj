@@ -142,6 +142,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
+    <Compile Include="Controllers\Catalogos\EstadosController.cs" />
+    <Compile Include="Controllers\Catalogos\Nivel1Campo1Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\CAT_CONDOMINIOS.cs">
       <DependentUpon>ModelVivienda.tt</DependentUpon>
@@ -167,6 +169,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CondominioModel.cs" />
+    <Compile Include="Models\Nivel1Campo1Model.cs" />
+    <Compile Include="Models\RespuestaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -230,9 +235,13 @@
     <Content Include="Views\Condominio\Index.cshtml" />
     <Content Include="Views\Condominio\Grid.cshtml" />
     <Content Include="Views\Condominio\Condominio.cshtml" />
+    <Content Include="Views\Nivel1Campo1\Registro.cshtml" />
+    <Content Include="Views\Nivel1Campo1\Grid.cshtml" />
+    <Content Include="Views\Nivel1Campo1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="App_GlobalResources\" />
+    <Folder Include="Views\Estados\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

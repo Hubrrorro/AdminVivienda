@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseViviendaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CAT_CONDOMINIOS">
+    <Key>
+      <PropertyRef Name="Id_Condominio" />
+    </Key>
+    <Property Name="Id_Condominio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Condominio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DemMun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cp" Type="Int32" />
+    <Property Name="Clave" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Estado" Type="Int32" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CAT_ESTADOS" Relationship="Self.FK__CAT_CONDO__Id_Es__276EDEB3" FromRole="CAT_CONDOMINIOS" ToRole="CAT_ESTADOS" />
+  </EntityType>
+  <EntityType Name="CAT_ESTADOS">
+    <Key>
+      <PropertyRef Name="Id_Estado" />
+    </Key>
+    <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="CAT_CONDOMINIOS" Relationship="Self.FK__CAT_CONDO__Id_Es__276EDEB3" FromRole="CAT_ESTADOS" ToRole="CAT_CONDOMINIOS" />
+  </EntityType>
+  <Association Name="FK__CAT_CONDO__Id_Es__276EDEB3">
+    <End Role="CAT_ESTADOS" Type="Self.CAT_ESTADOS" Multiplicity="0..1" />
+    <End Role="CAT_CONDOMINIOS" Type="Self.CAT_CONDOMINIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_ESTADOS">
+        <PropertyRef Name="Id_Estado" />
+      </Principal>
+      <Dependent Role="CAT_CONDOMINIOS">
+        <PropertyRef Name="Id_Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseViviendaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CAT_CONDOMINIOS" EntityType="Self.CAT_CONDOMINIOS" />
+    <EntitySet Name="CAT_ESTADOS" EntityType="Self.CAT_ESTADOS" />
+    <AssociationSet Name="FK__CAT_CONDO__Id_Es__276EDEB3" Association="Self.FK__CAT_CONDO__Id_Es__276EDEB3">
+      <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
+      <End Role="CAT_CONDOMINIOS" EntitySet="CAT_CONDOMINIOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

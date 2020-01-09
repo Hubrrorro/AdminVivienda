@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseViviendaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CAT_CONDOMINIOS">
+    <Key>
+      <PropertyRef Name="Id_Condominio" />
+    </Key>
+    <Property Name="Id_Condominio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Condominio" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DemMun" Type="nvarchar" MaxLength="50" />
+    <Property Name="Colonia" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cp" Type="int" />
+    <Property Name="Clave" Type="nvarchar" MaxLength="5" />
+    <Property Name="Id_Estado" Type="int" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CAT_ESTADOS">
+    <Key>
+      <PropertyRef Name="Id_Estado" />
+    </Key>
+    <Property Name="Id_Estado" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="150" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <Association Name="FK__CAT_CONDO__Id_Es__276EDEB3">
+    <End Role="CAT_ESTADOS" Type="Self.CAT_ESTADOS" Multiplicity="0..1" />
+    <End Role="CAT_CONDOMINIOS" Type="Self.CAT_CONDOMINIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_ESTADOS">
+        <PropertyRef Name="Id_Estado" />
+      </Principal>
+      <Dependent Role="CAT_CONDOMINIOS">
+        <PropertyRef Name="Id_Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseViviendaModelStoreContainer">
+    <EntitySet Name="CAT_CONDOMINIOS" EntityType="Self.CAT_CONDOMINIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_ESTADOS" EntityType="Self.CAT_ESTADOS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CAT_CONDO__Id_Es__276EDEB3" Association="Self.FK__CAT_CONDO__Id_Es__276EDEB3">
+      <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
+      <End Role="CAT_CONDOMINIOS" EntitySet="CAT_CONDOMINIOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

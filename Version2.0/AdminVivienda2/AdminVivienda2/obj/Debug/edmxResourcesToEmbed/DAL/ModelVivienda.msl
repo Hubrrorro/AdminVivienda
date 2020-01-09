@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseViviendaModelStoreContainer" CdmEntityContainer="DatabaseViviendaEntities">
+    <EntitySetMapping Name="CAT_CONDOMINIOS">
+      <EntityTypeMapping TypeName="DatabaseViviendaModel.CAT_CONDOMINIOS">
+        <MappingFragment StoreEntitySet="CAT_CONDOMINIOS">
+          <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
+          <ScalarProperty Name="Condominio" ColumnName="Condominio" />
+          <ScalarProperty Name="DemMun" ColumnName="DemMun" />
+          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+          <ScalarProperty Name="Cp" ColumnName="Cp" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_ESTADOS">
+      <EntityTypeMapping TypeName="DatabaseViviendaModel.CAT_ESTADOS">
+        <MappingFragment StoreEntitySet="CAT_ESTADOS">
+          <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

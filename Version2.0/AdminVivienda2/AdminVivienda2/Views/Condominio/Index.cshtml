@@ -1,7 +1,59 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@section styles{
+    @*<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">*@
 }
+<h3 class="header">@ViewBag.Title</h3>
+<hr />
+<div class="divControl">
+    @*style="display:none"*@
+    <div class="row">
+        <div class="input-field col s4 m4 l4">
+            <label for="txtcondominio">Buscar condominio:</label>
+            <input type="text" id="txtcondominio">
+        </div>
+        <div class="input-field col s4 m4 l4">
+            <select id="ddlActivo">
+                <option selected="" value="-1">Todos</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+            <label>Estatus:</label>
+        </div>
+        <div class="col s4 m4 l4">
+            <div class="row valign-wrapper">
+                <div class="col s10">
+                    <button type="button" class="btn-info waves-effect waves-light btn btnComponent"><i class="material-icons left">search</i>Buscar</button>
+                </div>
+                <div class="col s2">
+                    <a href="@Url.Action("Create")" class="waves-effect waves-light btn-floating btnComponent"><i class="material-icons left">add</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div id="divTableCondominio">
 
-<h2>Index</h2>
-
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        var _urlGrid = '@Url.Action("Grid")';
+        $(document).ready(function () {
+            EjecutaAjaxBusqueda();
+            $('select').formSelect();
+        });
+        $(".btn-info").click(function () {
+            EjecutaAjaxBusqueda();
+        });
+        function EjecutaAjaxBusqueda() {
+            var modelo = new Object();
+            modelo.Condominio = $('#txtcondominio').val();
+            modelo.Activo = $('#ddlActivo').val();
+            FncExeAjax(_urlGrid, modelo, "POST", false, FncGrid);
+        }
+        function FncGrid(datos) {
+            $('#divTableCondominio').html(datos);
+            $('#divControl').fadeIn();
+        }
+    </script>
+}
