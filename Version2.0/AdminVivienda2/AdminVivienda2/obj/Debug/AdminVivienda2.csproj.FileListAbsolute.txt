@@ -89,7 +89,6 @@ C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\Version2.0\AdminVivienda
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\bin\es\System.Net.Http.Formatting.resources.dll
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\bin\es\System.Web.Http.resources.dll
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\bin\es\System.Web.Http.WebHost.resources.dll
-C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\obj\Debug\AdminVivienda2.csprojAssemblyReference.cache
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\obj\Debug\AdminVivienda2.csproj.CopyComplete
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\obj\Debug\AdminVivienda2.dll
 C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\obj\Debug\AdminVivienda2.pdb
@@ -189,3 +188,4 @@ C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\Version2.0\
 C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\obj\Debug\AdminVivienda2.csproj.CopyComplete
 C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\obj\Debug\AdminVivienda2.dll
 C:\Users\rrorro pc\Documents\Codigo\GitHub\AdminCuerna\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\obj\Debug\AdminVivienda2.pdb
+C:\Users\RroRroLap\Documents\Personal\Git\AdminVivienda\Version2.0\AdminVivienda2\AdminVivienda2\obj\Debug\AdminVivienda2.csprojAssemblyReference.cache

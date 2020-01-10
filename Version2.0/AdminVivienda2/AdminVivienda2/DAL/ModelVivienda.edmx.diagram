@@ -8,6 +8,10 @@
         <EntityTypeShape EntityType="DatabaseViviendaModel.CAT_CONDOMINIOS" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseViviendaModel.CAT_ESTADOS" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="DatabaseViviendaModel.FK__CAT_CONDO__Id_Es__276EDEB3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DatabaseViviendaModel.CAT_PERSONAS" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="DatabaseViviendaModel.CAT_VIVIENDAS" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="DatabaseViviendaModel.FK__CAT_VIVIE__id_Co__3B75D760" />
+        <AssociationConnector Association="DatabaseViviendaModel.FK__CAT_VIVIE__id_Pr__3A81B327" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

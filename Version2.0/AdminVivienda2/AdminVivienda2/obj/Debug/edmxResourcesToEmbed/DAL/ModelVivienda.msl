@@ -24,5 +24,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CAT_PERSONAS">
+      <EntityTypeMapping TypeName="DatabaseViviendaModel.CAT_PERSONAS">
+        <MappingFragment StoreEntitySet="CAT_PERSONAS">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Contacto2" ColumnName="Contacto2" />
+          <ScalarProperty Name="Contacto1" ColumnName="Contacto1" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="ApeMat" ColumnName="ApeMat" />
+          <ScalarProperty Name="ApePat" ColumnName="ApePat" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAT_VIVIENDAS">
+      <EntityTypeMapping TypeName="DatabaseViviendaModel.CAT_VIVIENDAS">
+        <MappingFragment StoreEntitySet="CAT_VIVIENDAS">
+          <ScalarProperty Name="Vivienda" ColumnName="Vivienda" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="id_Condominio" ColumnName="id_Condominio" />
+          <ScalarProperty Name="id_TipoVivienda" ColumnName="id_TipoVivienda" />
+          <ScalarProperty Name="id_Propietario" ColumnName="id_Propietario" />
+          <ScalarProperty Name="Lote" ColumnName="Lote" />
+          <ScalarProperty Name="NumInt" ColumnName="NumInt" />
+          <ScalarProperty Name="NumExt" ColumnName="NumExt" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="Id_Vivienda" ColumnName="Id_Vivienda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

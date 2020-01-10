@@ -1,0 +1,23 @@
+﻿
+@model List<AdminVivienda2.DAL.CAT_VIVIENDAS>
+@{
+              WebGrid grid = new WebGrid(Model);
+}
+@grid.GetHtml(
+            tableStyle: "table table-hover table-responsive",
+            alternatingRowStyle: "table-dark",
+            mode: WebGridPagerModes.All,
+            firstText: "<< Primero",
+            previousText: "< Anterior",
+            nextText: "Siguiente >",
+            lastText: "Último >>", //add next or prev link in webgrid
+            columns: grid.Columns(
+                grid.Column("Vivienda", "Vivienda", canSort: true),
+                //grid.Column("CAT_CONDOMINIO.Condominio","Condominio", canSort: true),
+                //grid.Column("TipoVivienda", canSort: true),
+                 grid.Column(header: "Estatus", canSort: false, style: "", format: (item) => new HtmlString(
+                       "<i class='material-icons'>" + (item.Activo ? "check_box" : "check_box_outline_blank") + "</i>")),
+                grid.Column(header: "Editar", canSort: false, style: "", format: (item) => new HtmlString(
+                       "<a href=" + @Url.Action("Details", new { id = item.Id_Vivienda }) + "  title='Editar' class='btn-floating waves-effect waves-light ' ><i class='material-icons left'>brush</i></a> "))
+                            )
+                        )

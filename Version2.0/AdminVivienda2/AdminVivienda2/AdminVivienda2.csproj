@@ -146,15 +146,24 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BL\CondominioBL.cs" />
+    <Compile Include="BL\ViviendaBL.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
     <Compile Include="Controllers\Catalogos\EstadosController.cs" />
     <Compile Include="Controllers\Catalogos\Nivel1Campo1Controller.cs" />
+    <Compile Include="Controllers\Catalogos\TipoViviendaController.cs" />
     <Compile Include="Controllers\Catalogos\ViviendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\CAT_CONDOMINIOS.cs">
       <DependentUpon>ModelVivienda.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CAT_ESTADOS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_PERSONAS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_VIVIENDAS.cs">
       <DependentUpon>ModelVivienda.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\ModelVivienda.Context.cs">
@@ -175,9 +184,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IGeneral.cs" />
     <Compile Include="Models\CondominioModel.cs" />
     <Compile Include="Models\Nivel1Campo1Model.cs" />
+    <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
+    <Compile Include="Models\SelectModel.cs" />
+    <Compile Include="Models\ViviendaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -244,10 +257,12 @@
     <Content Include="Views\Nivel1Campo1\Registro.cshtml" />
     <Content Include="Views\Nivel1Campo1\Grid.cshtml" />
     <Content Include="Views\Nivel1Campo1\Index.cshtml" />
+    <Content Include="Views\Vivienda\Index.cshtml" />
+    <Content Include="Views\Vivienda\Grid.cshtml" />
+    <Content Include="Views\Vivienda\Vivienda.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Estados\" />
-    <Folder Include="Views\Vivienda\" />
+    <Folder Include="Views\TipoVivienda\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

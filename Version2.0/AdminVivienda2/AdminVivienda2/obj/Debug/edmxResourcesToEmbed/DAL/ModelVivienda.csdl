@@ -13,6 +13,7 @@
     <Property Name="Id_Estado" Type="Int32" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="CAT_ESTADOS" Relationship="Self.FK__CAT_CONDO__Id_Es__276EDEB3" FromRole="CAT_CONDOMINIOS" ToRole="CAT_ESTADOS" />
+    <NavigationProperty Name="CAT_VIVIENDAS" Relationship="DatabaseViviendaModel.FK__CAT_VIVIE__id_Co__3B75D760" FromRole="CAT_CONDOMINIOS" ToRole="CAT_VIVIENDAS" />
   </EntityType>
   <EntityType Name="CAT_ESTADOS">
     <Key>
@@ -42,5 +43,70 @@
       <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
       <End Role="CAT_CONDOMINIOS" EntitySet="CAT_CONDOMINIOS" />
     </AssociationSet>
+    <EntitySet Name="CAT_PERSONAS" EntityType="DatabaseViviendaModel.CAT_PERSONAS" />
+    <EntitySet Name="CAT_VIVIENDAS" EntityType="DatabaseViviendaModel.CAT_VIVIENDAS" />
+    <AssociationSet Name="FK__CAT_VIVIE__id_Co__3B75D760" Association="DatabaseViviendaModel.FK__CAT_VIVIE__id_Co__3B75D760">
+      <End Role="CAT_CONDOMINIOS" EntitySet="CAT_CONDOMINIOS" />
+      <End Role="CAT_VIVIENDAS" EntitySet="CAT_VIVIENDAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CAT_VIVIE__id_Pr__3A81B327" Association="DatabaseViviendaModel.FK__CAT_VIVIE__id_Pr__3A81B327">
+      <End Role="CAT_PERSONAS" EntitySet="CAT_PERSONAS" />
+      <End Role="CAT_VIVIENDAS" EntitySet="CAT_VIVIENDAS" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="CAT_PERSONAS">
+    <Key>
+      <PropertyRef Name="Id_Persona" />
+    </Key>
+    <Property Name="Id_Persona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ApePat" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ApeMat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Correo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Contacto1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Contacto2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CAT_VIVIENDAS" Relationship="DatabaseViviendaModel.FK__CAT_VIVIE__id_Pr__3A81B327" FromRole="CAT_PERSONAS" ToRole="CAT_VIVIENDAS" />
+  </EntityType>
+  <EntityType Name="CAT_VIVIENDAS">
+    <Key>
+      <PropertyRef Name="Id_Vivienda" />
+    </Key>
+    <Property Name="Id_Vivienda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Calle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NumExt" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="NumInt" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Lote" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="id_Propietario" Type="Int32" />
+    <Property Name="id_TipoVivienda" Type="Int32" />
+    <Property Name="id_Condominio" Type="Int32" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="Vivienda" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CAT_CONDOMINIOS" Relationship="DatabaseViviendaModel.FK__CAT_VIVIE__id_Co__3B75D760" FromRole="CAT_VIVIENDAS" ToRole="CAT_CONDOMINIOS" />
+    <NavigationProperty Name="CAT_PERSONAS" Relationship="DatabaseViviendaModel.FK__CAT_VIVIE__id_Pr__3A81B327" FromRole="CAT_VIVIENDAS" ToRole="CAT_PERSONAS" />
+  </EntityType>
+  <Association Name="FK__CAT_VIVIE__id_Co__3B75D760">
+    <End Type="DatabaseViviendaModel.CAT_CONDOMINIOS" Role="CAT_CONDOMINIOS" Multiplicity="0..1" />
+    <End Type="DatabaseViviendaModel.CAT_VIVIENDAS" Role="CAT_VIVIENDAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_CONDOMINIOS">
+        <PropertyRef Name="Id_Condominio" />
+      </Principal>
+      <Dependent Role="CAT_VIVIENDAS">
+        <PropertyRef Name="id_Condominio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CAT_VIVIE__id_Pr__3A81B327">
+    <End Type="DatabaseViviendaModel.CAT_PERSONAS" Role="CAT_PERSONAS" Multiplicity="0..1" />
+    <End Type="DatabaseViviendaModel.CAT_VIVIENDAS" Role="CAT_VIVIENDAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_PERSONAS">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="CAT_VIVIENDAS">
+        <PropertyRef Name="id_Propietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

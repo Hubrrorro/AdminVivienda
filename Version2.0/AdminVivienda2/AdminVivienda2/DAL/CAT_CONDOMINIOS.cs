@@ -14,6 +14,12 @@ namespace AdminVivienda2.DAL
     
     public partial class CAT_CONDOMINIOS
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CAT_CONDOMINIOS()
+        {
+            this.CAT_VIVIENDAS = new HashSet<CAT_VIVIENDAS>();
+        }
+    
         public int Id_Condominio { get; set; }
         public string Condominio { get; set; }
         public string DemMun { get; set; }
@@ -24,5 +30,7 @@ namespace AdminVivienda2.DAL
         public bool Activo { get; set; }
     
         public virtual CAT_ESTADOS CAT_ESTADOS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CAT_VIVIENDAS> CAT_VIVIENDAS { get; set; }
     }
 }
