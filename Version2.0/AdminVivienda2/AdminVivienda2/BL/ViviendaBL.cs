@@ -94,7 +94,7 @@ namespace AdminVivienda2.BL
                     listTodo = listTodo.Where(x => x.Vivienda.Contains(modelo.Vivienda)).ToList();
                 if (modelo.Activo.Equals(1))
                     listTodo = listTodo.Where(x => x.Activo.Equals(true)).ToList();
-                if (!modelo.Activo.Equals(2))
+                if (modelo.Activo.Equals(0))
                     listTodo = listTodo.Where(x => x.Activo.Equals(false)).ToList();
                 _respuesta.ejecucion = true;
                 _respuesta.datos = listTodo;

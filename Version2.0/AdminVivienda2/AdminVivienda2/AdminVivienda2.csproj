@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\CondominioBL.cs" />
+    <Compile Include="BL\Nivel1Campo1BL.cs" />
     <Compile Include="BL\ViviendaBL.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
     <Compile Include="Controllers\Catalogos\EstadosController.cs" />

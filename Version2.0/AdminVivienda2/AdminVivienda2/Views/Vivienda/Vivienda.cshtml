@@ -180,9 +180,13 @@
             //modelo.Activo { get; set; }
             return modelo;
             }
-        function FncLimpiar()
+        function FncLimpiar(data)
         {
-            $("input[type=text]").val("");
+            MsnShow(data);
+            if (respuesta.ejecucion) {
+                $("input[type=text]").val("");
+            }
+            
         }
     </script>
 }

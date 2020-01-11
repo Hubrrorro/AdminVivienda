@@ -27,7 +27,7 @@ namespace AdminVivienda2.Controllers.Catalogos
         {
 
             var listVivienda = viviendaBL.Consultar(model);
-            return PartialView("~/Views/Vivienda/ViviendaGrid.cshtml", listVivienda.datos);
+            return PartialView("~/Views/Vivienda/Grid.cshtml", listVivienda.datos);
         }
         // GET: Vivienda/Details/5
         public ActionResult Details(int id)
