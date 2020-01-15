@@ -148,10 +148,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\CondominioBL.cs" />
     <Compile Include="BL\Nivel1Campo1BL.cs" />
+    <Compile Include="BL\Nivel1Campo2BL.cs" />
     <Compile Include="BL\ViviendaBL.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
     <Compile Include="Controllers\Catalogos\EstadosController.cs" />
     <Compile Include="Controllers\Catalogos\Nivel1Campo1Controller.cs" />
+    <Compile Include="Controllers\Catalogos\Nivel1Campo2Controller.cs" />
     <Compile Include="Controllers\Catalogos\TipoViviendaController.cs" />
     <Compile Include="Controllers\Catalogos\ViviendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -188,6 +190,7 @@
     <Compile Include="Interface\IGeneral.cs" />
     <Compile Include="Models\CondominioModel.cs" />
     <Compile Include="Models\Nivel1Campo1Model.cs" />
+    <Compile Include="Models\Nivel1Campo2Model.cs" />
     <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
     <Compile Include="Models\SelectModel.cs" />
@@ -261,6 +264,9 @@
     <Content Include="Views\Vivienda\Index.cshtml" />
     <Content Include="Views\Vivienda\Grid.cshtml" />
     <Content Include="Views\Vivienda\Vivienda.cshtml" />
+    <Content Include="Views\Nivel1Campo2\Index.cshtml" />
+    <Content Include="Views\Nivel1Campo2\Registro.cshtml" />
+    <Content Include="Views\Nivel1Campo2\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\TipoVivienda\" />

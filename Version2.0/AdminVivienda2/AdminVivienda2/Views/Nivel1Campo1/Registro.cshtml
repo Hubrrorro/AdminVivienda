@@ -11,15 +11,15 @@ else
 <div class="row">
     <div class="input-field col s6 m6 l6">
 
-        <label for="txtcampo">@Model.campo1 *:</label>
+        <label for="txtcampo">@Model.campo1 <span>*</span>:</label>
         @if (ViewBag.isActualizar)
         {
             <input type="hidden" id="txtid" value="@Model.datos[0].id" />
-            <input type="text" id="txtcampo" maxlength="@Model.maxValue" value="@Model.datos[0].descripcion">
+            <input type="text" id="txtcampo" class="valida" maxlength="@Model.maxValue" value="@Model.datos[0].descripcion">
         }
         else
         {
-            <input type="text" id="txtcampo" maxlength="@Model.maxValue" value="">
+            <input type="text" id="txtcampo" class="valida" maxlength="@Model.maxValue" value="">
         }
         <div style="display:none" class="invalid-feedback">Campo Requerido</div>
 
@@ -72,7 +72,8 @@ else
     <script>
         var _accion = @ViewBag.isActualizar.ToString().ToLower();
         $('#btnGuardar').click(function () {
-                 if (fncCamposRequeridos()) {
+                 var respuestaRevisa = RevisaInputValida();
+            if (respuestaRevisa) {
                 return;
             }
                 var modelo = ObtenerModelo();
@@ -104,7 +105,8 @@ else
             return campos;
         }
         $('#btnActualizar').click(function () {
-            if (fncCamposRequeridos()) {
+             var respuestaRevisa = RevisaInputValida();
+            if (respuestaRevisa) {
                 return;
             }
                 var modelo = ObtenerModelo();
