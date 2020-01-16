@@ -63,6 +63,14 @@ namespace AdminVivienda2.BL
                     _respuesta.mensaje.Add(Resources.Mensajes.MensajeDuplicado);
                     return _respuesta;
                 }
+                CondominioBL condominioBL = new CondominioBL();
+                TipoViviendaBL tipoViviendaBL = new TipoViviendaBL();
+                var lsttipoVivienda = (List<Nivel1_2Model>)tipoViviendaBL.Consultar(new Nivel1_2Model() { id = modelo.id_TipoVivienda.Value , activo=-1 }).datos;
+                var condominio= (CAT_CONDOMINIOS)condominioBL.ConsultarId(modelo.id_Condominio.Value).datos;
+                string tipoVivienda = lsttipoVivienda.FirstOrDefault().descripcion2;
+                modelo.Vivienda = condominio.Clave + " " + modelo.Calle + " " + tipoVivienda + " " + modelo.NumExt;
+                if (String.IsNullOrEmpty(modelo.NumInt))
+                    modelo.Vivienda += modelo.Vivienda + " " + modelo.NumInt;
                 using (var conex = new DatabaseViviendaEntities())
                 {
                     modelo.Activo = true;

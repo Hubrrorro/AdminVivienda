@@ -89,13 +89,23 @@ namespace AdminVivienda2.BL
                     _respuesta.mensaje.Add("El dato que deseas ingresar ya se encuentra registrado");
                     return _respuesta;
                 }
+                intExiste = listado.Where(x => x.descripcion2.Trim().ToUpper().Equals(modelo.descripcion2.Trim().ToUpper())).Count();
+                if (intExiste > 0)
+                {
+                    _respuesta.ejecucion = false;
+                    _respuesta.mensaje.Add("El dato que deseas ingresar ya se encuentra registrado");
+                    return _respuesta;
+                }
                 using (var conex = new DatabaseViviendaEntities())
                 {
                     //List<SqlParameter> parametros = new List<SqlParameter>() { new SqlParameter("@VALOR", model.descripcion.Trim()) };
 
                     _qry = "INSERT INTO " + _nivel.tablaC2.nombreTabla + "(" + _nivel.tablaC2.descripcion + "," + _nivel.tablaC2.descripcion2 + ", ACTIVO) VALUES (@VALOR,@VALOR2,1)";
-                    conex.Database.ExecuteSqlCommand(_qry, new SqlParameter("@VALOR", modelo.descripcion.Trim()));
-                    conex.Database.ExecuteSqlCommand(_qry, new SqlParameter("@VALOR2", modelo.descripcion2.Trim()));
+                    List<SqlParameter> parametros = new List<SqlParameter>();
+                    parametros.Add(new SqlParameter("@VALOR", modelo.descripcion.Trim()));
+                    parametros.Add(new SqlParameter("@VALOR2", modelo.descripcion2.Trim()));
+                    conex.Database.ExecuteSqlCommand(_qry, parametros.ToArray());
+                    //conex.Database.ExecuteSqlCommand(_qry, new SqlParameter("@VALOR2", modelo.descripcion2.Trim()));
                 }
                 _respuesta.ejecucion = true;
                 _respuesta.mensaje.Add("Se agregó correctamente");
