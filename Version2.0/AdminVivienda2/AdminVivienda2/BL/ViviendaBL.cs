@@ -63,6 +63,9 @@ namespace AdminVivienda2.BL
                     _respuesta.mensaje.Add(Resources.Mensajes.MensajeDuplicado);
                     return _respuesta;
                 }
+                CondominioBL condominioBL = new CondominioBL();
+                var condominio = condominioBL.ConsultarId(modelo.id_Condominio.Value);
+
                 using (var conex = new DatabaseViviendaEntities())
                 {
                     modelo.Activo = true;
