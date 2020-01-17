@@ -27,7 +27,7 @@ namespace AdminVivienda2.Controllers.Catalogos
         {
             ViewBag.isActualizar = true;
             var resul = _nivel1BL.Consultar(new Nivel1_2Model() { id = id, activo = -1 });
-            _nivel.datos = resul.datos;
+            _nivel.datosC2 = resul.datos;
             return View("~/Views/Nivel1Campo2/Registro.cshtml", _nivel);
         }
         public ActionResult Create()

@@ -149,6 +149,7 @@
     <Compile Include="BL\CondominioBL.cs" />
     <Compile Include="BL\Nivel1Campo1BL.cs" />
     <Compile Include="BL\Nivel1Campo2BL.cs" />
+    <Compile Include="BL\TipoViviendaBL.cs" />
     <Compile Include="BL\ViviendaBL.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
     <Compile Include="Controllers\Catalogos\EstadosController.cs" />
