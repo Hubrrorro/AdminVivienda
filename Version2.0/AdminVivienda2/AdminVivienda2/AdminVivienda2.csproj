@@ -151,10 +151,12 @@
     <Compile Include="BL\Nivel1Campo2BL.cs" />
     <Compile Include="BL\TipoViviendaBL.cs" />
     <Compile Include="BL\ViviendaBL.cs" />
+    <Compile Include="Controllers\Administracion\ContratoAdminController.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
     <Compile Include="Controllers\Catalogos\EstadosController.cs" />
     <Compile Include="Controllers\Catalogos\Nivel1Campo1Controller.cs" />
     <Compile Include="Controllers\Catalogos\Nivel1Campo2Controller.cs" />
+    <Compile Include="Controllers\Catalogos\ServiciosController.cs" />
     <Compile Include="Controllers\Catalogos\TipoViviendaController.cs" />
     <Compile Include="Controllers\Catalogos\ViviendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -270,6 +272,9 @@
     <Content Include="Views\Nivel1Campo2\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controllers\Usuario\" />
+    <Folder Include="Views\ContratoAdmin\" />
+    <Folder Include="Views\Servicios\" />
     <Folder Include="Views\TipoVivienda\" />
   </ItemGroup>
   <ItemGroup>
