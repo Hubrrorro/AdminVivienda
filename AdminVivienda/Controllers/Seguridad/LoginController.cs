@@ -30,7 +30,7 @@ namespace AdminVivienda.Controllers.Seguridad
 
         [HttpPost]
         [Route("authenticate")]
-        public IHttpActionResult Authenticate(LoginRequest login)
+        public IHttpActionResult Authenticate([FromBody]LoginRequest login)
         {
             if (login == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);

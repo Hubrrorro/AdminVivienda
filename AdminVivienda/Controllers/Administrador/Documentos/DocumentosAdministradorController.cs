@@ -20,8 +20,8 @@ namespace AdminVivienda.Controllers.Administrador.Documentos
         }
         public PartialViewResult Grid(DocumentosAdministradorModel model)
         {
-            var listVivienda = _condominioBusiness.Consultar(model);
-            return PartialView("~/Views/Vivienda/ViviendaGrid.cshtml", listVivienda.datos);
+            //var listVivienda = _condominioBusiness.Consultar(model);
+            return PartialView("~/Views/Vivienda/ViviendaGrid.cshtml");
         }
         //public ActionResult Details(int id)
         //{
