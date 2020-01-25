@@ -1,4 +1,5 @@
-﻿using AdminVivienda2.Models;
+﻿using AdminVivienda2.BL;
+using AdminVivienda2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,12 @@ namespace AdminVivienda2.Controllers.Login
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             //TODO: Validate credentials Correctly, this code is only for demo !!
-            bool isCredentialValid = (login.Password == "123456");
+            //bool isCredentialValid = (login.Password == "123456");
+            UsuarioBL usuarioBl = new UsuarioBL();
+            bool isCredentialValid = usuarioBl.CompraraContraseña(new DAL.Tbl_Usuarios() {
+                 Usuario= login.Username,
+                 Password= login.Password
+            }).ejecucion;
             if (isCredentialValid)
             {
                 var token = TokenGenerator.GenerateTokenJwt(login.Username);
