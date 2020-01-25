@@ -14,11 +14,12 @@ namespace AdminVivienda2.Controllers.Administracion
         //    condominioBl = new CondominioBL();
         //}
         //// GET: Condominio
-        //public ActionResult Index()
-        //{
-        //    ViewBag.Title = "Buscar condominio";
-        //    return View();
-        //}
+        public ActionResult Index()
+        {
+            ViewBag.Title = "Buscar contrato";
+            ViewBag.Accion = "Agregar";
+            return View();
+        }
         //public ActionResult Details(int id)
         //{
         //    ViewBag.Accion = "Actualizar";
@@ -26,13 +27,13 @@ namespace AdminVivienda2.Controllers.Administracion
         //    var resul = condominioBl.ConsultarId(id);
         //    return View("~/Views/Condominio/Condominio.cshtml", (DAL.CAT_CONDOMINIOS)resul.datos);
         //}
-        //public ActionResult Create()
-        //{
-        //    ViewBag.Accion = "Agregar";
-        //    ViewBag.Title = "Agregar condominio";
-        //    CAT_CONDOMINIOS condominio = new CAT_CONDOMINIOS();
-        //    return View("~/Views/Condominio/Condominio.cshtml", condominio);
-        //}
+        public ActionResult Create()
+        {
+            ViewBag.Accion = "Agregar";
+            ViewBag.Title = "Agregar contrato";
+            //CAT_CONDOMINIOS condominio = new CAT_CONDOMINIOS();
+            return View("~/Views/ContratoAdmin/Contrato.cshtml");
+        }
         //public PartialViewResult Grid(CondominioModel modelo)
         //{
         //    var resul = condominioBl.Consultar(modelo);

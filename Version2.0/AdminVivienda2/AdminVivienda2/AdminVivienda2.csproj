@@ -270,10 +270,12 @@
     <Content Include="Views\Nivel1Campo2\Index.cshtml" />
     <Content Include="Views\Nivel1Campo2\Registro.cshtml" />
     <Content Include="Views\Nivel1Campo2\Grid.cshtml" />
+    <Content Include="Views\ContratoAdmin\Index.cshtml" />
+    <Content Include="Views\ContratoAdmin\Contrato.cshtml" />
+    <Content Include="Views\ContratoAdmin\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\Usuario\" />
-    <Folder Include="Views\ContratoAdmin\" />
     <Folder Include="Views\Servicios\" />
     <Folder Include="Views\TipoVivienda\" />
   </ItemGroup>
