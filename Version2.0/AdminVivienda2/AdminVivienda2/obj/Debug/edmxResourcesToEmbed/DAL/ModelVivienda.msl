@@ -54,5 +54,61 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CAT_TIPOVIVIENDAS">
+      <EntityTypeMapping TypeName="DatabaseViviendaModel.CAT_TIPOVIVIENDAS">
+        <MappingFragment StoreEntitySet="CAT_TIPOVIVIENDAS">
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="TipoVivienda" ColumnName="TipoVivienda" />
+          <ScalarProperty Name="Id_TipoVivienda" ColumnName="Id_TipoVivienda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_CONTRATOS">
+      <EntityTypeMapping TypeName="DatabaseViviendaModel.TBL_CONTRATOS">
+        <MappingFragment StoreEntitySet="TBL_CONTRATOS">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FchFin" ColumnName="FchFin" />
+          <ScalarProperty Name="FchInicio" ColumnName="FchInicio" />
+          <ScalarProperty Name="Id_Condominio" ColumnName="Id_Condominio" />
+          <ScalarProperty Name="Id_Contrato" ColumnName="Id_Contrato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_SERVICIOS">
+      <EntityTypeMapping TypeName="DatabaseViviendaModel.TBL_SERVICIOS">
+        <MappingFragment StoreEntitySet="TBL_SERVICIOS">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Servicios" ColumnName="Servicios" />
+          <ScalarProperty Name="Id_Servicio" ColumnName="Id_Servicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Usuarios">
+      <EntityTypeMapping TypeName="DatabaseViviendaModel.Tbl_Usuarios">
+        <MappingFragment StoreEntitySet="Tbl_Usuarios">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
+          <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ASOC_CONTRATOS_SERVICIOS">
+      <EntityTypeMapping TypeName="DatabaseViviendaModel.ASOC_CONTRATOS_SERVICIOS">
+        <MappingFragment StoreEntitySet="ASOC_CONTRATOS_SERVICIOS">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="MesVen" ColumnName="MesVen" />
+          <ScalarProperty Name="MesAct" ColumnName="MesAct" />
+          <ScalarProperty Name="MesAnt" ColumnName="MesAnt" />
+          <ScalarProperty Name="Id_Servicio" ColumnName="Id_Servicio" />
+          <ScalarProperty Name="Id_Contrato" ColumnName="Id_Contrato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

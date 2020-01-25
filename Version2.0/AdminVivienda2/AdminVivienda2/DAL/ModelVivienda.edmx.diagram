@@ -12,6 +12,14 @@
         <EntityTypeShape EntityType="DatabaseViviendaModel.CAT_VIVIENDAS" Width="1.5" PointX="5.25" PointY="0.75" />
         <AssociationConnector Association="DatabaseViviendaModel.FK__CAT_VIVIE__id_Co__3B75D760" />
         <AssociationConnector Association="DatabaseViviendaModel.FK__CAT_VIVIE__id_Pr__3A81B327" />
+        <EntityTypeShape EntityType="DatabaseViviendaModel.CAT_TIPOVIVIENDAS" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DatabaseViviendaModel.TBL_CONTRATOS" Width="1.5" PointX="5.625" PointY="5.375" />
+        <EntityTypeShape EntityType="DatabaseViviendaModel.TBL_SERVICIOS" Width="1.5" PointX="5.625" PointY="8.625" />
+        <EntityTypeShape EntityType="DatabaseViviendaModel.Tbl_Usuarios" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DatabaseViviendaModel.ASOC_CONTRATOS_SERVICIOS" Width="1.5" PointX="7.875" PointY="5.25" />
+        <AssociationConnector Association="DatabaseViviendaModel.FK__TBL_CONTR__Id_Co__4AB81AF0" />
+        <AssociationConnector Association="DatabaseViviendaModel.FK__ASOC_CONT__Id_Co__571DF1D5" />
+        <AssociationConnector Association="DatabaseViviendaModel.FK__ASOC_CONT__Id_Se__5812160E" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

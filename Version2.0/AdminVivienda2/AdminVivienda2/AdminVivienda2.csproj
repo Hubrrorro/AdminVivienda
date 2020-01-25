@@ -52,9 +52,21 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.6.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.6.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.6.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.6.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -150,6 +162,7 @@
     <Compile Include="BL\Nivel1Campo1BL.cs" />
     <Compile Include="BL\Nivel1Campo2BL.cs" />
     <Compile Include="BL\TipoViviendaBL.cs" />
+    <Compile Include="BL\UsuarioBL.cs" />
     <Compile Include="BL\ViviendaBL.cs" />
     <Compile Include="Controllers\Administracion\ContratoAdminController.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
@@ -160,6 +173,15 @@
     <Compile Include="Controllers\Catalogos\TipoViviendaController.cs" />
     <Compile Include="Controllers\Catalogos\ViviendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Login\CustomersController.cs" />
+    <Compile Include="Controllers\Login\LoginController.cs" />
+    <Compile Include="Controllers\Login\TokenGenerator.cs" />
+    <Compile Include="Controllers\Login\TokenValidationHandler.cs" />
+    <Compile Include="Controllers\PruebaController.cs" />
+    <Compile Include="Controllers\Usuario\UsuarioController.cs" />
+    <Compile Include="DAL\ASOC_CONTRATOS_SERVICIOS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\CAT_CONDOMINIOS.cs">
       <DependentUpon>ModelVivienda.tt</DependentUpon>
     </Compile>
@@ -167,6 +189,9 @@
       <DependentUpon>ModelVivienda.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CAT_PERSONAS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_TIPOVIVIENDAS.cs">
       <DependentUpon>ModelVivienda.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CAT_VIVIENDAS.cs">
@@ -187,16 +212,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelVivienda.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\TBL_CONTRATOS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TBL_SERVICIOS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Tbl_Usuarios.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interface\IGeneral.cs" />
+    <Compile Include="Interface\IUsuario.cs" />
     <Compile Include="Models\CondominioModel.cs" />
+    <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Nivel1Campo1Model.cs" />
     <Compile Include="Models\Nivel1Campo2Model.cs" />
     <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
     <Compile Include="Models\SelectModel.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\ViviendaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -270,14 +307,12 @@
     <Content Include="Views\Nivel1Campo2\Index.cshtml" />
     <Content Include="Views\Nivel1Campo2\Registro.cshtml" />
     <Content Include="Views\Nivel1Campo2\Grid.cshtml" />
-    <Content Include="Views\ContratoAdmin\Index.cshtml" />
-    <Content Include="Views\ContratoAdmin\Contrato.cshtml" />
-    <Content Include="Views\ContratoAdmin\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\Usuario\" />
+    <Folder Include="Views\ContratoAdmin\" />
     <Folder Include="Views\Servicios\" />
     <Folder Include="Views\TipoVivienda\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -319,7 +354,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55650</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44323/</IISUrl>
+          <IISUrl>http://localhost:44323/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

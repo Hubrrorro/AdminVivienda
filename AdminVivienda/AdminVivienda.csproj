@@ -163,6 +163,7 @@
     <Compile Include="BL\Catalogos\ViviendaBusiness.cs" />
     <Compile Include="BL\CondominioBusiness.cs" />
     <Compile Include="BL\DocumentosAdministradorBusiness.cs" />
+    <Compile Include="Controllers\Administrador\Acceso\AccesoController.cs" />
     <Compile Include="Controllers\Administrador\Avisos\AvisosAdministradorController.cs" />
     <Compile Include="Controllers\Administrador\Documentos\DocumentosAdministradorController.cs" />
     <Compile Include="Controllers\Catalogos\CatalogoNivel1Controller.cs" />
@@ -1652,6 +1653,9 @@
     <Content Include="Views\CatalogosGenerico\Nivel1Campo2\Registro.cshtml" />
     <Content Include="Views\Vivienda\Vivienda.cshtml" />
     <Content Include="Views\DocumentosAdministrador\Index.cshtml" />
+    <Content Include="Views\Acceso\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Acceso\Recuperar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mensajes.resx">

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Acceso";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="row">
+    <center>
+        Acceso al sistema.
+    </center>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="txtusuario" type="text" class="validate">
+        <label for="txtusuario">Usuario:</label>
+    </div>
+    <div class="input-field col s12">
+        <i class="material-icons prefix">vpn_key</i>
+        <input id="txtpass" type="password" class="validate">
+        <label for="txtpass">Contraseña:</label>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col s6 center">
+        <a href="@Url.Action("Recuperar")">Recupera contraseña</a>
+    </div>
+    <div class="col s6 center">
+        <button class="waves-effect waves-light btn"><i class="material-icons left">verified_user</i>Ingresar</button>
+    </div>
+</div>

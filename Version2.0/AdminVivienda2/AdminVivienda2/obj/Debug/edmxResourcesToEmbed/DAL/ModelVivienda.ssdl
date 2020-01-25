@@ -1,5 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DatabaseViviendaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'C:\USERS\RRORROLAP\DOCUMENTS\PERSONAL\GIT\ADMINVIVIENDA\VERSION2.0\ADMINVIVIENDA2\ADMINVIVIENDA2\APP_DATA\DATABASEVIVIENDA.MDF.dbo.ASOC_CONTRATOS_SERVICIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ASOC_CONTRATOS_SERVICIOS">
+    <Key>
+      <PropertyRef Name="Id_Contrato" />
+      <PropertyRef Name="Id_Servicio" />
+      <PropertyRef Name="MesAnt" />
+      <PropertyRef Name="MesAct" />
+      <PropertyRef Name="MesVen" />
+      <PropertyRef Name="Activo" />
+    </Key>
+    <Property Name="Id_Contrato" Type="int" Nullable="false" />
+    <Property Name="Id_Servicio" Type="int" Nullable="false" />
+    <Property Name="MesAnt" Type="money" Nullable="false" />
+    <Property Name="MesAct" Type="money" Nullable="false" />
+    <Property Name="MesVen" Type="money" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="CAT_CONDOMINIOS">
     <Key>
       <PropertyRef Name="Id_Condominio" />
@@ -34,6 +52,15 @@
     <Property Name="Contacto2" Type="nvarchar" MaxLength="10" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="CAT_TIPOVIVIENDAS">
+    <Key>
+      <PropertyRef Name="Id_TipoVivienda" />
+    </Key>
+    <Property Name="Id_TipoVivienda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoVivienda" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="Clave" Type="nvarchar" MaxLength="5" />
+  </EntityType>
   <EntityType Name="CAT_VIVIENDAS">
     <Key>
       <PropertyRef Name="Id_Vivienda" />
@@ -49,6 +76,61 @@
     <Property Name="Activo" Type="bit" />
     <Property Name="Vivienda" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="TBL_CONTRATOS">
+    <Key>
+      <PropertyRef Name="Id_Contrato" />
+    </Key>
+    <Property Name="Id_Contrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Condominio" Type="int" Nullable="false" />
+    <Property Name="FchInicio" Type="date" Nullable="false" />
+    <Property Name="FchFin" Type="date" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_SERVICIOS">
+    <Key>
+      <PropertyRef Name="Id_Servicio" />
+    </Key>
+    <Property Name="Id_Servicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Servicios" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Usuarios">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApPaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApMaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ASOC_CONT__Id_Co__571DF1D5">
+    <End Role="TBL_CONTRATOS" Type="Self.TBL_CONTRATOS" Multiplicity="1" />
+    <End Role="ASOC_CONTRATOS_SERVICIOS" Type="Self.ASOC_CONTRATOS_SERVICIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_CONTRATOS">
+        <PropertyRef Name="Id_Contrato" />
+      </Principal>
+      <Dependent Role="ASOC_CONTRATOS_SERVICIOS">
+        <PropertyRef Name="Id_Contrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ASOC_CONT__Id_Se__5812160E">
+    <End Role="TBL_SERVICIOS" Type="Self.TBL_SERVICIOS" Multiplicity="1" />
+    <End Role="ASOC_CONTRATOS_SERVICIOS" Type="Self.ASOC_CONTRATOS_SERVICIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_SERVICIOS">
+        <PropertyRef Name="Id_Servicio" />
+      </Principal>
+      <Dependent Role="ASOC_CONTRATOS_SERVICIOS">
+        <PropertyRef Name="Id_Servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__CAT_CONDO__Id_Es__276EDEB3">
     <End Role="CAT_ESTADOS" Type="Self.CAT_ESTADOS" Multiplicity="0..1" />
     <End Role="CAT_CONDOMINIOS" Type="Self.CAT_CONDOMINIOS" Multiplicity="*" />
@@ -85,11 +167,45 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__TBL_CONTR__Id_Co__4AB81AF0">
+    <End Role="CAT_CONDOMINIOS" Type="Self.CAT_CONDOMINIOS" Multiplicity="1" />
+    <End Role="TBL_CONTRATOS" Type="Self.TBL_CONTRATOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_CONDOMINIOS">
+        <PropertyRef Name="Id_Condominio" />
+      </Principal>
+      <Dependent Role="TBL_CONTRATOS">
+        <PropertyRef Name="Id_Condominio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DatabaseViviendaModelStoreContainer">
     <EntitySet Name="CAT_CONDOMINIOS" EntityType="Self.CAT_CONDOMINIOS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_ESTADOS" EntityType="Self.CAT_ESTADOS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_PERSONAS" EntityType="Self.CAT_PERSONAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAT_TIPOVIVIENDAS" EntityType="Self.CAT_TIPOVIVIENDAS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAT_VIVIENDAS" EntityType="Self.CAT_VIVIENDAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_CONTRATOS" EntityType="Self.TBL_CONTRATOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_SERVICIOS" EntityType="Self.TBL_SERVICIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Usuarios" EntityType="Self.Tbl_Usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ASOC_CONTRATOS_SERVICIOS" EntityType="Self.ASOC_CONTRATOS_SERVICIOS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ASOC_CONTRATOS_SERVICIOS].[Id_Contrato] AS [Id_Contrato], 
+    [ASOC_CONTRATOS_SERVICIOS].[Id_Servicio] AS [Id_Servicio], 
+    [ASOC_CONTRATOS_SERVICIOS].[MesAnt] AS [MesAnt], 
+    [ASOC_CONTRATOS_SERVICIOS].[MesAct] AS [MesAct], 
+    [ASOC_CONTRATOS_SERVICIOS].[MesVen] AS [MesVen], 
+    [ASOC_CONTRATOS_SERVICIOS].[Activo] AS [Activo]
+    FROM [dbo].[ASOC_CONTRATOS_SERVICIOS] AS [ASOC_CONTRATOS_SERVICIOS]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__ASOC_CONT__Id_Co__571DF1D5" Association="Self.FK__ASOC_CONT__Id_Co__571DF1D5">
+      <End Role="TBL_CONTRATOS" EntitySet="TBL_CONTRATOS" />
+      <End Role="ASOC_CONTRATOS_SERVICIOS" EntitySet="ASOC_CONTRATOS_SERVICIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ASOC_CONT__Id_Se__5812160E" Association="Self.FK__ASOC_CONT__Id_Se__5812160E">
+      <End Role="TBL_SERVICIOS" EntitySet="TBL_SERVICIOS" />
+      <End Role="ASOC_CONTRATOS_SERVICIOS" EntitySet="ASOC_CONTRATOS_SERVICIOS" />
+    </AssociationSet>
     <AssociationSet Name="FK__CAT_CONDO__Id_Es__276EDEB3" Association="Self.FK__CAT_CONDO__Id_Es__276EDEB3">
       <End Role="CAT_ESTADOS" EntitySet="CAT_ESTADOS" />
       <End Role="CAT_CONDOMINIOS" EntitySet="CAT_CONDOMINIOS" />
@@ -101,6 +217,10 @@
     <AssociationSet Name="FK__CAT_VIVIE__id_Pr__3A81B327" Association="Self.FK__CAT_VIVIE__id_Pr__3A81B327">
       <End Role="CAT_PERSONAS" EntitySet="CAT_PERSONAS" />
       <End Role="CAT_VIVIENDAS" EntitySet="CAT_VIVIENDAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TBL_CONTR__Id_Co__4AB81AF0" Association="Self.FK__TBL_CONTR__Id_Co__4AB81AF0">
+      <End Role="CAT_CONDOMINIOS" EntitySet="CAT_CONDOMINIOS" />
+      <End Role="TBL_CONTRATOS" EntitySet="TBL_CONTRATOS" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
