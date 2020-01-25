@@ -14,6 +14,7 @@
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="CAT_ESTADOS" Relationship="Self.FK__CAT_CONDO__Id_Es__276EDEB3" FromRole="CAT_CONDOMINIOS" ToRole="CAT_ESTADOS" />
     <NavigationProperty Name="CAT_VIVIENDAS" Relationship="DatabaseViviendaModel.FK__CAT_VIVIE__id_Co__3B75D760" FromRole="CAT_CONDOMINIOS" ToRole="CAT_VIVIENDAS" />
+    <NavigationProperty Name="TBL_CONTRATOS" Relationship="DatabaseViviendaModel.FK__TBL_CONTR__Id_Co__4AB81AF0" FromRole="CAT_CONDOMINIOS" ToRole="TBL_CONTRATOS" />
   </EntityType>
   <EntityType Name="CAT_ESTADOS">
     <Key>
@@ -52,6 +53,23 @@
     <AssociationSet Name="FK__CAT_VIVIE__id_Pr__3A81B327" Association="DatabaseViviendaModel.FK__CAT_VIVIE__id_Pr__3A81B327">
       <End Role="CAT_PERSONAS" EntitySet="CAT_PERSONAS" />
       <End Role="CAT_VIVIENDAS" EntitySet="CAT_VIVIENDAS" />
+    </AssociationSet>
+    <EntitySet Name="CAT_TIPOVIVIENDAS" EntityType="DatabaseViviendaModel.CAT_TIPOVIVIENDAS" />
+    <EntitySet Name="TBL_CONTRATOS" EntityType="DatabaseViviendaModel.TBL_CONTRATOS" />
+    <EntitySet Name="TBL_SERVICIOS" EntityType="DatabaseViviendaModel.TBL_SERVICIOS" />
+    <EntitySet Name="Tbl_Usuarios" EntityType="DatabaseViviendaModel.Tbl_Usuarios" />
+    <EntitySet Name="ASOC_CONTRATOS_SERVICIOS" EntityType="DatabaseViviendaModel.ASOC_CONTRATOS_SERVICIOS" />
+    <AssociationSet Name="FK__TBL_CONTR__Id_Co__4AB81AF0" Association="DatabaseViviendaModel.FK__TBL_CONTR__Id_Co__4AB81AF0">
+      <End Role="CAT_CONDOMINIOS" EntitySet="CAT_CONDOMINIOS" />
+      <End Role="TBL_CONTRATOS" EntitySet="TBL_CONTRATOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ASOC_CONT__Id_Co__571DF1D5" Association="DatabaseViviendaModel.FK__ASOC_CONT__Id_Co__571DF1D5">
+      <End Role="TBL_CONTRATOS" EntitySet="TBL_CONTRATOS" />
+      <End Role="ASOC_CONTRATOS_SERVICIOS" EntitySet="ASOC_CONTRATOS_SERVICIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ASOC_CONT__Id_Se__5812160E" Association="DatabaseViviendaModel.FK__ASOC_CONT__Id_Se__5812160E">
+      <End Role="TBL_SERVICIOS" EntitySet="TBL_SERVICIOS" />
+      <End Role="ASOC_CONTRATOS_SERVICIOS" EntitySet="ASOC_CONTRATOS_SERVICIOS" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="CAT_PERSONAS">
@@ -106,6 +124,103 @@
       </Principal>
       <Dependent Role="CAT_VIVIENDAS">
         <PropertyRef Name="id_Propietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CAT_TIPOVIVIENDAS">
+    <Key>
+      <PropertyRef Name="Id_TipoVivienda" />
+    </Key>
+    <Property Name="Id_TipoVivienda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoVivienda" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="Clave" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_CONTRATOS">
+    <Key>
+      <PropertyRef Name="Id_Contrato" />
+    </Key>
+    <Property Name="Id_Contrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Condominio" Type="Int32" Nullable="false" />
+    <Property Name="FchInicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FchFin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CAT_CONDOMINIOS" Relationship="DatabaseViviendaModel.FK__TBL_CONTR__Id_Co__4AB81AF0" FromRole="TBL_CONTRATOS" ToRole="CAT_CONDOMINIOS" />
+    <NavigationProperty Name="ASOC_CONTRATOS_SERVICIOS" Relationship="DatabaseViviendaModel.FK__ASOC_CONT__Id_Co__571DF1D5" FromRole="TBL_CONTRATOS" ToRole="ASOC_CONTRATOS_SERVICIOS" />
+  </EntityType>
+  <EntityType Name="TBL_SERVICIOS">
+    <Key>
+      <PropertyRef Name="Id_Servicio" />
+    </Key>
+    <Property Name="Id_Servicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Servicios" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ASOC_CONTRATOS_SERVICIOS" Relationship="DatabaseViviendaModel.FK__ASOC_CONT__Id_Se__5812160E" FromRole="TBL_SERVICIOS" ToRole="ASOC_CONTRATOS_SERVICIOS" />
+  </EntityType>
+  <EntityType Name="Tbl_Usuarios">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Correo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApPaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApMaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ASOC_CONTRATOS_SERVICIOS">
+    <Key>
+      <PropertyRef Name="Id_Contrato" />
+      <PropertyRef Name="Id_Servicio" />
+      <PropertyRef Name="MesAnt" />
+      <PropertyRef Name="MesAct" />
+      <PropertyRef Name="MesVen" />
+      <PropertyRef Name="Activo" />
+    </Key>
+    <Property Name="Id_Contrato" Type="Int32" Nullable="false" />
+    <Property Name="Id_Servicio" Type="Int32" Nullable="false" />
+    <Property Name="MesAnt" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="MesAct" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="MesVen" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TBL_CONTRATOS" Relationship="DatabaseViviendaModel.FK__ASOC_CONT__Id_Co__571DF1D5" FromRole="ASOC_CONTRATOS_SERVICIOS" ToRole="TBL_CONTRATOS" />
+    <NavigationProperty Name="TBL_SERVICIOS" Relationship="DatabaseViviendaModel.FK__ASOC_CONT__Id_Se__5812160E" FromRole="ASOC_CONTRATOS_SERVICIOS" ToRole="TBL_SERVICIOS" />
+  </EntityType>
+  <Association Name="FK__TBL_CONTR__Id_Co__4AB81AF0">
+    <End Type="DatabaseViviendaModel.CAT_CONDOMINIOS" Role="CAT_CONDOMINIOS" Multiplicity="1" />
+    <End Type="DatabaseViviendaModel.TBL_CONTRATOS" Role="TBL_CONTRATOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAT_CONDOMINIOS">
+        <PropertyRef Name="Id_Condominio" />
+      </Principal>
+      <Dependent Role="TBL_CONTRATOS">
+        <PropertyRef Name="Id_Condominio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ASOC_CONT__Id_Co__571DF1D5">
+    <End Type="DatabaseViviendaModel.TBL_CONTRATOS" Role="TBL_CONTRATOS" Multiplicity="1" />
+    <End Type="DatabaseViviendaModel.ASOC_CONTRATOS_SERVICIOS" Role="ASOC_CONTRATOS_SERVICIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_CONTRATOS">
+        <PropertyRef Name="Id_Contrato" />
+      </Principal>
+      <Dependent Role="ASOC_CONTRATOS_SERVICIOS">
+        <PropertyRef Name="Id_Contrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ASOC_CONT__Id_Se__5812160E">
+    <End Type="DatabaseViviendaModel.TBL_SERVICIOS" Role="TBL_SERVICIOS" Multiplicity="1" />
+    <End Type="DatabaseViviendaModel.ASOC_CONTRATOS_SERVICIOS" Role="ASOC_CONTRATOS_SERVICIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_SERVICIOS">
+        <PropertyRef Name="Id_Servicio" />
+      </Principal>
+      <Dependent Role="ASOC_CONTRATOS_SERVICIOS">
+        <PropertyRef Name="Id_Servicio" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

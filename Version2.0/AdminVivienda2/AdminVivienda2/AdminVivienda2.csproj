@@ -162,6 +162,7 @@
     <Compile Include="BL\Nivel1Campo1BL.cs" />
     <Compile Include="BL\Nivel1Campo2BL.cs" />
     <Compile Include="BL\TipoViviendaBL.cs" />
+    <Compile Include="BL\UsuarioBL.cs" />
     <Compile Include="BL\ViviendaBL.cs" />
     <Compile Include="Controllers\Administracion\ContratoAdminController.cs" />
     <Compile Include="Controllers\Catalogos\CondominioController.cs" />
@@ -178,6 +179,9 @@
     <Compile Include="Controllers\Login\TokenValidationHandler.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\Usuario\UsuarioController.cs" />
+    <Compile Include="DAL\ASOC_CONTRATOS_SERVICIOS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\CAT_CONDOMINIOS.cs">
       <DependentUpon>ModelVivienda.tt</DependentUpon>
     </Compile>
@@ -185,6 +189,9 @@
       <DependentUpon>ModelVivienda.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CAT_PERSONAS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CAT_TIPOVIVIENDAS.cs">
       <DependentUpon>ModelVivienda.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CAT_VIVIENDAS.cs">
@@ -205,10 +212,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelVivienda.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\TBL_CONTRATOS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TBL_SERVICIOS.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Tbl_Usuarios.cs">
+      <DependentUpon>ModelVivienda.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interface\IGeneral.cs" />
+    <Compile Include="Interface\IUsuario.cs" />
     <Compile Include="Models\CondominioModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Nivel1Campo1Model.cs" />
@@ -216,6 +233,7 @@
     <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
     <Compile Include="Models\SelectModel.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\ViviendaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
