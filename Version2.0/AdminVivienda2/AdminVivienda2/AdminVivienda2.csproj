@@ -307,12 +307,14 @@
     <Content Include="Views\Nivel1Campo2\Index.cshtml" />
     <Content Include="Views\Nivel1Campo2\Registro.cshtml" />
     <Content Include="Views\Nivel1Campo2\Grid.cshtml" />
+    <Content Include="Views\Usuario\Usuario.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\ContratoAdmin\" />
     <Folder Include="Views\Servicios\" />
     <Folder Include="Views\TipoVivienda\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
