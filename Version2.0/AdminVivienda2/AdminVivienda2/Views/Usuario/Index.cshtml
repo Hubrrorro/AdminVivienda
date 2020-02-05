@@ -1,8 +1,71 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+<h3 class="header">@ViewBag.Title</h3>
+<hr />
+<div class="row">
+    <div class="input-field col s6 m4 l4">
+            <label for="txtusuario">Usuario <span>*</span>:</label>
+            <input type="text" id="txtusuario" class="valida" maxlength="100" value="@Model.Usuario">
+        </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtnombre">Nombre <span>*</span>:</label>
+        <input type="text" id="txtnombre" class="valida" maxlength="5" value="@Model.Nombre">
+    </div>
+
+    <div class="input-field col s6 m4 l4">
+        <label for="txtpat">Apellido Paterno <span>*</span>:</label>
+        <input type="text" id="txtpat" class="valida" maxlength="50" value="@Model.ApPaterno">
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtapmat">Apellido Materno <span>*</span>:</label>
+        <input type="text" id="txtapmat" class="valida" maxlength="50" value="@Model.ApMaterno">
+    </div>
+    <div class="input-field col s6 m4 l4">
+        <label for="txtemail">Correo Electrónico <span>*</span>:</label>
+        <input type="email" id="txtemail" maxlength="100" class="valida" value="@Model.Correo">
+    </div>
+    <div class="input-field col s4 m4 l4">
+        <select id="ddlActivo">
+            <option selected="" value="-1">Todos</option>
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+        </select>
+        <label>Estatus:</label>
+    </div>
+    <div class="col s4 m4 l4">
+        <div class="row valign-wrapper">
+            <div class="col s10">
+                <button type="button" class="btn-info waves-effect waves-light btn btnComponent"><i class="material-icons left">search</i>Buscar</button>
+            </div>
+            <div class="col s2">
+                <a href="@Url.Action("Create")" class="waves-effect waves-light btn-floating btnComponent"><i class="material-icons left">add</i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <p><small class="form-text text-muted">* Campos Obligatorios.</small></p>
+    <div class="col s6 m6 l6" align="left">
+
+        <a href="@Url.Action("Index")" class="waves-effect waves-light btn red"><i class="material-icons left">keyboard_return</i>Regresar</a>
+    </div>
+    <div class="col s6 m6 l6" align="right">
+        @if (ViewBag.Accion == "Actualizar")
+        {
+            <button id="btnActualizar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">autorenew</i>Actualizar</button>
+        }
+        else
+        {
+
+            <button id="btnGuardar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">save</i>Guardar</button>
+
+
+        }
+    </div>
+</div>
+@section scripts{
+    <script>
+       
+    </script>
 }
-
-<h2>Index</h2>
-

@@ -2,26 +2,26 @@
 <h3 class="header">@ViewBag.Title</h3>
 <hr />
 <div class="row">
+    @*<div class="input-field col s6 m4 l4">
+        <label for="txtusuario">Usuario <span>*</span>:</label>
+        <input type="text" id="txtusuario" class="valida" maxlength="100" value="@Model.Usuario">
+    </div>*@
     <div class="input-field col s6 m4 l4">
-        <label for="txtcondominio">Usuario <span>*</span>:</label>
-        <input type="text" id="txtcondominio" class="valida" maxlength="100" value="@Model.Usuario">
-    </div>
-    <div class="input-field col s6 m4 l4">
-        <label for="txtclave">Nombre <span>*</span>:</label>
-        <input type="text" id="txtclave" class="valida" maxlength="5" value="@Model.Nombre">
+        <label for="txtnombre">Nombre <span>*</span>:</label>
+        <input type="text" id="txtnombre" class="valida" maxlength="5" value="@Model.Nombre">
     </div>
     
     <div class="input-field col s6 m4 l4">
-        <label for="txtdemmun">Apellido Paterno <span>*</span>:</label>
-        <input type="text" id="txtdemmun" class="valida" maxlength="50" value="@Model.ApPaterno">
+        <label for="txtpat">Apellido Paterno <span>*</span>:</label>
+        <input type="text" id="txtpat" class="valida" maxlength="50" value="@Model.ApPaterno">
     </div>
     <div class="input-field col s6 m4 l4">
-        <label for="txtcolonia">Apellido Materno <span>*</span>:</label>
-        <input type="text" id="txtcolonia" class="valida" maxlength="50" value="@Model.ApMaterno">
+        <label for="txtapmat">Apellido Materno <span>*</span>:</label>
+        <input type="text" id="txtapmat" class="valida" maxlength="50" value="@Model.ApMaterno">
     </div>
     <div class="input-field col s6 m4 l4">
-        <label for="txtcp">Correo Electrónico <span>*</span>:</label>
-        <input type="number" id="txtcp" maxlength="5" class="valida" value="@Model.Correo">
+        <label for="txtemail">Correo Electrónico <span>*</span>:</label>
+        <input type="email" id="txtemail" maxlength="100" class="valida" value="@Model.Correo">
     </div>
     @if (ViewBag.Accion == "Actualizar")
     {
@@ -115,24 +115,17 @@
                 var modelo = new Object();
                 if (_accion == 'Actualizar') {
                     modelo.Activo = $('#chkActivo').is(":checked") ? 1 : 0;
-                    modelo.Id_Condominio = @Model.Id_Condominio;
+                    modelo.Id_Usuario = @Model.Id_Usuario;
                 }
-                modelo.Condominio = $('#txtcondominio').val();
-                modelo.Clave = $('#txtclave').val();
-                modelo.Id_Estado = $('#ddlEstado').val();
-                modelo.DemMun = $('#txtdemmun').val();
-                modelo.Colonia = $('#txtcolonia').val();
-                modelo.Cp = $('#txtcp').val();
+                modelo.Usuario = $('#txtusuario').val();
+                modelo.Nombre = $('#txtnombre').val();
+                modelo.ApPaterno = $('#txtpat').val();
+                modelo.ApMaterno = $('#txtmat').val();
+                modelo.Correo = $('#txtemail').val();
                 return modelo;
         }
         $(document).ready(function () {
-            if (_accion == 'Actualizar') {
-                LlenaSelect('@Url.Action("Select","Estados")', 'ddlEstado',@Model.Id_Estado);
-            }
-            else {
-                LlenaSelect('@Url.Action("Select","Estados")', 'ddlEstado');
-            }
-             $('select').formSelect();
+            
             M.updateTextFields();
         });
 

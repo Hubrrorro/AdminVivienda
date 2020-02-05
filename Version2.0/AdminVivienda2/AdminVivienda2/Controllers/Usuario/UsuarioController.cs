@@ -20,6 +20,7 @@ namespace AdminVivienda2.Controllers.Usuario
         // GET: Condominio
         public ActionResult Index()
         {
+
             ViewBag.Title = "Buscar usuario";
             return View();
         }
