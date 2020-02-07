@@ -313,6 +313,7 @@
     <Content Include="Views\ContratoAdmin\Index.cshtml" />
     <Content Include="Views\ContratoAdmin\Grid.cshtml" />
     <Content Include="Views\ContratoAdmin\Contrato.cshtml" />
+    <Content Include="Views\ContratoAdmin\GridServicio.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

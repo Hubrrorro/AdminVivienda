@@ -45,9 +45,12 @@
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script>
         var _urlGrid = '@Url.Action("Grid")';
+        var _urlCondominio = '@Url.Action("Select","Condominio")';
         $(document).ready(function () {
             EjecutaAjaxBusqueda();
+            LlenaSelect(_urlCondominio, 'ddlCondominio', null);
             $('select').formSelect();
+            
         });
         $(".btn-info").click(function () {
             EjecutaAjaxBusqueda();

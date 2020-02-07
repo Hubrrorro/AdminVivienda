@@ -26,6 +26,51 @@
         <label for="txtfchFin">Fecha Fin<span>*</span>:</label>
         <input type="text" class="valida datepicker" id="txtfchFin" value="">
     </div>
+
+    <h4 class="header">Mensualidad</h4>
+    <hr />
+    <div class="input-field col s6 m4 l4">
+        <select id="ddlServicio" class="valida">
+            <option disabled selected value="-1">Selecciona</option>
+
+        </select>
+        <label>Servicio<span>*</span>:</label>
+    </div>
+    <div class="input-field col s6 m2 l2">
+        <label for="txtmesant">Anticipado<span>*</span>:</label>
+        <input type="number" class="valida" id="txtmesant" value="">
+    </div>
+    <div class="input-field col s6 m2 l2">
+        <label for="txtmescorr">Corriente<span>*</span>:</label>
+        <input type="number" class="valida" id="txtmescorr" value="">
+    </div>
+    <div class="input-field col s6 m2 l2">
+        <label for="txtmesven">Vencido<span>*</span>:</label>
+        <input type="number" class="valida" id="txtmesven" value="">
+    </div>
+    <div class="input-field col s6 m1 l1">
+        <a id="btnAddServicios" class="btn-floating waves-effect waves-light"><i class="material-icons left">add</i></a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Servicio</th>
+                <th>Anticipado</th>
+                <th>Corriente</th>
+                <th>Vencido</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="tableBodyServicios"></tbody>
+        <tfoot>
+            <tr>
+                <th>Total Mensualidad</th>
+                <th id="lblAnt"></th>
+                <th id="lblCorr"></th>
+                <th id="lblVen"></th>
+            </tr>
+        </tfoot>
+    </table>
     @if (ViewBag.Accion == "Actualizar")
     {
         <div class="col s6 m6 l6">
@@ -48,39 +93,125 @@
         </div>
     }
 </div>
-<hr />
+    <hr />
 
-<div class="row">
-    <p><small class="form-text text-muted">* Campos Obligatorios.</small></p>
-    <div class="col s6 m6 l6" align="left">
+    <div class="row">
+        <p><small class="form-text text-muted">* Campos Obligatorios.</small></p>
+        <div class="col s6 m6 l6" align="left">
 
-        <a href="@Url.Action("Index")" class="waves-effect waves-light btn red"><i class="material-icons left">keyboard_return</i>Regresar</a>
+            <a href="@Url.Action("Index")" class="waves-effect waves-light btn red"><i class="material-icons left">keyboard_return</i>Regresar</a>
+        </div>
+        <div class="col s6 m6 l6" align="right">
+            @if (ViewBag.Accion == "Actualizar")
+            {
+                <button id="btnActualizar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">autorenew</i>Actualizar</button>
+            }
+            else
+            {
+
+                <button id="btnGuardar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">save</i>Guardar</button>
+
+
+            }
+        </div>
     </div>
-    <div class="col s6 m6 l6" align="right">
-        @if (ViewBag.Accion == "Actualizar")
-        {
-            <button id="btnActualizar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">autorenew</i>Actualizar</button>
-        }
-        else
-        {
-
-            <button id="btnGuardar" type="button" class="waves-effect waves-light btn"><i class="material-icons left">save</i>Guardar</button>
-
-
-        }
-    </div>
-</div>
-@section scripts{
-<script>
-        var _accion = '@ViewBag.Accion';
+    @section scripts{
+        <script>
+            var _accion = '@ViewBag.Accion';
+            let _servicios= []
+           var _urlServicio = '@Url.Action("Select","Servicios")';
         $(document).ready(function () {
             LlenaSelect('@Url.Action("Select","Condominio")', 'ddlCondominio');
-            @*if (_accion == 'Actualizar') {
+            LlenaSelect(_urlServicio, 'ddlServicio', null);
+            if (_accion == 'Actualizar') {
                 $('#ddlCondominio').val('@Model.id_Condominio');
-            }*@
+            }
             $('select').formSelect();
             $('.datepicker').datepicker();
                 M.updateTextFields();
-    });
-</script>
-}
+        });
+            function ExisteEnListado(id) {
+                var isExiste = false;
+                $.each(_servicios, function (index, value) {
+                    if (!isExiste) {
+                        if (value.idServicio == id) {
+                            isExiste = true;
+                        }
+                    }
+                });
+                return isExiste;
+            }
+            function FncDelete(index) {
+                _servicios.splice(index, 1); 
+                FncCreateTablaServicios();
+            }
+            function FncCreateTablaServicios() {
+                var mesant=0, mesact=0, mesven = 0;
+                $('#tableBodyServicios').html('');
+                $.each(_servicios, function (index, value) {
+                    $('#tableBodyServicios').append('<tr id="tr_' + index + '"><td>' + value.Servicio + '</td><td>' + value.MesAnt + '</td><td>' + value.MesCorr + '</td><td>' + value.MesVen + '</td><td><a><i class="material-icons" onclick="FncDelete('+ index +')">delete</i></a></td></tr>')
+                    mesant = mesant + parseInt(value.MesAnt);
+                    mesact = mesact + parseInt(value.MesCorr);
+                    mesven = mesven + parseInt(value.MesVen);
+                });
+                $('#lblAnt').text(mesant.toString());
+                $('#lblCorr').text(mesact.toString());
+                $('#lblVen').text(mesven.toString());
+                $('#txtmesant').val('');
+                $('#txtmescorr').val('');
+                $('#txtmesven').val('');
+                M.updateTextFields();
+            }
+            $('#btnAddServicios').click(function () {
+                var serviciosObj = new Object();
+                serviciosObj.idServicio = $('#ddlServicio').val();
+                serviciosObj.Servicio = $('#ddlServicio option:selected').text();
+                serviciosObj.MesAnt = $('#txtmesant').val();
+                serviciosObj.MesCorr = $('#txtmescorr').val();
+                serviciosObj.MesVen = $('#txtmesven').val();
+                if (ExisteEnListado($('#ddlServicio').val())) {
+                     M.toast({ html: 'Ya se encuentra registrado el servicio seleccionado' });
+                    return;
+                }
+                if ($('#ddlServicio').val() == "-1") {
+                    M.toast({ html: 'Campo requrido: Selecciona un servicio' });
+                    return;
+                }
+                if ($('#txtmesant').val() == "") {
+                    M.toast({ html: 'Campo requrido: Mes Anterior' });
+                    return;
+                }
+                if ($('#txtmescorr').val() == "") {
+                    M.toast({ html: 'Campo requrido: Mes Corriente' });
+                    return;
+                }
+                if ($('#txtmesven').val() == "") {
+                    M.toast({ html: 'Campo requrido: Mes Vencido' });
+                    return;
+                }
+                if (parseInt($('#txtmesant').val()) > parseInt($('#txtmescorr').val())) {
+                    M.toast({ html: 'La cantidad del mes anterior debe ser menor al mes corriente' });
+                    return;
+                }
+                if (parseInt($('#txtmescorr').val()) > parseInt($('#txtmesven').val())) {
+                    M.toast({ html: 'La cantidad del mes corriente debe ser menor al mes vencido' });
+                    return;
+                }
+                _servicios.push(serviciosObj);
+                
+                FncCreateTablaServicios();
+
+            });
+            $('#btnGuardar').click(function () {
+                var respuestaRevisa = RevisaInputValida();
+                if (respuestaRevisa) {
+                    return;
+                }
+                var modelo = ObtenerModelo();
+                FncExeAjax('@Url.Action("Create")', modelo, "POST", false, FncLimpiar);
+            });
+            function ObtenerModelo() {
+
+            }
+        </script>
+    }
