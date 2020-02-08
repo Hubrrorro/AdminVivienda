@@ -159,8 +159,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\CondominioBL.cs" />
+    <Compile Include="BL\ContratoBL.cs" />
     <Compile Include="BL\Nivel1Campo1BL.cs" />
     <Compile Include="BL\Nivel1Campo2BL.cs" />
+    <Compile Include="BL\ServicioContratoBL.cs" />
     <Compile Include="BL\TipoViviendaBL.cs" />
     <Compile Include="BL\UsuarioBL.cs" />
     <Compile Include="BL\ViviendaBL.cs" />
@@ -227,12 +229,14 @@
     <Compile Include="Interface\IGeneral.cs" />
     <Compile Include="Interface\IUsuario.cs" />
     <Compile Include="Models\CondominioModel.cs" />
+    <Compile Include="Models\ContratoModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Nivel1Campo1Model.cs" />
     <Compile Include="Models\Nivel1Campo2Model.cs" />
     <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="Models\RespuestaModel.cs" />
     <Compile Include="Models\SelectModel.cs" />
+    <Compile Include="Models\ServiciosContratoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\ViviendaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

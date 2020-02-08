@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,8 +14,9 @@
         </select>
         <label>Condominio<span>*</span>:</label>
     </div>
+    <a href="~/BL/TipoViviendaBL.cs">~/BL/TipoViviendaBL.cs</a>
     <div class="input-field col s6 m6 l6">
-        <label for="txtvivienda">Contrato<span>*</span>:</label>
+        <label for="txtcontrato">Contrato<span>*</span>:</label>
         <input type="text" class="valida" id="txtcontrato" value="">
     </div>
 
@@ -164,7 +166,7 @@
             }
             $('#btnAddServicios').click(function () {
                 var serviciosObj = new Object();
-                serviciosObj.idServicio = $('#ddlServicio').val();
+                serviciosObj.Id_Servicio = $('#ddlServicio').val();
                 serviciosObj.Servicio = $('#ddlServicio option:selected').text();
                 serviciosObj.MesAnt = $('#txtmesant').val();
                 serviciosObj.MesCorr = $('#txtmescorr').val();
@@ -211,7 +213,16 @@
                 FncExeAjax('@Url.Action("Create")', modelo, "POST", false, FncLimpiar);
             });
             function ObtenerModelo() {
-
+                var modelo = new Object();
+                 if (_accion == 'Actualizar') {
+                    $('#ddlCondominio').val('@Model.id');
+                }
+                modelo.Id_Contrato = $('#ddlCondominio').val();
+                modelo.Contato = $('#txtContrato').val();
+                modelo.FechaIni = $('#txtfchIni').val();
+                modelo.FechaFin = $('#txtfchFin').val();
+                modelo.Servicios = _servicios;
+                return modelo;
             }
         </script>
     }
